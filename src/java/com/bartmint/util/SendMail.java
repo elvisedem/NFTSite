@@ -48,7 +48,7 @@ public class SendMail
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.bartmint.com", host);
-        props.put("mail.smtp.port", "25");
+        props.put("mail.smtp.port", "465");
 
         // Get the Session object.
         Session session = Session.getInstance(props,
