@@ -103,7 +103,7 @@
                                     <span class="uk-text-small" style="color: #ffffff !important;">Don't have an account? <a class="uk-button uk-button-text" href="register">Register</a></span>
                                 </p>
                                 <p>
-                                    <span class="uk-text-small float-end" style="color: #ffffff !important;"><a class="uk-button uk-button-text" href="checkemail">Forgot password</a></span>
+                                    <span class="uk-text-small float-end" style="color: #ffffff !important;"><a class="uk-button uk-button-text" id="forgot-password">Forgot password</a></span>
                                 </p>
                             </div>
                         </div>
@@ -162,6 +162,22 @@
                     displayGrey(event.data.payload.data)
                 }
             })
+        </script>
+        <script>
+            $(document).ready(function(){
+                // Retrieve the email input element and the forgot password link element
+                var emailInput = $('#email');
+                var forgotPasswordLink = $('#forgot-password');
+
+                // Add an event listener to the email input field
+                emailInput.on('input', function(){
+                    // Get the current value of the email input field
+                    var email = emailInput.val();
+
+                    // Update the href attribute of the forgot password link with the email parameter
+                    forgotPasswordLink.attr('href', 'forgot-password?email=' + encodeURIComponent(email));
+                });
+            });
         </script>
     </body>
     <!-- Mirrored from algromint.com/login by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:42:20 GMT -->
