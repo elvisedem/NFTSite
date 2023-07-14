@@ -26,7 +26,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
             />
 
-        <title>Create a new Password</title>
+        <title>Check your email for a link</title>
 
         <meta name="description" content="" />
 
@@ -124,20 +124,7 @@
                                 </a>
                             </div>
                             <!-- /Logo -->
-                            <h4 class="mb-2">Create a new password</h4>
-
-                            <form id="formAuthentication" class="mb-3"  method="POST">
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
-                                </div>
-
-                                <button class="btn btn-primary d-grid w-100">Continue</button>
-                            </form>
+                            <h4 class="mb-2 text-align-center">Check your email for a reset link.</h4>
 
 
                         </div>
@@ -174,4 +161,3 @@
 
     <!-- Mirrored from algromint.com/dashboard/forgot-password by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:45:35 GMT -->
 </html>
-

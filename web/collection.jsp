@@ -138,7 +138,7 @@
                                                             <label class="mr-sm-2 form-label">Collection Name </label>
                                                             <input type="text" id="collection_name" class="form-control" placeholder="Name your collection" name="collectionName" required="">
                                                         </div>
-                                                        <div class="form-group col-xl-12 my-2">
+<!--                                                        <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">Management type </label>
                                                             <select name="type" class="form-select" id="select-box" onchange="showField()">
                                                                 <option value="automatic" selected="selected">Automatic</option>
@@ -149,10 +149,10 @@
                                                         <div class="form-group col-xl-12 my-2" id="min-field" style="display: none;">
                                                             <label class="mr-sm-2 form-label">Minimum withdrawal </label>
                                                             <input type="number" id="mini_withdrawal" class="form-control" placeholder="Set minimum withdrawal" name="miniWithdrawal">
-                                                        </div>
+                                                        </div>-->
 
                                                         <div class="form-group col-xl-6 my-2">
-                                                            <label class="mr-sm-2 form-label">Price (USD)</label>
+                                                            <label class="mr-sm-2 form-label">Price (ETH)</label>
                                                             <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
 

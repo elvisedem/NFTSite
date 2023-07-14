@@ -120,7 +120,7 @@
                                                 <form method="post">
                                                     <div class="form-group mb-3">
                                                         <label class="form-label">
-                                                            Amount to withdraw(USD)
+                                                            Amount to withdraw( ETH )
                                                         </label>
                                                         <input type="number" name="amount" required="" class="form-control" placeholder="Enter withdrawal amount">
                                                     </div>

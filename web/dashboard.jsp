@@ -115,10 +115,10 @@
                                             <div class="card-body text-white">
                                                 <strong>
                                                     <small>BALANCE</small>
-                                                    <h2 class="py-2 text-white">$0.00</h2>
-                                                    <small>
+                                                    <h2 class="py-2 text-white">0.00ETH</h2>
+<!--                                                    <small>
                                                         <small class="text-mute">0 ETH</small>
-                                                    </small>
+                                                    </small>-->
                                                 </strong>
                                                 <span class="float-end">
                                                     <a href="wallet">
@@ -155,8 +155,8 @@
                                                 <small>NFT worth</small>
                                                 <strong>
                                                     <h3 class="py-2 text-white">
-                                                        $                </h3>
-                                                    <small class="text-mute">0 ETH</small>
+                                                          0.00ETH   </h3>
+                                                    <!--<small class="text-mute"></small>-->
                                                 </strong>
                                             </div>
                                         </div>
@@ -172,20 +172,6 @@
                                                     <h3 class="py-2 text-white">
                                                         0.1482ETH
                                                     </h3>
-                                                </strong>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6 col-lg-4 my-2 ">
-                                        <div class="card custom-dark h-100">
-                                            <div class="card-body text-white h-100">
-
-                                                <small>Wallet</small>
-                                                <strong>
-                                                    <h3 class="py-2 text-white">
-                                                        $0                </h3>
                                                 </strong>
                                             </div>
                                         </div>

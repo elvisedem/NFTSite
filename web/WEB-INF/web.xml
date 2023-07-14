@@ -87,6 +87,10 @@
         <servlet-name>WalletServlet</servlet-name>
         <servlet-class>com.bartmint.wallet.WalletServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckEmail</servlet-name>
+        <jsp-file>/check-email.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
         <url-pattern>/registeremailservlet</url-pattern>
@@ -170,6 +174,10 @@
     <servlet-mapping>
         <servlet-name>WalletServlet</servlet-name>
         <url-pattern>/WalletServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckEmail</servlet-name>
+        <url-pattern>/checkemail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

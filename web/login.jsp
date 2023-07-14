@@ -103,7 +103,7 @@
                                     <span class="uk-text-small" style="color: #ffffff !important;">Don't have an account? <a class="uk-button uk-button-text" href="register">Register</a></span>
                                 </p>
                                 <p>
-                                    <span class="uk-text-small float-end" style="color: #ffffff !important;"><a class="uk-button uk-button-text" href="forgotPassword">Forgot password</a></span>
+                                    <span class="uk-text-small float-end" style="color: #ffffff !important;"><a class="uk-button uk-button-text" href="checkemail">Forgot password</a></span>
                                 </p>
                             </div>
                         </div>

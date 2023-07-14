@@ -116,7 +116,7 @@
 
                                             <div class="card-header">
                                                 <h4 class="card-title">Fund wallet</h4>
-                                                <span class="float-end">Wallet: $0.00</span>
+                                                <span class="float-end">Wallet: 0.00ETH</span>
                                             </div>
 
                                             <div class="card-body">
@@ -126,7 +126,7 @@
                                                 <form method="post" name="myform" class="personal_validate" novalidate="novalidate" onsubmit="">
                                                     <div class="form-row">
                                                         <div class="form-group col-12">
-                                                            <label class="mr-sm-2 form-label">Amount (USD)</label>
+                                                            <label class="mr-sm-2 form-label">Amount (ETH)</label>
                                                             <input type="number" id="amount" class="form-control" placeholder="Enter amount you want to fund" name="amount" required="">
                                                         </div>
 
