@@ -130,7 +130,7 @@
                                                             <input type="number" id="amount" class="form-control" placeholder="Enter amount you want to fund" name="amount" required="">
                                                         </div>
 
-                                                        <div class="form-group">
+<!--                                                        <div class="form-group">
                                                             <label class="form-label">
                                                                 Choose Collection
                                                             </label>
@@ -141,10 +141,10 @@
 
                                                                 <option value="598">{Name of Collection}</option>
                                                             </select>
-                                                        </div>
+                                                        </div>-->
 
                                                         <div class="form-group col-12 my-2">
-                                                            <button name="fund" class="btn btn-primary pl-5 pr-5 waves-effect">Fund my Collection</button>
+                                                            <button name="fund" class="btn btn-primary pl-5 pr-5 waves-effect">Fund my Wallet</button>
                                                         </div>
                                                     </div>
                                                 </form>

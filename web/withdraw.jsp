@@ -125,7 +125,7 @@
                                                         <input type="number" name="amount" required="" class="form-control" placeholder="Enter withdrawal amount">
                                                     </div>
 
-                                                    <div class="form-group mb-3">
+<!--                                                    <div class="form-group mb-3">
                                                         <label class="form-label">
                                                             Select Collection to withdraw from
                                                         </label>
@@ -136,7 +136,7 @@
 
                                                             <option value="598">Jay</option>
                                                         </select>
-                                                    </div>
+                                                    </div>-->
 
                                                     <div class="form-group mb-3">
                                                         <label class="form-label">

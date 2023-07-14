@@ -122,7 +122,7 @@
                                                             <div class="card-body ">
                                                                 <h4>{Name of Collection}</h4>
                                                                 <p>Artworks: 1</p>
-                                                                <p>Balance: <b>0ETH</b></p>
+<!--                                                                <p>Balance: <b>0ETH</b></p>-->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -132,7 +132,7 @@
                                                             <div class="card-body ">
                                                                 <h4>{Name of Collection}</h4>
                                                                 <p>Artworks: 0</p>
-                                                                <p>Balance: <b>0ETH</b></p>
+<!--                                                                <p>Balance: <b>0ETH</b></p>-->
                                                             </div>
                                                         </div>
                                                     </div>
