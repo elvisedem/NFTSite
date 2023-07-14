@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ProcessForgetPasswordServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -52,7 +53,7 @@ public class ProcessForgetPasswordServlet extends HttpServlet
                 {
                     String email = fg.getEmail();
                     request.setAttribute("email", email);
-                    RequestDispatcher dispatch = request.getRequestDispatcher("");//page to resset password
+                    RequestDispatcher dispatch = request.getRequestDispatcher("check-email.jsp");//page to resset password
                     dispatch.forward(request, response);
                 }
             }

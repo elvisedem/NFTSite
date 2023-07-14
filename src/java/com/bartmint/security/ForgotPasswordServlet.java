@@ -27,7 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ForgotPasswordServlet extends HttpServlet
 {
-    private static final String SENDER_EMAIL = "";//the sender email
+    private static final String SENDER_EMAIL = "contact@bartmint.com";//the sender email
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

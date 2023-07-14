@@ -27,8 +27,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class SendMail
 {
-    private static final String USER_NAME = "";
-    private static final String PASSWORD = "";
+    private static final String USER_NAME = "contact@bartmint.com";
+    private static final String PASSWORD = "Pr0j3ct@BArtMint";
     private static final String LOCAL_HOST = "localhost";
 
     public static String sendHtmlMail(String recipientEmail, String sendersEmail, String messageSubject, String htmlMessage)
@@ -47,7 +47,7 @@ public class SendMail
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.educonzult.com", host);
+        props.put("mail.bartmint.com", host);
         props.put("mail.smtp.port", "25");
 
         // Get the Session object.

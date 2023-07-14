@@ -116,9 +116,6 @@
                                                 <strong>
                                                     <small>BALANCE</small>
                                                     <h2 class="py-2 text-white">0.00ETH</h2>
-<!--                                                    <small>
-                                                        <small class="text-mute">0 ETH</small>
-                                                    </small>-->
                                                 </strong>
                                                 <span class="float-end">
                                                     <a href="wallet">
@@ -156,7 +153,6 @@
                                                 <strong>
                                                     <h3 class="py-2 text-white">
                                                           0.00ETH   </h3>
-                                                    <!--<small class="text-mute"></small>-->
                                                 </strong>
                                             </div>
                                         </div>

@@ -22,9 +22,10 @@ import javax.persistence.Table;
  * @since Jul 14, 2023 1:52:14 PM
  */
 @Entity
-@Table(name = "")
+@Table(name = "forget_password")
 public class ForgotPassword implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     @Id
     private int id;
     private String email;
@@ -66,9 +67,9 @@ public class ForgotPassword implements Serializable
 
     public static final class Constraints
     {
-        public static final String FORGOT_PASSWORD_TABLE = "";
-        public static final String FORGOT_PASSWORD_ID = "";
-        public static final String FORGOT_PASSWORD_EMAIL = "";
-        public static final String FORGOT_PASSWORD_TOKEN = "";
+        public static final String FORGOT_PASSWORD_TABLE = "forget_password";
+        public static final String FORGOT_PASSWORD_ID = "id";
+        public static final String FORGOT_PASSWORD_EMAIL = "email";
+        public static final String FORGOT_PASSWORD_TOKEN = "token";
     }
 }

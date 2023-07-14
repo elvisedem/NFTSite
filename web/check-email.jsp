@@ -154,9 +154,6 @@
         <script src="assets/js/main.js"></script>
 
         <!-- Page JS -->
-
-        <!--         Place this tag in your head or just before your close body tag.
-                <script async defer src="../../buttons.github.io/buttons.js"></script>-->
     </body>
 
     <!-- Mirrored from algromint.com/dashboard/forgot-password by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:45:35 GMT -->
