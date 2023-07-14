@@ -50,7 +50,7 @@ public class CollectionServlet extends HttpServlet
             HttpSession session = request.getSession(false);
             NewUserClass user = (NewUserClass)session.getAttribute("user");
 
-            CollectionClass collection = validateCollection(request, user.getEmail());
+            CollectionClass collection = validateCollection(request, user.getId());
             UserDAO.NewUsersCollection(collection);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
@@ -106,7 +106,7 @@ public class CollectionServlet extends HttpServlet
         return "Short description";
     }// </editor-fold>
 
-    private CollectionClass validateCollection(HttpServletRequest request, String emailAt)
+    private CollectionClass validateCollection(HttpServletRequest request, int id)
     {
         try
         {
@@ -114,13 +114,13 @@ public class CollectionServlet extends HttpServlet
             String price = request.getParameter("price").trim();
             String pictureName = request.getParameter("picture_name").trim();
             String miniWithdrawal = request.getParameter("mini_withdrawal").trim();
-            String email = emailAt;
+            int uid = id;
 
             CollectionClass collection = new CollectionClass();
             collection.setCollection_name(collectionName);
             collection.setPrice(price);
             collection.setMini_withdrawal(miniWithdrawal);
-            collection.setEmail(email);
+            collection.setUserId(uid);
             collection.setPicture_name(pictureName);
 
             Part imagePart = request.getPart("image");

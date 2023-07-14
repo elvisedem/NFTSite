@@ -9,25 +9,21 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-package com.bartmint.users;
+package com.bartmint.security;
 
-import static com.bartmint.users.UserDAO.getNewUserClassByEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.json.JSONObject;
 
 /**
  *
- * @author HULLO
+ * @author BLAZE
  */
-public class UpdateUserServlet extends HttpServlet
+public class ProcessForgetPasswordServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,28 +36,50 @@ public class UpdateUserServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("json/application");
-        PrintWriter out = response.getWriter();
         try
         {
-            HttpSession session = request.getSession(false);
-            NewUserClass user = (NewUserClass)session.getAttribute("user");
-            NewUserClass updateUser = getNewUserClassByEmail(user.getEmail());
-
-            //parameters
-            String fullname = request.getParameter("fullname").trim();
-            String address = request.getParameter("address").trim();
-            String phonenumber = request.getParameter("phonenumber").trim();
-
-            UserDAO.updateNewUser(updateUser.getId(), fullname, address, phonenumber);
-            JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
-            out.print(jsono);
+            String errMsg = validateRequest(request);
+            if(errMsg == null)
+            {
+                String token = request.getParameter("token");
+                ForgotPassword fg = ForgotPasswordDAO.getUserDetails(token);
+                if(fg == null)
+                {
+                    RequestDispatcher dispatch = request.getRequestDispatcher("home");
+                    dispatch.forward(request, response);
+                }
+                else
+                {
+                    String email = fg.getEmail();
+                    request.setAttribute("email", email);
+                    RequestDispatcher dispatch = request.getRequestDispatcher("");//page to resset password
+                    dispatch.forward(request, response);
+                }
+            }
+            else
+            {
+                RequestDispatcher dispatch = request.getRequestDispatcher("home");
+                dispatch.forward(request, response);
+            }
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+        }
+    }
+
+    private static String validateRequest(HttpServletRequest request) throws Exception
+    {
+        String errMsg = null;
+        try
+        {
+            if(request.getParameter("token").isEmpty() || request.getParameter("token") == null)
+                errMsg = "Invalid Request";
+            return errMsg;
+        }
+        catch(Exception e)
+        {
+            errMsg = e.getMessage();
+            return errMsg;
         }
     }
 

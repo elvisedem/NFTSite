@@ -88,8 +88,16 @@
         <servlet-class>com.bartmint.wallet.WalletServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CheckEmail</servlet-name>
-        <jsp-file>/check-email.jsp</jsp-file>
+        <servlet-name>Forgot Password Servlet</servlet-name>
+        <servlet-class>com.bartmint.security.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <servlet-class>com.bartmint.security.UpdatePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Process Forget Password Servlet</servlet-name>
+        <servlet-class>com.bartmint.security.ProcessForgetPasswordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
@@ -176,8 +184,16 @@
         <url-pattern>/WalletServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CheckEmail</servlet-name>
-        <url-pattern>/checkemail</url-pattern>
+        <servlet-name>Forgot Password Servlet</servlet-name>
+        <url-pattern>/forgot-password</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <url-pattern>/update-password</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Process Forget Password Servlet</servlet-name>
+        <url-pattern>/reset-password</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

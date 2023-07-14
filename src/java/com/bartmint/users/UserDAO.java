@@ -138,4 +138,17 @@ public class UserDAO
             throw new RuntimeException(DBconfig);
         }
     }
+
+    public static boolean updatePassword(int userId, String hasdPassword) throws Exception
+    {
+        try(DBConfig dbConfig = new DBConfig())
+        {
+            EntityManager em = dbConfig.getEntityManager();
+            em.getTransaction().begin();
+            NewUserClass user = em.find(NewUserClass.class, userId);
+            user.setPassword(hasdPassword);
+            em.getTransaction().commit();
+            return true;
+        }
+    }
 }

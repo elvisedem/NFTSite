@@ -29,7 +29,7 @@ public class CollectionClass implements Serializable
 
     @Id
     private int id;
-    private String email;
+    private int userId;
     private String collection_name;
     private String price;
     private String picture_name;
@@ -85,14 +85,14 @@ public class CollectionClass implements Serializable
         this.mini_withdrawal = mini_withdrawal;
     }
 
-    public String getEmail()
+    public int getUserId()
     {
-        return email;
+        return userId;
     }
 
-    public void setEmail(String email)
+    public void setUserId(int userId)
     {
-        this.email = email;
+        this.userId = userId;
     }
 
 }
