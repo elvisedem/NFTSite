@@ -36,6 +36,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="a4 ak sm:a25/12 lg:a26/12 xl:a26/12">
                 <div class="a28">
                     <h2 class="a2e a2f a1O aZ">
@@ -45,12 +46,6 @@
                         <li>
                             <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
                                 About company
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
-                                Contact us
                             </a>
                         </li>
                     </ul>
@@ -64,27 +59,13 @@
                     <ul>
                         <li>
                             <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
-                                Client support
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
-                                Latest news
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
-                                Company Details
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="a1M a2a aW a1o a1t a7 hover:aZ">
-                                Who we are
+                                Contact Us
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
+
             <div class="a4 ak sm:a25/12 lg:a26/12 xl:a26/12">
                 <div class="a28">
                     <h2 class="a2e a2f a1O aZ">
@@ -103,7 +84,9 @@
                     </form>
                 </div>
             </div>
+
         </div>
+
         <div class="a2n a1G">
             <div class="ap a1L">
                 <p class="aW a1o a1t">
@@ -111,5 +94,6 @@
                 </p>
             </div>
         </div>
+
     </div>
 </footer>

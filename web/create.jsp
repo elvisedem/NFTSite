@@ -128,25 +128,12 @@
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>
-                                                <div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>
                                                 <form method="POST" onsubmit="" enctype="multipart/form-data">
                                                     <div class="row">
 
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">NFT Name </label>
                                                             <input type="text" id="name" class="form-control" placeholder="Name your NFT" name="name" required="">
-                                                        </div>
-
-                                                        <div class="form-group col-xl-6 my-2">
-                                                            <label class="mr-sm-2 form-label">Collection </label>
-                                                            <select class="form-select" name="collection" required="">
-                                                                <option selected="selected" hidden="">Choose a collection</option>
-
-                                                                <option value="597">Hey</option>
-
-                                                                <option value="598">Jay</option>
-                                                            </select>
                                                         </div>
 
                                                         <div class="form-group col-xl-6">

@@ -5,15 +5,13 @@ public class NFT
     private int id;
     private String nftName;
     private String artWorkName;
-    private String collection;
     private double price;
 
-    public static final String NFT_TABLE = "";
-    public static final String NFT_ID = "";
-    public static final String NFT_NAME = "";
-    public static final String NFT_ART = "";
-    public static final String NFT_COLLECTION = "";
-    public static final String NFT_PRICE = "";
+    public static final String NFT_TABLE = " nft ";
+    public static final String NFT_ID = "id";
+    public static final String NFT_NAME = "nftName";
+    public static final String NFT_ART = "artWorkName";
+    public static final String NFT_PRICE = "price";
 
     public NFT()
     {
@@ -47,16 +45,6 @@ public class NFT
     public void setArtWorkName(String artWorkName)
     {
         this.artWorkName = artWorkName;
-    }
-
-    public String getCollection()
-    {
-        return collection;
-    }
-
-    public void setCollection(String collection)
-    {
-        this.collection = collection;
     }
 
     public double getPrice()
