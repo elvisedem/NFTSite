@@ -159,7 +159,7 @@
 
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
-                                                            <input type="file" id="picture_name" class="form-control" name="image" accept="image/*">
+                                                            <input type="file" id="picture_name" class="form-control" name="image" accept="image/*"  multiple="multiple">
                                                         </div>
 
                                                         <div class="form-group col-12">
