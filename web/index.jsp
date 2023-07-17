@@ -104,7 +104,7 @@
                     </div>
                     <div class="a4 ak lg:a1T/2">
                         <div class="a1L">
-                            <!--<img src="home_files/hero-image.svg" alt="hero image" class="a1J aj">-->
+                            <img src="assets/home_files/hero3.png" alt="hero image" class="a1J aj">
                         </div>
                     </div>
                 </div>
