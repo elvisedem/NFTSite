@@ -99,6 +99,10 @@
         <servlet-name>Process Forget Password Servlet</servlet-name>
         <servlet-class>com.bartmint.security.ProcessForgetPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Upload NFT Servlet</servlet-name>
+        <servlet-class>com.bartmint.users.UploadNFTServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
         <url-pattern>/registeremailservlet</url-pattern>
@@ -194,6 +198,10 @@
     <servlet-mapping>
         <servlet-name>Process Forget Password Servlet</servlet-name>
         <url-pattern>/reset-password</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload NFT Servlet</servlet-name>
+        <url-pattern>/upload-NFT</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

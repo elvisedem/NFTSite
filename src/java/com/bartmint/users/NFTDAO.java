@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 
 public class NFTDAO
 {
-    public static void registerNewUsers(NFT nft)
+    public static void registerNewNFTs(NFT nft)
     {
         try(DBConfig DBconfig = new DBConfig())
         {
