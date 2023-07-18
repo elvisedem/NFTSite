@@ -128,30 +128,30 @@
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <form method="POST" onsubmit="" enctype="multipart/form-data">
+                                                <form action="upload-NFT" method="POST" onsubmit="" enctype="multipart/form-data">
                                                     <div class="row">
 
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">NFT Name </label>
-                                                            <input type="text" id="name" class="form-control" placeholder="Name your NFT" name="name" required="">
+                                                            <input type="text" id="nftName" class="form-control" placeholder="Name your NFT" name="nftName" required="">
                                                         </div>
 
-                                                        <div class="form-group col-xl-6">
+                                                        <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
                                                             <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
 
 
-                                                        <div class="form-group col-xl-6">
+                                                        <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
-                                                            <input type="file" class="form-control" name="image" accept="image/*">
+                                                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
                                                         </div>
 
-                                                        <div class="form-group col-xl-6">
+                                                        <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Mint fee: 0.1492 ETH</label>
                                                         </div>
 
-                                                        <div class="form-group col-12">
+                                                        <div class="form-group col-12 my-2">
                                                             <button name="create-nft" class="btn btn-primary pl-5 pr-5 waves-effect">Create NFT</button>
                                                         </div>
                                                     </div>
