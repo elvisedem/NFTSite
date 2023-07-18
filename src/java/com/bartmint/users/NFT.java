@@ -1,13 +1,22 @@
 package com.bartmint.users;
 
-public class NFT
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "nft")
+public class NFT implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+    @Id
     private int id;
     private String nftName;
     private String artWorkName;
     private double price;
 
-    public static final String NFT_TABLE = " nft ";
+    public static final String NFT_TABLE = "nft";
     public static final String NFT_ID = "id";
     public static final String NFT_NAME = "nftName";
     public static final String NFT_ART = "artWorkName";
