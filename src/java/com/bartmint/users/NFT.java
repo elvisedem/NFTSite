@@ -12,6 +12,7 @@ public class NFT implements Serializable
     private static final long serialVersionUID = 1L;
     @Id
     private int id;
+    private String username;
     private String nftName;
     private String artWorkName;
     private double price;
@@ -64,6 +65,16 @@ public class NFT implements Serializable
     public void setPrice(double price)
     {
         this.price = price;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername(String username)
+    {
+        this.username = username;
     }
 
 }
