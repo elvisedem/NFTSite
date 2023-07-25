@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.json.JSONObject;
 
 /**
  *
@@ -66,8 +66,8 @@ public class UploadNFTServlet extends HttpServlet
             nft.setNftName(nftName);
             NFTDAO.registerNewNFTs(nft);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("");
-            dispatcher.forward(request, response);
+            JSONObject jsono = new JSONObject();
+            jsono.put("message", "success");
 
         }
         catch(Exception e)

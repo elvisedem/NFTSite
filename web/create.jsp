@@ -128,7 +128,7 @@
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <form action="upload-NFT" method="POST" onsubmit="" enctype="multipart/form-data">
+                                                <form id="create-nft" enctype="multipart/form-data">
                                                     <div class="row">
 
                                                         <div class="form-group col-xl-6 my-2">

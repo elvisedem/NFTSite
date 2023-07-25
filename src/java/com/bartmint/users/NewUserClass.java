@@ -12,8 +12,11 @@
 package com.bartmint.users;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,6 +40,14 @@ public class NewUserClass implements Serializable
     private String password;
     private String wallet_id;
     private double balance;
+
+    @OneToMany
+    @JoinColumn(name = "username")
+    private List<NFT> nfts;
+    @OneToMany
+    @JoinColumn(name = "username")
+    private List<CollectionClass> collections;
+    
 
     public int getId()
     {
@@ -126,6 +137,26 @@ public class NewUserClass implements Serializable
     public void setWallet_id(String wallet_id)
     {
         this.wallet_id = wallet_id;
+    }
+
+    public List<NFT> getNfts()
+    {
+        return nfts;
+    }
+
+    public void setNfts(List<NFT> nfts)
+    {
+        this.nfts = nfts;
+    }
+
+    public List<CollectionClass> getCollections()
+    {
+        return collections;
+    }
+
+    public void setCollections(List<CollectionClass> collections)
+    {
+        this.collections = collections;
     }
 
 }

@@ -277,7 +277,59 @@ $(document).ready(function(){
                 else{
                     Swal.fire({
                         icon: 'success',
-                        title: 'User updated',
+                        title: 'Collection Uploaded',
+                        text: 'Reloading.'
+                    });
+                    setTimeout(function(){
+                        window.location.href = 'nftcollection';
+                    }, 5000);
+                }
+
+            },
+            complete: function(jqXHR, textStatus){
+
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "There was an error, please reload this page. " + errorThrown
+                });
+            }
+        });
+    });
+});
+
+$(document).ready(function(){
+//Create NFT
+    $('#create-nft').submit(function(e){
+        e.preventDefault();
+        var nftName = $('#nftName').val().trim();
+        var image = $('#image').val().trim();
+        var price = $('#price').val().trim();
+
+        /*
+         * Use AJAX to submit the information
+         */
+        $.ajax({
+            url: 'upload-NFT',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {nftName: nftName, image: image, price: price},
+            beforeSend: function(xhr){
+                console.log('Submitting form...');
+            },
+            success: function(data, textStatus, jqXHR){
+                if(data.message !== 'success')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message
+                    });
+                else{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'NFT Uploaded',
                         text: 'Reloading.'
                     });
                     setTimeout(function(){
