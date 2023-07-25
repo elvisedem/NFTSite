@@ -307,7 +307,7 @@ $(document).ready(function(){
         var nftName = $('#nftName').val().trim();
         var image = $('#image').val().trim();
         var price = $('#price').val().trim();
-
+        console.log(price);
         /*
          * Use AJAX to submit the information
          */
