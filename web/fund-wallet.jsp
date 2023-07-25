@@ -123,7 +123,7 @@
                                                 <div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>
                                                 <div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>
 
-                                                <form method="post" name="myform" class="personal_validate" novalidate="novalidate" onsubmit="">
+                                                <form action="fund-wallet" method="post" name="myform" class="personal_validate" novalidate="novalidate" onsubmit="">
                                                     <div class="form-row">
                                                         <div class="form-group col-12">
                                                             <label class="mr-sm-2 form-label">Amount (ETH)</label>

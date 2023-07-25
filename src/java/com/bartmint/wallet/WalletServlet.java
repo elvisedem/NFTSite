@@ -108,17 +108,13 @@ public class WalletServlet extends HttpServlet
     {
         try
         {
-            String wallet_id = request.getParameter("wallet_id").trim();
-            String user_id = request.getParameter("id").trim();
-            String balance = request.getParameter("balance").trim();
+            double balance = Double.parseDouble(request.getParameter("balance"));
             String email = emailAt;
 
             WalletClass wallet = new WalletClass();
-            wallet.setWallet_id(0);
-            wallet.setUser_id(0);
             wallet.setEmail(email);
-            wallet.setBalance(0);
-
+            wallet.setUser_id(id);
+            wallet.setBalance(balance);
             return wallet;
         }
         catch(Exception e)
