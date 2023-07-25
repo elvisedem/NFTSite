@@ -26,6 +26,7 @@ public class UploadNFTServlet extends HttpServlet
     public static final String IMAGES_DIRECTORY = "images";
 
     private static final String UPLOADS_PATH = "/";
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

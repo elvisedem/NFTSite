@@ -302,7 +302,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 //Create NFT
-    $('#create-nft').submit(function(e){
+    $('#create').submit(function(e){
         e.preventDefault();
         var nftName = $('#nftName').val().trim();
         var image = $('#image').val().trim();
@@ -315,6 +315,10 @@ $(document).ready(function(){
             url: 'upload-NFT',
             method: 'POST',
             dataType: 'JSON',
+            enctype: 'multipart/form-data',
+            cache: false,
+            contentType: false,
+            processData: false,
             data: {nftName: nftName, image: image, price: price},
             beforeSend: function(xhr){
                 console.log('Submitting form...');

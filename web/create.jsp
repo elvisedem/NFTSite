@@ -128,7 +128,7 @@
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <form id="create-nft" enctype="multipart/form-data">
+                                                <form id="create" Method="POST" enctype="multipart/form-data">
                                                     <div class="row">
 
                                                         <div class="form-group col-xl-6 my-2">
@@ -188,50 +188,13 @@
 
         <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
 
-        <script>
-            $(document).ready(function(){
-                $('#table').DataTable({
-                    "order": []
-                });
-            });
-        </script>
 
         <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                speed: 400,
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-            });
-
-
-
-            function buyNft(val, collection){
-
-                swal("Confirm purchase", "Are you sure you want to purchase This NFT?", "warning")
-                        .then((bool) => {
-                            if(bool){
-                                $.ajax({
-                                    type: 'post',
-                                    url: 'script/buy-nft.php',
-                                    data: {id: val, collection},
-                                    success: function(data){
-                                        console.log(data);
-                                        var data = JSON.parse(data);
-                                        if(data.code == 200){
-                                            swal("Success", data.message, "success")
-                                        }else{
-                                            swal("Error", data.message, "error")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-            }
-        </script>
+        <script>//
+//            var form = $('#create')[0];
+//
+//            var data = new FormData(form);
+//        </script>
 
 
 
