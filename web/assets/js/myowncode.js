@@ -355,3 +355,53 @@ $(document).ready(function(){
         });
     });
 });
+
+$(document).ready(function(){
+//User Balance
+    $('#invoice').submit(function(e){
+        e.preventDefault();
+        var amount = $('#amount').val().trim();
+
+        /*
+         * Use AJAX to submit the information
+         */
+        $.ajax({
+            url: 'WalletServlet',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {balance: amount},
+            beforeSend: function(xhr){
+                console.log('Submitting form...');
+            },
+            success: function(data, textStatus, jqXHR){
+                if(data.message !== 'success')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message
+                    });
+                else{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Your balance will be added as soon as your transaction has been confirmed',
+                        text: 'Transaction Pending.'
+                    });
+                    setTimeout(function(){
+                        window.location.href = 'transaction';
+                    }, 5000);
+                }
+
+            },
+            complete: function(jqXHR, textStatus){
+
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "There was an error, please reload this page. " + errorThrown
+                });
+            }
+        });
+    });
+});

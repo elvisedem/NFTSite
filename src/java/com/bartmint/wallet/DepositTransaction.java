@@ -9,9 +9,10 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-package com.bartmint.users;
+package com.bartmint.wallet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HULLO
  */
-public class ProcessDepositTransactionServlet extends HttpServlet
+public class DepositTransaction extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
 
@@ -37,6 +38,9 @@ public class ProcessDepositTransactionServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
         try
         {
             double amount = Double.parseDouble(request.getParameter("amount"));

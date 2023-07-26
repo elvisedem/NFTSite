@@ -104,8 +104,8 @@
         <servlet-class>com.bartmint.users.UploadNFTServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Process Deposit Transaction Servlet</servlet-name>
-        <servlet-class>com.bartmint.users.ProcessDepositTransactionServlet</servlet-class>
+        <servlet-name>DepositTransaction</servlet-name>
+        <servlet-class>com.bartmint.wallet.DepositTransaction</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
@@ -208,8 +208,8 @@
         <url-pattern>/upload-NFT</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Process Deposit Transaction Servlet</servlet-name>
-        <url-pattern>/fund-wallet</url-pattern>
+        <servlet-name>DepositTransaction</servlet-name>
+        <url-pattern>/DepositTransaction</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

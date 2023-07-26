@@ -120,28 +120,13 @@
                                             </div>
 
                                             <div class="card-body">
-                                                <div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>
-                                                <div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>
 
-                                                <form action="fund-wallet" method="post" name="myform" class="personal_validate" novalidate="novalidate" onsubmit="">
+                                                <form action="DepositTransaction" method="post" class="personal_validate" novalidate="novalidate" onsubmit="">
                                                     <div class="form-row">
                                                         <div class="form-group col-12">
                                                             <label class="mr-sm-2 form-label">Amount (ETH)</label>
                                                             <input type="number" id="amount" class="form-control" placeholder="Enter amount you want to fund" name="amount" required="">
                                                         </div>
-
-<!--                                                        <div class="form-group">
-                                                            <label class="form-label">
-                                                                Choose Collection
-                                                            </label>
-                                                            <select class="form-select" name="collection" required="">
-                                                                <option selected="selected" hidden="">Choose a collection</option>
-
-                                                                <option value="597">{Name of Collection}</option>
-
-                                                                <option value="598">{Name of Collection}</option>
-                                                            </select>
-                                                        </div>-->
 
                                                         <div class="form-group col-12 my-2">
                                                             <button name="fund" class="btn btn-primary pl-5 pr-5 waves-effect">Fund my Wallet</button>

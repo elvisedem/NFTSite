@@ -137,35 +137,12 @@
                                                                     <br><h5 style="color:grey;"><small>If the QR code doesn't work with your wallet, simply copy and paste the address displayed above.</small></h5>
                                                                 </td>
                                                             </tr>
-                                                            <tr id="invDetails2">
+                                                            <tr id="invoice">
                                                                 <td><span></span><br>
-                                                                    <button class="btn btn-primary" value="" onclick="sendAlert(this.value)">
+                                                                    <button class="btn btn-primary">
                                                                         I have made this transfer
                                                                     </button>
                                                                     <br><h5 style="color:grey;"></h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><span>INVOICE AMOUNT :</span><br>
-                                                                    <span style="font-weight:200;">$10000 on ETH</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr id="totalPaid" style="display:none;">
-                                                                <td><span>AMOUNT PAID:</span><br>
-                                                                    <span style="font-weight:200;" id="paid">$0.00</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><span>AMOUNT DUE :</span><br>
-                                                                    <span style="font-weight:200;" id="due">$ 10000 on ETH</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr id="invDetails3">
-                                                                <td><span>REMARK :</span><br>
-                                                                    <span style="font-weight:200;">
-                                                                        You may split your payments into various amounts, be advised however that applicable network fees may be applied to subsequent incoming payments.
-                                                                    </span><br><b>Your invoice can ONLY accept Ethereum(ETH). Other cryptocurrencies such as Litecoin(LTC) or Bitcoin-cash(BCH) are not accepted.</b>
-
                                                                 </td>
                                                             </tr>
                                                         </tbody>

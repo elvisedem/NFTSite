@@ -9,10 +9,10 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-
 package com.bartmint.wallet;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -33,6 +33,8 @@ public class WalletClass implements Serializable
     private int user_id;
     private String email;
     private double balance;
+    private String status;
+    private Timestamp datetime;
 
     public int getWallet_id()
     {
@@ -72,5 +74,25 @@ public class WalletClass implements Serializable
     public void setBalance(double balance)
     {
         this.balance = balance;
+    }
+
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public Timestamp getDatetime()
+    {
+        return datetime;
+    }
+
+    public void setDatetime(Timestamp datetime)
+    {
+        this.datetime = datetime;
     }
 }

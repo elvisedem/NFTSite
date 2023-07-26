@@ -14,6 +14,8 @@ package com.bartmint.wallet;
 import com.bartmint.users.NewUserClass;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -108,16 +110,36 @@ public class WalletServlet extends HttpServlet
     {
         try
         {
-            double balance = Double.parseDouble(request.getParameter("balance"));
+            double balance = Double.parseDouble(request.getParameter("amount"));
             String email = emailAt;
+            String status = "pending...";
+
+            // Get the current timestamp as LocalDateTime
+            LocalDateTime now = LocalDateTime.now();
+
+            // Create a Timestamp object from LocalDateTime
+            Timestamp datetime = Timestamp.valueOf(now);
 
             WalletClass wallet = new WalletClass();
             wallet.setEmail(email);
             wallet.setUser_id(id);
             wallet.setBalance(balance);
+            wallet.setStatus(status);
+            wallet.setDatetime(datetime);
+
+            // Check if status is "pending" and balance is 0
+            if("pending...".equals(status) && balance != 0)
+                // Do something here if needed
+                // For example, print a message
+                System.out.println("Your balance is empty till payment is confirmed");
+            else
+            {
+
+            }
+
             return wallet;
         }
-        catch(Exception e)
+        catch(NumberFormatException e)
         {
             e.printStackTrace(System.err);
             throw new RuntimeException(e);
