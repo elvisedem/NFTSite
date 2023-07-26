@@ -62,6 +62,10 @@ public class NewUserServlet extends HttpServlet
             newUser.printStackTrace(System.err);
             throw new RuntimeException(newUser);
         }
+        finally
+        {
+            out.close();
+        }
 
     }
 
