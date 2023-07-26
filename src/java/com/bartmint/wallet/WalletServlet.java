@@ -61,6 +61,10 @@ public class WalletServlet extends HttpServlet
             e.printStackTrace(System.err);
             throw new RuntimeException(e);
         }
+        finally
+        {
+            out.close();
+        }
 
     }
 

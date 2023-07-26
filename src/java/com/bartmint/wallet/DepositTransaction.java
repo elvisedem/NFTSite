@@ -52,6 +52,10 @@ public class DepositTransaction extends HttpServlet
         {
             throw new RuntimeException(e);
         }
+        finally
+        {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
