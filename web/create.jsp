@@ -135,13 +135,10 @@
                                                             <label class="mr-sm-2 form-label">NFT Name </label>
                                                             <input type="text" id="nftName" class="form-control" placeholder="Name your NFT" name="nftName" required="">
                                                         </div>
-
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
-                                                            <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price">
+                                                            <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
-
-
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
                                                             <input type="file" class="form-control" id="image" name="image" accept="image/*">

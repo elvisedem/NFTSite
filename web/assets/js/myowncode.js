@@ -357,9 +357,8 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-//User Balance
-    $('#invoice').submit(function(e){
-        e.preventDefault();
+    //invoice btn
+    $('#invoicebtn').click(function(){
         var amount = $('#amount').val().trim();
 
         /*
@@ -390,7 +389,6 @@ $(document).ready(function(){
                         window.location.href = 'transaction';
                     }, 5000);
                 }
-
             },
             complete: function(jqXHR, textStatus){
 

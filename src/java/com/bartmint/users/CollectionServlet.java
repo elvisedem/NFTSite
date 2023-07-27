@@ -12,7 +12,6 @@
 package com.bartmint.users;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +37,6 @@ public class CollectionServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         try
         {
 
@@ -47,10 +45,6 @@ public class CollectionServlet extends HttpServlet
         {
             e.printStackTrace(System.err);
             throw new RuntimeException(e);
-        }
-        finally
-        {
-            out.close();
         }
 
     }

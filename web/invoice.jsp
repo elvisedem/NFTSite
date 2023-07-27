@@ -137,9 +137,9 @@
                                                                     <br><h5 style="color:grey;"><small>If the QR code doesn't work with your wallet, simply copy and paste the address displayed above.</small></h5>
                                                                 </td>
                                                             </tr>
-                                                            <tr id="invoice">
+                                                            <tr>
                                                                 <td><span></span><br>
-                                                                    <button class="btn btn-primary">
+                                                                    <button id="invoicebtn" class="btn btn-primary">
                                                                         I have made this transfer
                                                                     </button>
                                                                     <br><h5 style="color:grey;"></h5>
@@ -204,51 +204,6 @@
 
         <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
 
-        <script>
-            $(document).ready(function(){
-                $('#table').DataTable({
-                    "order": []
-                });
-            });
-        </script>
-
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                speed: 400,
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-            });
-
-
-
-            function buyNft(val, collection){
-
-                swal("Confirm purchase", "Are you sure you want to purchase This NFT?", "warning")
-                        .then((bool) => {
-                            if(bool){
-                                $.ajax({
-                                    type: 'post',
-                                    url: 'script/buy-nft.php',
-                                    data: {id: val, collection},
-                                    success: function(data){
-                                        console.log(data);
-                                        var data = JSON.parse(data);
-                                        if(data.code == 200){
-                                            swal("Success", data.message, "success")
-                                        }else{
-                                            swal("Error", data.message, "error")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-            }
-        </script>
-
 
 
         <script>
@@ -268,23 +223,6 @@
                  document.execCommand("copy");
                  alert("Copied the text: " + address.value);
                  */
-            }
-
-
-            function sendAlert(val){
-                var amount = 10000;
-                var collection = 597;
-                $.ajax({
-                    type: 'post',
-                    url: 'script/send-alert.php',
-                    data: {id: val, amount: amount, collection: collection},
-                    success: function(data){
-                        swal("Great", data, "success")
-                                .then(() => {
-                                    location.replace("index");
-                                })
-                    }
-                })
             }
         </script>
 </html>
