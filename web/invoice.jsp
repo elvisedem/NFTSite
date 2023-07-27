@@ -125,7 +125,7 @@
                                                     <table class="table">
                                                         <tbody>
                                                             <tr id="invDetails1">
-                                                                <td><span>PAY TO :</span><br><a href="#" onclick="copyFn();">
+                                                                <td><span>PAY TO : 0xf100fB536b7Bf757Fc4b24d92D3bddb0Fc5283c0</span><br><a href="#" onclick="copyFn();">
                                                                         <span id="address" style="font-weight:200;"></span>
                                                                         <br>
                                                                         <h6><i class="la la-copy"></i><span id="copyText"> Copy</span></h6></a>
@@ -133,7 +133,7 @@
                                                             </tr>
                                                             <tr id="invDetails2">
                                                                 <td><span>QR CODE :</span><br>
-                                                                    <img src="#" alt="" class="img-fluid">
+                                                                    <img src="images/QR.jpg" alt="" class="img-fluid" style="height: auto; max-width: 50% !important;">
                                                                     <br><h5 style="color:grey;"><small>If the QR code doesn't work with your wallet, simply copy and paste the address displayed above.</small></h5>
                                                                 </td>
                                                             </tr>
@@ -224,5 +224,53 @@
                  alert("Copied the text: " + address.value);
                  */
             }
+
+            $(document).ready(function(){
+                //invoice btn
+                $('#invoicebtn').click(function(){
+                    var amount = $('#amount').val().trim();
+
+                    /*
+                     * Use AJAX to submit the information
+                     */
+                    $.ajax({
+                        url: 'WalletServlet',
+                        method: 'POST',
+                        dataType: 'JSON',
+                        data: {balance: amount},
+                        beforeSend: function(xhr){
+                            console.log('Submitting form...');
+                        },
+                        success: function(data, textStatus, jqXHR){
+                            if(data.message !== 'success')
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.message
+                                });
+                            else{
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Your balance will be added as soon as your transaction has been confirmed',
+                                    text: 'Transaction Pending.'
+                                });
+                                setTimeout(function(){
+                                    window.location.href = 'transaction';
+                                }, 5000);
+                            }
+                        },
+                        complete: function(jqXHR, textStatus){
+
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: "There was an error, please reload this page. " + errorThrown
+                            });
+                        }
+                    });
+                });
+            });
         </script>
 </html>
