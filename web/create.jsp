@@ -124,20 +124,22 @@
                                     <div class="col-xl-8 col-lg-8 col-md-12">
                                         <div class="card">
                                             <div class="card-header">
+                                                <c:if test="${param.upl eq 0}">
+                                                    <p class="text-danger">${errMsg}</p>
+                                                </c:if>
                                                 <h4 class="card-title">Create your NFT</h4>
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <form id="create" Method="POST" enctype="multipart/form-data">
+                                                <form method="POST" action="upload-NFT" enctype="multipart/form-data">
                                                     <div class="row">
-
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">NFT Name </label>
                                                             <input type="text" id="nftName" class="form-control" placeholder="Name your NFT" name="nftName" required="">
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
-                                                            <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="price">
+                                                            <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="pricce">
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
@@ -185,12 +187,8 @@
 
         <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
 
-
         <!-- Initialize Swiper -->
-        <script>//
-//            var form = $('#create')[0];
-//
-//            var data = new FormData(form);
+        <script>
 //        </script>
 
 

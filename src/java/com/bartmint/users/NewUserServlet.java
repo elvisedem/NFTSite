@@ -134,6 +134,7 @@ public class NewUserServlet extends HttpServlet
             registernewuserservlet.printStackTrace(System.err);
             throw new RuntimeException(registernewuserservlet);
         }
+
     }
 
 //    private void sendEmail(String recipientEmail)

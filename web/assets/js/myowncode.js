@@ -11,6 +11,8 @@
  */
 
 
+/* global form */
+
 $(document).ready(function(){
 //register a user
     $('#signup').submit(function(e){
@@ -304,10 +306,9 @@ $(document).ready(function(){
 //Create NFT
     $('#create').submit(function(e){
         e.preventDefault();
-        var nftName = $('#nftName').val().trim();
-        var image = $('#image').val().trim();
-        var price = $('#price').val().trim();
-        console.log(price);
+        var form = $("#create")[0];
+        var formData = new FormData(form);
+
         /*
          * Use AJAX to submit the information
          */
@@ -319,7 +320,7 @@ $(document).ready(function(){
             cache: false,
             contentType: false,
             processData: false,
-            data: {nftName: nftName, image: image, price: price},
+            data: formData,
             beforeSend: function(xhr){
                 console.log('Submitting form...');
             },

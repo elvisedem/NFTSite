@@ -107,8 +107,9 @@
                         <!-- Content -->
 
                         <div class="container-fluid flex-grow-1 container-p-y">
-
-
+                            <c:if test="${param.upl eq 1}">
+                                <p class="text-success"> ${succMsg}</p>
+                            </c:if>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card">

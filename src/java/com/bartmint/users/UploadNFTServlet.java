@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import org.json.JSONObject;
 
 /**
  *
@@ -39,6 +39,7 @@ public class UploadNFTServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        response.setContentType("json/application");
         try
         {
             HttpSession session = request.getSession(false);
@@ -48,7 +49,8 @@ public class UploadNFTServlet extends HttpServlet
             String absolutePath = uploadsContext.getRealPath("");
 
             String nftName = request.getParameter("nftName");
-            double price = Double.parseDouble(request.getParameter("price"));
+            String pricce = request.getParameter("pricce");
+            double price = Double.parseDouble(pricce);
             Part imagefile = request.getPart("image");
             String imageFileName = imagefile.getSubmittedFileName();
             // Compress the project image
@@ -65,16 +67,24 @@ public class UploadNFTServlet extends HttpServlet
             nft.setArtWorkName(compressedImageFileName);
             nft.setPrice(price);
             nft.setNftName(nftName);
+            nft.setUserId(user.getId());
             NFTDAO.registerNewNFTs(nft);
 
-            JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
+//            JSONObject jsono = new JSONObject();
+//            jsono.put("message", "success");
+            request.setAttribute("succMsg", "You have Successfully Uploaded " + nftName + " NFT");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("nftcollection?upl=1");
+            dispatcher.forward(request, response);
 
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+
+            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("create?upl=0");
+            dispatcher.forward(request, response);
+//            e.printStackTrace(System.err);
+//            throw new RuntimeException(e);
         }
     }
 
