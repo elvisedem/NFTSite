@@ -13,6 +13,7 @@ package com.bartmint.wallet;
 
 import com.bartmint.dbconfig.DBConfig;
 import com.bartmint.users.NewUserClass;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -56,5 +57,17 @@ public class WalletDAO
         {
             return null;
         }
+    }
+
+    public static List<WalletClass> getAllTransactionList() throws Exception
+    {
+        try(DBConfig dbConfig = new DBConfig())
+        {
+            EntityManager em = dbConfig.getEntityManager();
+            Query q = em.createNativeQuery("SELECT * FROM  user", WalletClass.class);
+            List<WalletClass> TransactionList = q.getResultList();
+            return TransactionList;
+        }
+
     }
 }

@@ -132,7 +132,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr id="invDetails2">
-                                                                <td><span>QR CODE :</span><br>
+                                                                <td><span>QR CODE :</span><br><br>
                                                                     <img src="images/QR.jpg" alt="" class="img-fluid" style="height: auto; max-width: 50% !important;">
                                                                     <br><h5 style="color:grey;"><small>If the QR code doesn't work with your wallet, simply copy and paste the address displayed above.</small></h5>
                                                                 </td>
@@ -163,11 +163,25 @@
                                                 </div>
                                                 <span id="address" style="font-weight:200;">Real-time historical records of your incoming invoice payments</span>
                                                 <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tbody id="tableResults">
-                                                            <tr><td></td><td align="center">Your payments will automatically display here</td><td></td></tr>
-                                                            <tr><td></td><td align="center"></td><td></td></tr>
-                                                        </tbody>
+                                                    <!--                                                    <table id="transactionResults" class="table">
+                                                                                                            <tbody>
+                                                                                                                <tr><td></td><td align="center">Your payments will automatically display here</td><td></td></tr>
+                                                                                                                <tr>
+                                                                                                                    <th>Username</th>
+                                                                                                                    <th align="center">Email</th>
+                                                                                                                    <th>Options</th>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>-->
+
+                                                    <table id="transactionResults" class="display cell-border" style="margin-top: 5px;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Balance</th>
+                                                                <th align="center">Status</th>
+                                                                <!--<th>Options</th>-->
+                                                            </tr>
+                                                        </thead>
                                                     </table>
                                                 </div>
                                             </div>
@@ -207,6 +221,15 @@
 
 
         <script>
+
+            $(document).ready(function(){
+                if(!$.fn.DataTable.isDataTable('#transactionResults')){
+                    $('#transactionResults').DataTable({
+                        // Your options here
+                    });
+                }
+            });
+
             function copyFn(){
 
                 var address = document.getElementById("address");

@@ -107,6 +107,10 @@
         <servlet-name>DepositTransaction</servlet-name>
         <servlet-class>com.bartmint.wallet.DepositTransaction</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListAllTransactionServlet</servlet-name>
+        <servlet-class>com.bartmint.wallet.ListAllTransactionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
         <url-pattern>/registeremailservlet</url-pattern>
@@ -210,6 +214,10 @@
     <servlet-mapping>
         <servlet-name>DepositTransaction</servlet-name>
         <url-pattern>/DepositTransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllTransactionServlet</servlet-name>
+        <url-pattern>/ListTransaction</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
