@@ -188,10 +188,6 @@
         <url-pattern>/UpdateUserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CollectionServlet</servlet-name>
-        <url-pattern>/CollectionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>WalletServlet</servlet-name>
         <url-pattern>/WalletServlet</url-pattern>
     </servlet-mapping>
@@ -218,6 +214,10 @@
     <servlet-mapping>
         <servlet-name>ListAllTransactionServlet</servlet-name>
         <url-pattern>/ListTransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CollectionServlet</servlet-name>
+        <url-pattern>/create-collection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

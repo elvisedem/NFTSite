@@ -20,4 +20,20 @@ public class NFTDAO
             throw new RuntimeException(DBconfig);
         }
     }
+
+    public static void registerNewCollections(CollectionClass cc)
+    {
+        try(DBConfig DBconfig = new DBConfig())
+        {
+            EntityManager DBconfigem = DBconfig.getEntityManager();
+            DBconfigem.getTransaction().begin();
+            DBconfigem.persist(cc);
+            DBconfigem.getTransaction().commit();
+        }
+        catch(Exception DBconfig)
+        {
+            DBconfig.printStackTrace(System.err);
+            throw new RuntimeException(DBconfig);
+        }
+    }
 }

@@ -29,6 +29,7 @@ public class CollectionClass implements Serializable
 
     @Id
     private int id;
+    private String track_id;
     private String username;
     private String collection_name;
     private String price;
@@ -93,6 +94,16 @@ public class CollectionClass implements Serializable
     public void setUsername(String username)
     {
         this.username = username;
+    }
+
+    public String getTrack_id()
+    {
+        return track_id;
+    }
+
+    public void setTrack_id(String track_id)
+    {
+        this.track_id = track_id;
     }
 
 }

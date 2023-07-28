@@ -132,31 +132,16 @@
                                                 <div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>
                                                 <div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>
 
-                                                <form id="collection" method="POST">
+                                                <form action="create-collection" method="POST" enctype="multipart/form-data">
                                                     <div class="row">
                                                         <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">Collection Name </label>
                                                             <input type="text" id="collection_name" class="form-control" placeholder="Name your collection" name="collectionName" required="">
                                                         </div>
-<!--                                                        <div class="form-group col-xl-12 my-2">
-                                                            <label class="mr-sm-2 form-label">Management type </label>
-                                                            <select name="type" class="form-select" id="select-box" onchange="showField()">
-                                                                <option value="automatic" selected="selected">Automatic</option>
-                                                                <option value="manual">Manual</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group col-xl-12 my-2" id="min-field" style="display: none;">
-                                                            <label class="mr-sm-2 form-label">Minimum withdrawal </label>
-                                                            <input type="number" id="mini_withdrawal" class="form-control" placeholder="Set minimum withdrawal" name="miniWithdrawal">
-                                                        </div>-->
-
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (ETH)</label>
                                                             <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
-
-
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
                                                             <input type="file" id="picture_name" class="form-control" name="image" accept="image/*"  multiple="multiple">

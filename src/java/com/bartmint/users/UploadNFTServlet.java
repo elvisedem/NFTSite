@@ -39,7 +39,7 @@ public class UploadNFTServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("json/application");
+        response.setContentType("text/html");
         try
         {
             HttpSession session = request.getSession(false);
