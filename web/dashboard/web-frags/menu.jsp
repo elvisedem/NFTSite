@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="nftcollection" class="menu-link">
+                    <a href="view-arts" class="menu-link">
                         <div data-i18n="Account">My NFT's</div>
                     </a>
                 </li>

@@ -111,6 +111,10 @@
         <servlet-name>ListAllTransactionServlet</servlet-name>
         <servlet-class>com.bartmint.wallet.ListAllTransactionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Display User Arts Servlet</servlet-name>
+        <servlet-class>com.bartmint.users.DisplayUserArtsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterEmailServlet</servlet-name>
         <url-pattern>/registeremailservlet</url-pattern>
@@ -154,10 +158,6 @@
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>
         <url-pattern>/profile</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NFTCollection</servlet-name>
-        <url-pattern>/nftcollection</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FundWallet</servlet-name>
@@ -218,6 +218,14 @@
     <servlet-mapping>
         <servlet-name>CollectionServlet</servlet-name>
         <url-pattern>/create-collection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Display User Arts Servlet</servlet-name>
+        <url-pattern>/view-arts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NFTCollection</servlet-name>
+        <url-pattern>/nftcollection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

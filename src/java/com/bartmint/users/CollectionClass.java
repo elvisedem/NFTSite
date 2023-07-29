@@ -12,8 +12,14 @@
 package com.bartmint.users;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,25 +32,19 @@ import javax.persistence.Table;
 public class CollectionClass implements Serializable
 {
     private static final long serialVersionUID = 1L;
-
     @Id
-    private int id;
-    private String track_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int cid;
     private String username;
     private String collection_name;
-    private String price;
-    private String picture_name;
-    private String mini_withdrawal;
+    private double price;
 
-    public int getId()
-    {
-        return id;
-    }
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cid")
+    private List<CollectionArt> collectionArts;
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
+    public static final String COLECTION_TABLE = "nft_collection";
+    public static final String COLECTION_USER = "username";
 
     public String getCollection_name()
     {
@@ -54,36 +54,6 @@ public class CollectionClass implements Serializable
     public void setCollection_name(String collection_name)
     {
         this.collection_name = collection_name;
-    }
-
-    public String getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice(String price)
-    {
-        this.price = price;
-    }
-
-    public String getPicture_name()
-    {
-        return picture_name;
-    }
-
-    public void setPicture_name(String picture_name)
-    {
-        this.picture_name = picture_name;
-    }
-
-    public String getMini_withdrawal()
-    {
-        return mini_withdrawal;
-    }
-
-    public void setMini_withdrawal(String mini_withdrawal)
-    {
-        this.mini_withdrawal = mini_withdrawal;
     }
 
     public String getUsername()
@@ -96,14 +66,34 @@ public class CollectionClass implements Serializable
         this.username = username;
     }
 
-    public String getTrack_id()
+    public double getPrice()
     {
-        return track_id;
+        return price;
     }
 
-    public void setTrack_id(String track_id)
+    public void setPrice(double price)
     {
-        this.track_id = track_id;
+        this.price = price;
+    }
+
+    public List<CollectionArt> getCollectionArts()
+    {
+        return collectionArts;
+    }
+
+    public void setCollectionArts(List<CollectionArt> collectionArts)
+    {
+        this.collectionArts = collectionArts;
+    }
+
+    public int getCid()
+    {
+        return cid;
+    }
+
+    public void setCid(int cid)
+    {
+        this.cid = cid;
     }
 
 }

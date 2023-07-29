@@ -7,6 +7,7 @@
     <class>com.bartmint.wallet.WalletClass</class>
     <class>com.bartmint.security.ForgotPassword</class>
     <class>com.bartmint.users.NFT</class>
+    <class>com.bartmint.users.CollectionArt</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jjcomec1_bartmint"/>

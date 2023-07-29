@@ -20,6 +20,7 @@ public class NFT implements Serializable
     public static final String NFT_TABLE = "nft";
     public static final String NFT_ID = "id";
     public static final String NFT_NAME = "nftName";
+    public static final String NFT_USER_ID = "userId";
     public static final String NFT_ART = "artWorkName";
     public static final String NFT_PRICE = "price";
 
@@ -56,7 +57,6 @@ public class NFT implements Serializable
     {
         this.artWorkName = artWorkName;
     }
-
 
     public Double getPrice()
     {

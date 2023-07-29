@@ -11,7 +11,6 @@
  */
 package com.bartmint.users;
 
-import com.bartmint.util.RandomNumberGenerator;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import javax.imageio.ImageIO;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -61,9 +61,14 @@ public class CollectionServlet extends HttpServlet
             ServletContext uploadsContext = adminContext.getContext(UPLOADS_PATH);
             String absolutePath = uploadsContext.getRealPath("");
 
-            String track_id = RandomNumberGenerator.generateRandomAlphanumericCharacters(10);
             String collectionName = request.getParameter("collectionName");
             double price = Double.parseDouble(request.getParameter("price"));
+
+            CollectionClass cc = new CollectionClass();
+            cc.setCollection_name(collectionName);
+            cc.setPrice(price);
+            cc.setUsername(user.getUsername());
+            int cid = NFTDAO.registerNewCollections(cc);
             Collection<Part> fileParts = request.getParts();
             for(Part filePart : fileParts)
                 if(filePart.getContentType() != null && filePart.getContentType().startsWith("image/"))
@@ -73,20 +78,22 @@ public class CollectionServlet extends HttpServlet
                     String compressedImageFileName = generateUniqueFileName(imageFileName, user.getFullname());
                     File compressedImageFile = new File(absolutePath + File.separator + IMAGES_DIRECTORY + File.separator + compressedImageFileName);
                     ImageIO.write(compressedImage, "jpeg", compressedImageFile);
-
-                    CollectionClass cc = new CollectionClass();
-                    cc.setCollection_name(collectionName);
-                    cc.setPicture_name(compressedImageFileName);
-                    cc.setPrice(imageFileName);
-                    cc.setTrack_id(track_id);
-                    cc.setUsername(user.getUsername());
-                    NFTDAO.registerNewCollections(cc);
+                    CollectionArt collectionArt = new CollectionArt();
+                    collectionArt.setCid(cid);
+                    collectionArt.setImageName(compressedImageFileName);
+                    NFTDAO.registerNewCollectionArt(collectionArt);
                 }
+
+            request.setAttribute("succMsg", "You have Successfully Uploaded " + collectionName + " Collection");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view-arts?upl=1");
+            dispatcher.forward(request, response);
 
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
+//            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("collection?upl=0");
+//            dispatcher.forward(request, response);
             throw new RuntimeException(e);
         }
 

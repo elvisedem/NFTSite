@@ -125,6 +125,9 @@
                                     <div class="col-xl-8 col-lg-8 col-md-12">
                                         <div class="card">
                                             <div class="card-header">
+                                                <c:if test="${param.upl eq 0}">
+                                                    <p class="text-danger">${errMsg}</p>
+                                                </c:if>
                                                 <h4 class="card-title">Create your Collection</h4>
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
@@ -140,13 +143,12 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (ETH)</label>
-                                                            <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price">
+                                                            <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price" step="any">
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
                                                             <input type="file" id="picture_name" class="form-control" name="image" accept="image/*"  multiple="multiple">
                                                         </div>
-
                                                         <div class="form-group col-12">
                                                             <button name="create-collection" class="btn btn-primary pl-5 pr-5 waves-effect">Create Collection</button>
                                                         </div>

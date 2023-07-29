@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="user" scope="session" class="com.bartmint.users.NewUserClass"/>
 <!DOCTYPE html>
 <html class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free" lang="en"><head>
@@ -78,7 +79,7 @@
         </style>
 
     </head>
-
+    <c:set value="https://bartmint.com/images/" var="imageUrl" scope="application"/>
     <body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="">
         <!-- Layout wrapper -->
         <div class="row d-md-none">
@@ -114,64 +115,53 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body p-1 pt-3">
-
                                             <ul class="">
                                                 <h3>My collections </h3>
                                                 <div class="row">
-                                                    <div class="col-6 col-sm-6 col-lg-3 m-2">
-                                                        <div class="card border">
-                                                            <div class="card-body ">
-                                                                <h4>{Name of Collection}</h4>
-                                                                <p>Artworks: 1</p>
-<!--                                                                <p>Balance: <b>0ETH</b></p>-->
+                                                    <c:if test="${fn:length(cc) == 0}">
+                                                        <p class="text-warning">Oops, You don't have any Collection, create more at the create Collection Section</p>
+                                                    </c:if>
+                                                    <c:forEach var="collection" items="${cc}">
+                                                        <div class="col-6 col-sm-6 col-lg-3 m-2">
+                                                            <div class="card border">
+                                                                <div class="card-body ">
+                                                                    <h4>${collection.collection_name}</h4>
+                                                                    <c:set var="artList" value="${collection.collectionArts}"/>
+                                                                    <p>Artworks: ${fn:length(artList)}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="col-6 col-sm-6 col-lg-3 m-2">
-                                                        <div class="card border">
-                                                            <div class="card-body ">
-                                                                <h4>{Name of Collection}</h4>
-                                                                <p>Artworks: 0</p>
-<!--                                                                <p>Balance: <b>0ETH</b></p>-->
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    </c:forEach>
                                                 </div>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="row p-2">
                                 <h3 class="p-2">NFT Artworks</h3>
+                                <c:forEach var="nft" items="${nfts}">
+                                    <div class="col-12 col-lg-4 my-2">
+                                        <div class="card shadow-sm">
+                                            <div class="card-body">
+                                                <span class="badge bg-primary float-end">
+                                                    ${user.username}               </span>
+                                                <img class="card-img-top" src="${imageUrl}${nft.artWorkName}" alt="Card image" style="width:100%; height:250px;">
+                                                <div class="p-2 border-top-1">
+                                                    ${nft.nftName}                   </div>
+                                                <div class="p-2 border-top-1">
+                                                    Price: ${nft.price}
+                                                </div>
+                                                <!--                                                <div class="p-2 border-top-1">
+                                                                                                    Contract Address: 0xbywq2a.....yovju
+                                                                                                </div>-->
+                                                <div class="p-2 border-top-1">
 
-                                <div class="col-12 col-lg-4 my-2">
-                                    <div class="card shadow-sm">
-                                        <div class="card-body">
-                                            <span class="badge bg-primary float-end">
-                                                Jay                    </span>
-                                            <img class="card-img-top" src="nfts/00 20170305_080040.jpg" alt="Card image" style="width:100%; height:250px;">
-                                            <div class="p-2 border-top-1">
-                                                Jay                    </div>
-                                            <div class="p-2 border-top-1">
-                                                Status: <span class="badge badge-primary">pending</span>
-                                            </div>
-                                            <div class="p-2 border-top-1">
-                                                Price: 0.0073 ETH
-                                            </div>
-                                            <div class="p-2 border-top-1">
-                                                Contract Address: 0xbywq2a.....yovju
-                                            </div>
-                                            <div class="p-2 border-top-1">
-
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </c:forEach>
 
                             </div>
 
