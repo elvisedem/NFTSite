@@ -76,7 +76,10 @@ public class LoginServlet extends HttpServlet
             loginException.printStackTrace(System.err);
             throw new RuntimeException(loginException);
         }
-
+        finally
+        {
+            out.close();
+        }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

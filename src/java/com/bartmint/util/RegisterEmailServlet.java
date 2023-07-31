@@ -12,7 +12,6 @@
 package com.bartmint.util;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +37,6 @@ public class RegisterEmailServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 
 //        String recipientEmail = request.getAttribute("email").toString();
 //

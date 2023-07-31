@@ -91,10 +91,9 @@ public class CollectionServlet extends HttpServlet
         }
         catch(Exception e)
         {
-//            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("collection?upl=0");
-//            dispatcher.forward(request, response);
-            throw new RuntimeException(e);
+            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("collection?upl=0");
+            dispatcher.forward(request, response);
         }
 
     }
