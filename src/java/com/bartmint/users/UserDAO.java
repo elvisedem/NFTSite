@@ -118,7 +118,7 @@ public class UserDAO
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            e.printStackTrace(System.err);
             throw new RuntimeException(e);
         }
     }

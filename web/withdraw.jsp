@@ -114,7 +114,7 @@
                                     <div class="col-12 col-lg-6 mx-auto">
                                         <div class="card">
                                             <div class="card-header h3">
-                                                Place a withdrawal
+                                                Place a Withdrawal
                                             </div>
                                             <div class="card-body">
                                                 <form method="post">
@@ -125,19 +125,6 @@
                                                         <input type="number" name="amount" required="" class="form-control" placeholder="Enter withdrawal amount">
                                                     </div>
 
-<!--                                                    <div class="form-group mb-3">
-                                                        <label class="form-label">
-                                                            Select Collection to withdraw from
-                                                        </label>
-                                                        <select class="form-select" name="collection" required="">
-                                                            <option selected="selected" hidden="">Choose a collection</option>
-
-                                                            <option value="597">Hey</option>
-
-                                                            <option value="598">Jay</option>
-                                                        </select>
-                                                    </div>-->
-
                                                     <div class="form-group mb-3">
                                                         <label class="form-label">
                                                             Enter wallet address(ETH)
@@ -145,7 +132,7 @@
                                                         <input type="text" name="wallet" required="" class="form-control" placeholder="0x37bd8w0wnz87w7w2123bxzbcesd">
                                                     </div>
 
-                                                    <div class="m-3">
+                                                    <div>
                                                         <button class="btn btn-primary" name="withdraw">
                                                             Place withdrawal
                                                         </button>
@@ -182,49 +169,4 @@
         <!-- / Layout wrapper -->
 
         <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
-
-        <script>
-            $(document).ready(function(){
-                $('#table').DataTable({
-                    "order": []
-                });
-            });
-        </script>
-
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                speed: 400,
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-            });
-
-
-
-            function buyNft(val, collection){
-
-                swal("Confirm purchase", "Are you sure you want to purchase This NFT?", "warning")
-                        .then((bool) => {
-                            if(bool){
-                                $.ajax({
-                                    type: 'post',
-                                    url: 'script/buy-nft.php',
-                                    data: {id: val, collection},
-                                    success: function(data){
-                                        console.log(data);
-                                        var data = JSON.parse(data);
-                                        if(data.code == 200){
-                                            swal("Success", data.message, "success")
-                                        }else{
-                                            swal("Error", data.message, "error")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-            }
-        </script>
 </html>

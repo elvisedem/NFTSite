@@ -1091,40 +1091,6 @@
         <jsp:include page="WEB-INF/web-frag/footer.jsp" />
 
         <jsp:include page="WEB-INF/web-frag/footer-scripts.jsp" />
-        <script>
-            //======== tiny slider for clients
-//            tns({
-//                container: ".artists-slider",
-//                autoplay: true,
-//                autoplayTimeout: 5000,
-//                autoplayButtonOutput: false,
-//                mouseDrag: true,
-//                gutter: 1,
-//                nav: true,
-//                navPosition: "bottom",
-//                controls: false,
-//                controlsText: [
-//                    '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.00001 0.0600594L5.00001 4.06006L13.92 4.06006L13.95 6.07006L5.00001 6.07006L5.00001 10.0601L1.19607e-05 5.06006L5.00001 0.0600594Z" fill="white"/></svg>',
-//                    '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8.99999 10.9399V6.93994H0.0799875L0.0499878 4.92994H8.99999V0.939941L14 5.93994L8.99999 10.9399Z" fill="white"/> </svg>',
-//                ],
-//                items: 1,
-//                responsive: {
-//                    540: {
-//                        controls: true,
-//                        nav: false,
-//                    },
-//                    768: {
-//                        items: 2,
-//                    },
-//                    992: {
-//                        items: 3,
-//                    },
-//                    1140: {
-//                        items: 4,
-//                    },
-//                },
-//            });
-//        </script>
 
 
         <script>
@@ -1173,23 +1139,6 @@
             })
         </script>
 
-<!--        <script>
-            function copyLink(id){
-                var link = `https://algromint.com/dashboard/art?item=${id}`
-                $("#hidden").val(link);
-                var copyText = document.getElementById("hidden");
-
-                /* Select the text field */
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-                /* Copy the text inside the text field */
-                navigator.clipboard.writeText(copyText.value);
-
-                /* Alert the copied text */
-                swal("Copied", "link copied to clipboard", "success");
-            }
-        </script>-->
     </body>
     <!-- Mirrored from algromint.com/explore by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:41:42 GMT -->
 </html>

@@ -141,9 +141,26 @@
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
                                                             <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="pricce">
                                                         </div>
-                                                        <div class="form-group col-xl-6 my-2">
+
+<!--                                                        <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Upload Artwork</label>
                                                             <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                                        </div>-->
+
+                                                        <!--<div class="d-flex align-items-start align-items-sm-center gap-4">-->
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <img src="nfts/03_Imperialismo.jpg" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="image" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="image" hidden name="image" accept="image/*">
+                                                                </label>
+
+
+                                                                <!--<p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 10MB</p>-->
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group col-xl-6 my-2">

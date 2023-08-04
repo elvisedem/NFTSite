@@ -141,14 +141,83 @@
                                                             <label class="mr-sm-2 form-label">Collection Name </label>
                                                             <input type="text" id="collection_name" class="form-control" placeholder="Name your collection" name="collectionName" required="">
                                                         </div>
-                                                        <div class="form-group col-xl-6 my-2">
+                                                        <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">Price (ETH)</label>
                                                             <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price" step="any">
                                                         </div>
+
                                                         <div class="form-group col-xl-6 my-2">
-                                                            <label class="mr-sm-2 form-label">Upload Artwork</label>
-                                                            <input type="file" id="picture_name" class="form-control" name="image" accept="image/*"  multiple="multiple">
+                                                            <img src="nfts/00 20170305_080040.jpg" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="col-image1" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="col-image1" hidden name="col-image1" accept="image/*">
+                                                                </label>
+
+
+                                                            </div>
                                                         </div>
+
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <img src="nfts/00 20170305_080040.jpg" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="col-image2" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="col-image2" hidden name="col-image2" accept="image/*">
+                                                                </label>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <img src="nfts/00 20170305_080040.jpg" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="col-image3" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="col-image3" hidden name="col-image3" accept="image/*">
+                                                                </label>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <img src="nfts/00 20170305_080040.jpg" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="col-image4" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="col-image4" hidden name="col-image4" accept="image/*">
+                                                                </label>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <img src="nfts/00 20170305_080040.jpg" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+
+                                                            <div class="button-wrapper my-2">
+                                                                <label for="col-image5" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                                                    <span class="d-none d-sm-block">Upload Artwork</span>
+                                                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                                                    <input type="file" class="form-control" id="col-image5" hidden name="col-image5" accept="image/*">
+                                                                </label>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-xl-6 my-2">
+                                                            <label class="mr-sm-2 form-label">Mint fee: 0.1592 ETH</label>
+                                                        </div>
+
                                                         <div class="form-group col-12">
                                                             <button name="create-collection" class="btn btn-primary pl-5 pr-5 waves-effect">Create Collection</button>
                                                         </div>
@@ -189,19 +258,11 @@
 
         <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
 
-        <script>
-            $(document).ready(function(){
-                $('#table').DataTable({
-                    "order": []
-                });
-            });
-        </script>
-
 
         <script>
             function showField(){
                 var selectValue = $("#select-box").val();
-                if(selectValue == "manual"){
+                if(selectValue === "manual"){
                     $("#min-field").show();
                 }else{
                     $("#min-field").hide();
@@ -211,39 +272,4 @@
         </script>
 
         <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                speed: 400,
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-            });
-
-
-
-            function buyNft(val, collection){
-
-                swal("Confirm purchase", "Are you sure you want to purchase This NFT?", "warning")
-                        .then((bool) => {
-                            if(bool){
-                                $.ajax({
-                                    type: 'post',
-                                    url: 'script/buy-nft.php',
-                                    data: {id: val, collection},
-                                    success: function(data){
-                                        console.log(data);
-                                        var data = JSON.parse(data);
-                                        if(data.code == 200){
-                                            swal("Success", data.message, "success")
-                                        }else{
-                                            swal("Error", data.message, "error")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-            }
-        </script>
 </html>

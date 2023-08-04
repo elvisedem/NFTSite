@@ -75,6 +75,9 @@
             .btn{
                 border-radius:2px;
             }
+            th{
+                color:white !important;
+            }
         </style>
 
     </head>
@@ -130,7 +133,7 @@
                                 <div class="row">
 
 
-                                    <div class="col-6 col-lg-4 my-2">
+                                    <div class="col-6 col-lg-6 my-2">
                                         <div class="card custom-dark text-white h-100">
                                             <div class="card-body">
 
@@ -145,21 +148,7 @@
                                     </div>
 
 
-                                    <div class="col-6 col-lg-4 my-2 ">
-                                        <div class="card custom-dark h-100">
-                                            <div class="card-body text-white h-100">
-
-                                                <small>NFT worth</small>
-                                                <strong>
-                                                    <h3 class="py-2 text-white">
-                                                          0.00ETH   </h3>
-                                                </strong>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6 col-lg-4 my-2 ">
+                                    <div class="col-6 col-lg-6 my-2 ">
                                         <div class="card custom-dark h-100">
                                             <div class="card-body text-white h-100">
 
@@ -186,27 +175,15 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table">
-                                                <thead class="text-white">
-                                                    <tr><th>Amount</th>
-                                                        <th>Status</th>
-                                                        <th>Type</th>
-                                                        <th>Date</th>
-                                                    </tr></thead>
-                                                <tbody class="text-white">
+                                            <table id="DashboardTransactionResults" class="display cell-border" style="margin-top: 5px;">
+                                                <thead>
                                                     <tr>
-                                                        <td>$0.1465</td>
-                                                        <td></td>
-                                                        <td>Mint</td>
-                                                        <td>Thursday 22nd of June 2023</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr><th>Amount</th>
-                                                        <th>Status</th>
+                                                        <th>Amount</th>
                                                         <th>Type</th>
                                                         <th>Date</th>
-                                                    </tr></tfoot>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
                                             </table>
                                         </div>
                                     </div>
@@ -242,46 +219,14 @@
 
         <script>
             $(document).ready(function(){
-                $('#table').DataTable({
-                    "order": []
-                });
+                if(!$.fn.DataTable.isDataTable('#DashboardTransactionResults')){
+                    $('#DashboardTransactionResults').DataTable({
+                        // Your options here
+                        searching: false // Disable the search bar
+                    });
+                }
             });
         </script>
 
         <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                speed: 400,
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-            });
-
-
-
-            function buyNft(val, collection){
-
-                swal("Confirm purchase", "Are you sure you want to purchase This NFT?", "warning")
-                        .then((bool) => {
-                            if(bool){
-                                $.ajax({
-                                    type: 'post',
-                                    url: 'script/buy-nft.php',
-                                    data: {id: val, collection},
-                                    success: function(data){
-                                        console.log(data);
-                                        var data = JSON.parse(data);
-                                        if(data.code == 200){
-                                            swal("Success", data.message, "success")
-                                        }else{
-                                            swal("Error", data.message, "error")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-            }
-        </script>
 </html>

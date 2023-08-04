@@ -163,23 +163,12 @@
                                                 </div>
                                                 <span id="address" style="font-weight:200;">Real-time historical records of your incoming invoice payments</span>
                                                 <div class="table-responsive">
-                                                    <!--                                                    <table id="transactionResults" class="table">
-                                                                                                            <tbody>
-                                                                                                                <tr><td></td><td align="center">Your payments will automatically display here</td><td></td></tr>
-                                                                                                                <tr>
-                                                                                                                    <th>Username</th>
-                                                                                                                    <th align="center">Email</th>
-                                                                                                                    <th>Options</th>
-                                                                                                                </tr>
-                                                                                                            </tbody>
-                                                                                                        </table>-->
 
                                                     <table id="transactionResults" class="display cell-border" style="margin-top: 5px;">
                                                         <thead>
                                                             <tr>
                                                                 <th>Balance</th>
                                                                 <th align="center">Status</th>
-                                                                <!--<th>Options</th>-->
                                                             </tr>
                                                         </thead>
                                                     </table>
@@ -226,6 +215,7 @@
                 if(!$.fn.DataTable.isDataTable('#transactionResults')){
                     $('#transactionResults').DataTable({
                         // Your options here
+                    searching: false // Disable the search bar
                     });
                 }
             });

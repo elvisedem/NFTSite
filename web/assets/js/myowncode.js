@@ -436,3 +436,33 @@ $(document).ready(function(){
 //
     });
 });
+
+$(document).ready(function(){
+
+    var dataTable = $("#DashboardTransactionResults").DataTable();
+    if(dataTable){
+        dataTable.destroy();
+    }
+    //Invoice Transaction Side Table
+
+    // List
+    /*
+     * Use AJAX to submit the information
+     */
+    $.ajax({
+        url: 'ListTransaction',
+        method: 'GET',
+        dataType: 'JSON',
+        success: function(data){
+            // Handle data with datatables cdn
+            $("#transactionResults").DataTable({
+                data: data,
+                columns: [// Corrected "colums" to "columns"
+                    {data: 'balance'},
+                    {data: 'status'}
+                ]
+            });
+
+        }
+    });
+});
