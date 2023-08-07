@@ -125,7 +125,7 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-12">
                                                             <label class="mr-sm-2 form-label">Amount (ETH)</label>
-                                                            <input type="number" id="amount" class="form-control" placeholder="Enter amount you want to fund" name="amount" required="">
+                                                            <input type="number" step="any" id="amount" class="form-control" placeholder="Enter amount you want to fund" name="amount" required="">
                                                         </div>
 
                                                         <div class="form-group col-12 my-2">

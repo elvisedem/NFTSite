@@ -215,27 +215,36 @@
                 if(!$.fn.DataTable.isDataTable('#transactionResults')){
                     $('#transactionResults').DataTable({
                         // Your options here
-                    searching: false // Disable the search bar
+                        searching: false // Disable the search bar
                     });
                 }
             });
 
+//            function copyFn(){
+//
+//                var address = document.getElementById("address");
+//                var range = document.createRange();
+//                range.selectNode(document.getElementById("address"));
+//                window.getSelection().removeAllRanges(); // clear current selection
+//                window.getSelection().addRange(range); // to select text
+//                document.execCommand("copy");
+//                window.getSelection().removeAllRanges();// to deselect
+//                var copyText = document.getElementById("copyText").innerHTML = " Copied to clipboard";
+//                /*
+//                 address.select();
+//                 address.setSelectionRange(0, 99999)
+//                 document.execCommand("copy");
+//                 alert("Copied the text: " + address.value);
+//                 */
+//            }
+
             function copyFn(){
 
                 var address = document.getElementById("address");
-                var range = document.createRange();
-                range.selectNode(document.getElementById("address"));
-                window.getSelection().removeAllRanges(); // clear current selection
-                window.getSelection().addRange(range); // to select text
+                address.select();
                 document.execCommand("copy");
-                window.getSelection().removeAllRanges();// to deselect
-                var copyText = document.getElementById("copyText").innerHTML = " Copied to clipboard";
-                /*
-                 address.select();
-                 address.setSelectionRange(0, 99999)
-                 document.execCommand("copy");
-                 alert("Copied the text: " + address.value);
-                 */
+                alert("Copied the text ");
+
             }
 
             $(document).ready(function(){
