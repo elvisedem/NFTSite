@@ -46,9 +46,6 @@ public class UploadNFTServlet extends HttpServlet
             nft.setNftName(nftName);
             nft.setUserId(user.getId());
             NFTDAO.registerNewNFTs(nft);
-
-//            JSONObject jsono = new JSONObject();
-//            jsono.put("message", "success");
             request.setAttribute("succMsg", "You have Successfully Uploaded " + nftName + " NFT");
             RequestDispatcher dispatcher = request.getRequestDispatcher("view-arts?upl=1");
             dispatcher.forward(request, response);

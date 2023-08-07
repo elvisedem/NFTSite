@@ -11,13 +11,7 @@
  */
 package com.bartmint.users;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -69,20 +62,6 @@ public class CollectionServlet extends HttpServlet
             cc.setPrice(price);
             cc.setUsername(user.getUsername());
             int cid = NFTDAO.registerNewCollections(cc);
-            Collection<Part> fileParts = request.getParts();
-            for(Part filePart : fileParts)
-                if(filePart.getContentType() != null && filePart.getContentType().startsWith("image/"))
-                {
-                    String imageFileName = filePart.getSubmittedFileName();
-                    BufferedImage compressedImage = compressImage(filePart.getInputStream());
-                    String compressedImageFileName = generateUniqueFileName(imageFileName, user.getFullname());
-                    File compressedImageFile = new File(absolutePath + File.separator + IMAGES_DIRECTORY + File.separator + compressedImageFileName);
-                    ImageIO.write(compressedImage, "jpeg", compressedImageFile);
-                    CollectionArt collectionArt = new CollectionArt();
-                    collectionArt.setCid(cid);
-                    collectionArt.setImageName(compressedImageFileName);
-                    NFTDAO.registerNewCollectionArt(collectionArt);
-                }
 
             request.setAttribute("succMsg", "You have Successfully Uploaded " + collectionName + " Collection");
             RequestDispatcher dispatcher = request.getRequestDispatcher("view-arts?upl=1");
@@ -96,32 +75,6 @@ public class CollectionServlet extends HttpServlet
             dispatcher.forward(request, response);
         }
 
-    }
-
-    private BufferedImage compressImage(InputStream imageStream) throws IOException
-    {
-        BufferedImage originalImage = ImageIO.read(imageStream);
-
-        // Perform your image compression logic here
-        // You can use libraries like ImageIO or third-party libraries to achieve compression.
-        // Below is an example using ImageIO write method with compression quality set to 0.8 (adjust as needed).
-        BufferedImage compressedImage = new BufferedImage(originalImage.getWidth(), originalImage.getHeight(),
-                BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = compressedImage.createGraphics();
-        graphics.drawImage(originalImage, 0, 0, null);
-        graphics.dispose();
-
-        return compressedImage;
-    }
-
-    private String generateUniqueFileName(String originalFileName, String userName)
-    {
-        // Generate a unique file name for the compressed image
-        String baseName = userName + originalFileName.substring(0, originalFileName.lastIndexOf('.'));
-        String extension = originalFileName.substring(originalFileName.lastIndexOf('.') + 1);
-        String compressedImageFileName = baseName + extension;
-
-        return compressedImageFileName;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
