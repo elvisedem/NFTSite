@@ -206,6 +206,72 @@
 
         <!-- Initialize Swiper -->
         <script>
+            $(document).ready(function(){
+                function initializeUploadPropertiesH(){
+                    var prop = {
+                        btn: document.getElementById('picture-btn'),
+                        pictureBox: document.getElementById('picture-box'),
+                        progressBar: document.getElementById('progress-bar'),
+                        progressOuter: document.getElementById('progress-outer'),
+                        messageBox: document.getElementById('message-box'),
+                        fileName: document.getElementById('classTeachFileName'),
+                        imageType: 'pupil-photo'
+                    };
+                    initiateUpload3(prop);
+                }
+                function initiateUpload3(uploadProp){
+                    var uploader = new ss.SimpleUpload({
+                        button: uploadProp.btn,
+                        url: '/file-uploader/image-uploader',
+                        name: 'uploadfile',
+                        data: {imageType: uploadProp.imageType},
+                        multipart: true,
+                        maxSize: 6114,
+                        hoverClass: 'hover',
+                        focusClass: 'focus',
+                        responseType: 'json',
+                        progressUrl: 'upload-progress',
+                        sessionProgressName: 'fileUploadProgressListener',
+                        onSizeError: function(filename, fileSize){
+                            alert(filename + ' is too big. (6MB max file size)');
+                        },
+                        startXHR: function(){
+                            uploadProp.progressOuter.style.display = 'block'; // make progress bar visible
+                            this.setProgressBar(uploadProp.progressBar);
+                        },
+                        onSubmit: function(){
+                            uploadProp.messageBox.innerHTML = ''; // empty the message box
+                            uploadProp.btn.innerHTML = 'Uploading...'; // change button text to "Uploading..."
+                        },
+                        onComplete: function(filename, response){
+                            uploadProp.btn.innerHTML = '<i class="fa fa-upload"></i> Upload Photo';
+                            uploadProp.fileName.setAttribute('value', response[0].newfilename);
+                            uploadProp.progressOuter.style.display = 'none'; // hide progress bar when upload is completed
+                            if(!response){
+                                uploadProp.messageBox.innerHTML = 'An error occurred and the upload failed.';
+                                return;
+                            }else{
+                                uploadProp.messageBox.innerHTML = '<strong>' + escapeTags(filename) + '</strong>' + ' successfully uploaded.';
+                                uploadProp.pictureBox.innerHTML = '<img alt="photo" src="/file-uploader/temp/' + response[0].newfilename + '"/>';
+                                return;
+                            }
+                        },
+                        onError: function(){
+                            uploadProp.progressOuter.style.display = 'none';
+                            uploadProp.messageBox.innerHTML = 'Unable to upload file';
+                        }
+                    });
+                }
+
+                function escapeTags(str){
+                    return String(str)
+                            .replace(/&/g, '&amp;')
+                            .replace(/"/g, '&quot;')
+                            .replace(/'/g, '&#39;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;');
+                }
+            });
 //        </script>
 
 
