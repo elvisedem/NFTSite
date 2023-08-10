@@ -127,7 +127,7 @@
                                                                 <div class="card-body ">
                                                                     <h4>${collection.collection_name}</h4>
                                                                     <c:set var="artList" value="${collection.collectionArts}"/>
-                                                                    <p>Artworks: ${fn:length(artList)}</p>
+                                                                  <p>Artworks: ${fn:length(artList)}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

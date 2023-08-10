@@ -44,7 +44,7 @@ public class DisplayUserArtsServlet extends HttpServlet
 
             HttpSession session = request.getSession(false);
             NewUserClass user = (NewUserClass)session.getAttribute("user");
-            List<CollectionClass> cc = NFTDAO.getAllUserCollection(user.getUsername());
+            List<CollectionClass> cc = NFTDAO.getAllUserCollection(user.getId());
             List<NFT> nfts = NFTDAO.getAllUserNfts(user.getId());
             request.setAttribute("cc", cc);
             request.setAttribute("nfts", nfts);

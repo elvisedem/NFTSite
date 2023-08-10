@@ -14,7 +14,7 @@ public class NFTDAO
 {
     public static void registerNewNFTs(NFT nft)
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -30,7 +30,7 @@ public class NFTDAO
 
     public static int registerNewCollections(CollectionClass cc)
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -46,14 +46,14 @@ public class NFTDAO
         }
     }
 
-    public static List<CollectionClass> getAllUserCollection(String username) throws Exception
+    public static List<CollectionClass> getAllUserCollection(int userId) throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             String sql = "SELECT * FROM " + COLECTION_TABLE + " WHERE " + COLECTION_USER + " =? LIMIT 50";
             Query q = em.createNativeQuery(sql, CollectionClass.class);
-            q.setParameter(1, username);
+            q.setParameter(1, userId);
             List<CollectionClass> userCollection = q.getResultList();
             return userCollection;
         }
@@ -61,7 +61,7 @@ public class NFTDAO
 
     public static List<NFT> getAllUserNfts(int userId) throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             String sql = "SELECT * FROM " + NFT_TABLE + " WHERE " + NFT_USER_ID + " =? LIMIT 50";
@@ -75,7 +75,7 @@ public class NFTDAO
 
     public static void registerNewCollectionArt(CollectionArt ca)
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();

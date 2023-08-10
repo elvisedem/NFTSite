@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>com.bartmint.security.SessionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/d/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <listener>
         <listener-class>com.bartmint.dbconfig.ContextListener</listener-class>
     </listener>
@@ -140,36 +150,8 @@
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CreateCollection</servlet-name>
-        <url-pattern>/collection</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreateNFT</servlet-name>
-        <url-pattern>/create</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Withdraw</servlet-name>
-        <url-pattern>/withdraw</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Transactions</servlet-name>
-        <url-pattern>/transactions</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Profile</servlet-name>
-        <url-pattern>/profile</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FundWallet</servlet-name>
-        <url-pattern>/wallet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/forgotPassword</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Invoice</servlet-name>
-        <url-pattern>/invoice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -178,18 +160,6 @@
     <servlet-mapping>
         <servlet-name>NewUserServlet</servlet-name>
         <url-pattern>/NewUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateUserServlet</servlet-name>
-        <url-pattern>/UpdateUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>WalletServlet</servlet-name>
-        <url-pattern>/WalletServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Forgot Password Servlet</servlet-name>
@@ -204,28 +174,68 @@
         <url-pattern>/reset-password</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Upload NFT Servlet</servlet-name>
-        <url-pattern>/upload-NFT</url-pattern>
+        <servlet-name>CreateNFT</servlet-name>
+        <url-pattern>/d/create</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DepositTransaction</servlet-name>
-        <url-pattern>/DepositTransaction</url-pattern>
+        <servlet-name>CreateCollection</servlet-name>
+        <url-pattern>/d/collection</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListAllTransactionServlet</servlet-name>
-        <url-pattern>/ListTransaction</url-pattern>
+        <servlet-name>Withdraw</servlet-name>
+        <url-pattern>/d/withdraw</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CollectionServlet</servlet-name>
-        <url-pattern>/create-collection</url-pattern>
+        <servlet-name>Transactions</servlet-name>
+        <url-pattern>/d/transactions</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Display User Arts Servlet</servlet-name>
-        <url-pattern>/view-arts</url-pattern>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/d/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NFTCollection</servlet-name>
-        <url-pattern>/nftcollection</url-pattern>
+        <url-pattern>/d/nftcollection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FundWallet</servlet-name>
+        <url-pattern>/d/wallet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Invoice</servlet-name>
+        <url-pattern>/d/invoice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/d/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/d/UpdateUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CollectionServlet</servlet-name>
+        <url-pattern>/d/create-collection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WalletServlet</servlet-name>
+        <url-pattern>/d/WalletServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload NFT Servlet</servlet-name>
+        <url-pattern>/d/upload-NFT</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepositTransaction</servlet-name>
+        <url-pattern>/d/DepositTransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllTransactionServlet</servlet-name>
+        <url-pattern>/d/ListTransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Display User Arts Servlet</servlet-name>
+        <url-pattern>/d/view-arts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

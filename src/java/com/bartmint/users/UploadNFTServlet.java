@@ -1,13 +1,14 @@
 package com.bartmint.users;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.json.JSONObject;
 
 /**
  *
@@ -29,7 +30,8 @@ public class UploadNFTServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("text/html");
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -38,7 +40,7 @@ public class UploadNFTServlet extends HttpServlet
             String nftName = request.getParameter("nftName");
             String pricce = request.getParameter("pricce");
             double price = Double.parseDouble(pricce);
-            String imageFileName = request.getParameter("art");
+            String imageFileName = request.getParameter("file-photo");
 
             NFT nft = new NFT();
             nft.setArtWorkName(imageFileName);
@@ -46,17 +48,18 @@ public class UploadNFTServlet extends HttpServlet
             nft.setNftName(nftName);
             nft.setUserId(user.getId());
             NFTDAO.registerNewNFTs(nft);
-            request.setAttribute("succMsg", "You have Successfully Uploaded " + nftName + " NFT");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("view-arts?upl=1");
-            dispatcher.forward(request, response);
+            JSONObject jsono = new JSONObject();
+            jsono.put("message", "success");
+            out.println(jsono);
 
         }
         catch(Exception e)
         {
-            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("create?upl=0");
-            dispatcher.forward(request, response);
-
+            e.printStackTrace(out);
+        }
+        finally
+        {
+            out.close();
         }
     }
 

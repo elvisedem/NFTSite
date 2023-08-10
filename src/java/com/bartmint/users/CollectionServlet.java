@@ -12,14 +12,14 @@
 package com.bartmint.users;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.json.JSONObject;
 
 /**
  *
@@ -28,10 +28,6 @@ import javax.servlet.http.HttpSession;
 @MultipartConfig
 public class CollectionServlet extends HttpServlet
 {
-    public static final String IMAGES_DIRECTORY = "images";
-
-    private static final String UPLOADS_PATH = "/";
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -45,34 +41,62 @@ public class CollectionServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
 
             HttpSession session = request.getSession(false);
             NewUserClass user = (NewUserClass)session.getAttribute("user");
-            ServletContext adminContext = request.getServletContext();
-            ServletContext uploadsContext = adminContext.getContext(UPLOADS_PATH);
-            String absolutePath = uploadsContext.getRealPath("");
 
             String collectionName = request.getParameter("collectionName");
             double price = Double.parseDouble(request.getParameter("price"));
+            String image2 = request.getParameter("image2");
+            String image3 = request.getParameter("image3");
+            String image4 = request.getParameter("image4");
+            String image5 = request.getParameter("image5");
 
             CollectionClass cc = new CollectionClass();
             cc.setCollection_name(collectionName);
             cc.setPrice(price);
-            cc.setUsername(user.getUsername());
+            cc.setUserId(user.getId());
             int cid = NFTDAO.registerNewCollections(cc);
 
-            request.setAttribute("succMsg", "You have Successfully Uploaded " + collectionName + " Collection");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("view-arts?upl=1");
-            dispatcher.forward(request, response);
+            CollectionArt collectionArt1 = new CollectionArt();
+            collectionArt1.setCid(cid);
+            collectionArt1.setImageName(request.getParameter("image1"));
+            NFTDAO.registerNewCollectionArt(collectionArt1);
 
+            CollectionArt collectionArt2 = new CollectionArt();
+            collectionArt2.setCid(cid);
+            collectionArt2.setImageName(image2);
+            NFTDAO.registerNewCollectionArt(collectionArt2);
+
+            CollectionArt collectionArt3 = new CollectionArt();
+            collectionArt3.setCid(cid);
+            collectionArt3.setImageName(image3);
+            NFTDAO.registerNewCollectionArt(collectionArt3);
+
+            CollectionArt collectionArt4 = new CollectionArt();
+            collectionArt4.setCid(cid);
+            collectionArt4.setImageName(image4);
+            NFTDAO.registerNewCollectionArt(collectionArt4);
+
+            CollectionArt collectionArt5 = new CollectionArt();
+            collectionArt5.setCid(cid);
+            collectionArt5.setImageName(image5);
+            NFTDAO.registerNewCollectionArt(collectionArt5);
+
+            JSONObject jsono = new JSONObject();
+            jsono.put("message", "success");
+            out.print(jsono);
         }
         catch(Exception e)
         {
-            request.setAttribute("errMsg", "Your Upload was unsuccessful, please try again!!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("collection?upl=0");
-            dispatcher.forward(request, response);
+            e.printStackTrace(out);
+        }
+        finally
+        {
+            out.close();
         }
 
     }

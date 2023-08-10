@@ -12,7 +12,9 @@
 package com.bartmint.users;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,16 +37,16 @@ public class CollectionClass implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cid;
-    private String username;
+    private int userId;
     private String collection_name;
     private double price;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "cid")
-    private List<CollectionArt> collectionArts;
+    private List<CollectionArt> collectionArts = new ArrayList<>();
 
     public static final String COLECTION_TABLE = "nft_collection";
-    public static final String COLECTION_USER = "username";
+    public static final String COLECTION_USER = "userId";
 
     public String getCollection_name()
     {
@@ -54,16 +56,6 @@ public class CollectionClass implements Serializable
     public void setCollection_name(String collection_name)
     {
         this.collection_name = collection_name;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public void setUsername(String username)
-    {
-        this.username = username;
     }
 
     public double getPrice()
@@ -76,16 +68,6 @@ public class CollectionClass implements Serializable
         this.price = price;
     }
 
-    public List<CollectionArt> getCollectionArts()
-    {
-        return collectionArts;
-    }
-
-    public void setCollectionArts(List<CollectionArt> collectionArts)
-    {
-        this.collectionArts = collectionArts;
-    }
-
     public int getCid()
     {
         return cid;
@@ -94,6 +76,26 @@ public class CollectionClass implements Serializable
     public void setCid(int cid)
     {
         this.cid = cid;
+    }
+
+    public int getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
+    }
+
+    public List<CollectionArt> getCollectionArts()
+    {
+        return collectionArts;
+    }
+
+    public void setCollectionArts(List<CollectionArt> collectionArts)
+    {
+        this.collectionArts = collectionArts;
     }
 
 }

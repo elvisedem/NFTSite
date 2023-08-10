@@ -24,6 +24,7 @@
 <script src="assets/js/jquery-1.12.4.min.js"></script>
 <script src="assets/js/jquery-3.3.1.min.js"></script>
 <script src="assets/js/sweetalert2.js"></script>
+<script src="assets/js/SimpleAjaxUploader.min.js"></script>
 
 <!-- Page JS -->
 
