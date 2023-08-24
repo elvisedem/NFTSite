@@ -38,4 +38,16 @@ public class UserWalletDAO
             return uw;
         }
     }
+
+    public static void updateUserBalance(UserWallet uw, double balance) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            UserWallet userWallet = em.find(UserWallet.class, uw.getId());
+            userWallet.setBalance(balance);
+            em.getTransaction().commit();
+        }
+    }
 }

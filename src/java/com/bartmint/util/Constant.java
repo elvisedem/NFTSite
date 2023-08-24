@@ -13,7 +13,7 @@ public class Constant
     public final class UserWalletConstants
     {
 
-        public static final String USER_WALLET_TABLE = "userWallet";
+        public static final String USER_WALLET_TABLE = "userwallet";
         public static final String USER_ID = "userId";
     }
 
@@ -37,6 +37,13 @@ public class Constant
         public static final String FAILED = "Failed";
     }
 
+    public final class NFTConstants
+    {
+
+        public static final String NFT_TABLE = "nft";
+        public static final String USER_ID = "userId";
+    }
+
     public final class TransactionsConstants
     {
 
@@ -56,6 +63,7 @@ public class Constant
             public static final String DEPOSIT = "Deposit";
             public static final String BROUGHT = "Brought";
             public static final String SOLD = "Sold";
+            public static final String MINT = "Mint";
         }
     }
 }

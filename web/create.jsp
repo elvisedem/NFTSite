@@ -7,7 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="user" scope="session" class="com.bartmint.users.NewUserClass"/>
 <!DOCTYPE html>
 <html class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free" lang="en"><head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">.swal-icon--error{
@@ -733,7 +732,7 @@
 
         <title>BArtMint -Create NFT</title>
 
-        <jsp:include page="dashboard/web-frags/head-tags.jsp" />
+        <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
 
         <style type="text/css">
             .layout-menu-fixed .layout-navbar-full .layout-menu,
@@ -810,14 +809,14 @@
 
             <div class="layout-container">
                 <!-- Menu -->
-                <jsp:include page="dashboard/web-frags/menu.jsp" />
+                <jsp:include page="../dashboard/web-frags/menu.jsp" />
                 <!-- / Menu -->
 
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
 
-                    <jsp:include page="dashboard/web-frags/navbar.jsp" />
+                    <jsp:include page="../dashboard/web-frags/navbar.jsp" />
 
                     <!-- / Navbar -->
 
@@ -835,7 +834,7 @@
                                             <div class="card-body p-0">
 
 
-                                                <img src="nfts/03_Imperialismo.jpg" style="width:100%">
+                                                <img src="../nfts/03_Imperialismo.jpg" style="width:100%">
 
                                             </div>
                                         </div>
@@ -844,7 +843,7 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">Create your NFT</h4>
-                                                <span class="float-end">Balance: 0.000ETH</span>
+                                                <span class="float-end">Balance: ${uw.balance} ETH</span>
                                             </div>
                                             <div class="card-body">
                                                 <form id="nft-upload">
@@ -855,7 +854,7 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
-                                                            <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="pricce">
+                                                            <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
                                                         <style type="text/css" scoped="">
                                                             /* Progress Bar for Upload Photo */
@@ -874,7 +873,7 @@
                                                         </style>
                                                         <div class="col-3">
                                                             <div id="picture-box" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="nfts/03_Imperialismo.jpg" style="width: 164%"/>
+                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 164%"/>
                                                             </div>
                                                             <button id="picture-btn" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload NFT
@@ -885,7 +884,7 @@
                                                             </div>
                                                             <div id="message-box">
                                                             </div>
-                                                            <input type="hidden" name="file-photo" id="classTeachFileName" value=""/>
+                                                            <input type="hidden" name="imageName" id="imageName" value=""/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-xl-6 my-2">
@@ -893,7 +892,7 @@
                                                     </div>
 
                                                     <div class="form-group col-12 my-2">
-                                                        <button name="create-nft" type="submit" class="btn btn-primary pl-5 pr-5 waves-effect"><i class="fa fa-upload"></i> Create NFT</button>
+                                                        <button  type="submit" class="btn btn-primary pl-5 pr-5 waves-effect"><i class="fa fa-upload"></i> Create NFT</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -907,8 +906,6 @@
                         <!-- Footer -->
                         <footer class="content-footer footer">
                             <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-
-
                             </div>
                         </footer>
                         <!-- / Footer -->
@@ -925,7 +922,7 @@
         <!-- / Layout wrapper -->
 
 
-        <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
+        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
         <!-- Initialize Swiper -->
         <script>
@@ -936,7 +933,7 @@
                     progressBar: document.getElementById('progress-bar'),
                     progressOuter: document.getElementById('progress-outer'),
                     messageBox: document.getElementById('message-box'),
-                    fileName: document.getElementById('classTeachFileName'),
+                    fileName: document.getElementById('imageName'),
                     imageType: 'nft-photo'
                 };
                 initiateUpload3(prop);
@@ -1001,7 +998,7 @@
                     var formData = $(this).serialize();
                     var $btn = $('#create-nft');
                     $.ajax({
-                        url: 'd/upload-NFT',
+                        url: 'upload-nft',
                         method: 'POST',
                         data: formData,
                         dataType: 'JSON',
