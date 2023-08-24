@@ -1,33 +1,22 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
-package com.bartmint.users;
+package com.bartmint.security;
 
-import static com.bartmint.users.UserDAO.getNewUserClassByEmail;
+import com.bartmint.users.User;
+import com.bartmint.users.UserDAO;
+import com.bartmint.users.UserWallet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 
 /**
  *
- * @author HULLO
+ * @author BLAZE
  */
-public class UpdateUserServlet extends HttpServlet
+public class RegisterUserServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,33 +29,44 @@ public class UpdateUserServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("json/application");
+        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         try
         {
-            HttpSession session = request.getSession(false);
-            NewUserClass user = (NewUserClass)session.getAttribute("user");
-            NewUserClass updateUser = getNewUserClassByEmail(user.getEmail());
 
-            //parameters
-            String fullname = request.getParameter("fullname").trim();
-            String address = request.getParameter("address").trim();
-            String phonenumber = request.getParameter("phonenumber").trim();
-
-            UserDAO.updateNewUser(updateUser.getId(), fullname, address, phonenumber);
+            User user = validateUser(request);
+            int userId = UserDAO.registerNewUser(user);
+            UserWallet userWallet = new UserWallet();
+            userWallet.setUserId(userId);
+            UserDAO.registerNewUserWallet(userWallet);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
             out.print(jsono);
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+            e.printStackTrace(out);
         }
         finally
         {
             out.close();
         }
+    }
+
+    private User validateUser(HttpServletRequest request) throws Exception
+    {
+        String email = request.getParameter("email").trim();
+        String username = request.getParameter("username").trim();
+        String password = request.getParameter("password").trim();
+
+        Digester digester = new Digester();
+        String hashedPassword = digester.doDigest(password);
+
+        User nuc = new User();
+        nuc.setEmail(email);
+        nuc.setUserName(username);
+        nuc.setPassword(hashedPassword);
+        return nuc;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

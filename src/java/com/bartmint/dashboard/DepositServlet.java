@@ -1,36 +1,23 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
-package com.bartmint.wallet;
+package com.bartmint.dashboard;
 
-import com.bartmint.users.NewUserClass;
+import com.bartmint.transactions.Deposit;
+import com.bartmint.transactions.Transaction;
+import com.bartmint.transactions.TransactionDAO;
+import com.bartmint.users.User;
+import static com.bartmint.util.Constant.TransactionsConstants.TransType.DEPOSIT;
+import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
+import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- *
- * @author HULLO
- */
-public class WalletServlet extends HttpServlet
+public class DepositServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -47,25 +34,34 @@ public class WalletServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
-            HttpSession session = request.getSession(false);
-            NewUserClass user = (NewUserClass)session.getAttribute("user");
 
-            WalletClass wallet = validateWallet(request, user.getEmail(), user.getId());
-            WalletDAO.createWallet(wallet);
+            HttpSession session = request.getSession(false);
+            User user = (User)session.getAttribute("user");
+            Deposit dep = new Deposit();
+            dep.setAmount(Double.parseDouble(request.getParameter("amount")));
+            dep.setDate(DateTimeUtil.getTodayTimeZone());
+            dep.setUserId(user.getUserId());
+            dep.setStatus(PENDING);
+            TransactionDAO.registerNewUserDeposit(dep);
+            Transaction t = new Transaction();
+            t.setAmount(Double.parseDouble(request.getParameter("amount")));
+            t.setDate(DateTimeUtil.getTodayTimeZone());
+            t.setStatus(PENDING);
+            t.setUserId(user.getUserId());
+            t.setType(DEPOSIT);
+            TransactionDAO.registerNewTransactionSlip(t);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
             out.print(jsono);
         }
-        catch(JSONException e)
+        catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+            e.printStackTrace(out);
         }
         finally
         {
             out.close();
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,45 +105,5 @@ public class WalletServlet extends HttpServlet
     {
         return "Short description";
     }// </editor-fold>
-
-    private WalletClass validateWallet(HttpServletRequest request, String emailAt, int id)
-    {
-        try
-        {
-            double balance = Double.parseDouble(request.getParameter("amount"));
-            String email = emailAt;
-            String status = "pending...";
-
-            // Get the current timestamp as LocalDateTime
-            LocalDateTime now = LocalDateTime.now();
-
-            // Create a Timestamp object from LocalDateTime
-            Timestamp datetime = Timestamp.valueOf(now);
-
-            WalletClass wallet = new WalletClass();
-            wallet.setEmail(email);
-            wallet.setUser_id(id);
-            wallet.setBalance(balance);
-            wallet.setStatus(status);
-            wallet.setDatetime(datetime);
-
-            // Check if status is "pending" and balance is 0
-            if("pending...".equals(status) && balance != 0)
-                // Do something here if needed
-                // For example, print a message
-                System.out.println("Your balance is empty till payment is confirmed");
-            else
-            {
-
-            }
-
-            return wallet;
-        }
-        catch(NumberFormatException e)
-        {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
-        }
-    }
 
 }

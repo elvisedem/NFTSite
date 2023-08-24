@@ -13,64 +13,63 @@ package com.bartmint.users;
 
 import com.bartmint.dbconfig.DBConfig;
 import com.bartmint.security.DigestMatcher;
+import static com.bartmint.util.Constant.UserConstants.*;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
  *
- * @author HULLO
- * @since 28-Jun-2023 16:47:45
+ * @author BLAZE
+ * @since Aug 21, 2023 7:55:56 PM
  */
 public class UserDAO
 {
-
-    public static void registerNewUsers(NewUserClass users)
+    public static int registerNewUser(User user) throws Exception
     {
-        try(DBConfig DBconfig = new DBConfig())
-        {
-            EntityManager DBconfigem = DBconfig.getEntityManager();
-            DBconfigem.getTransaction().begin();
-            DBconfigem.persist(users);
-            DBconfigem.getTransaction().commit();
-        }
-        catch(Exception DBconfig)
-        {
-            DBconfig.printStackTrace(System.err);
-            throw new RuntimeException(DBconfig);
-        }
-    }
-
-    public static NewUserClass getUser(String username) throws Exception
-    {
-        try(DBConfig dbConfig = new DBConfig())
-        {
-            EntityManager em = dbConfig.getEntityManager();
-            NewUserClass user = em.find(NewUserClass.class, username);
-            return user;
-        }
-    }
-
-    public static NewUserClass getNewUserClassByEmail(String email) throws Exception
-    {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
-            String sql = "SELECT * FROM `user` WHERE `email` = ?";
-            Query q = em.createNativeQuery(sql, NewUserClass.class);
-            q.setParameter(1, email);
-            NewUserClass nuc = (NewUserClass)q.getSingleResult();
-            return nuc;
+            em.getTransaction().begin();
+            em.persist(user);
+            em.flush();
+            em.getTransaction().commit();
+            return user.getUserId();
         }
-        catch(NoResultException getNewUserClassByEmail)
+    }
+
+    public static void registerNewUserWallet(UserWallet uw) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            em.persist(uw);
+            em.getTransaction().commit();
+        }
+    }
+
+    public static User getUserByUserNameOrEmail(String userNameOrEmail) throws Exception
+    {
+        try( DBConfig dbConfig = new DBConfig())
+        {
+            EntityManager em = dbConfig.getEntityManager();
+            String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + EMAIL + " = ? OR " + USER_NAME + " = ?";
+            Query q = em.createNativeQuery(sql, User.class);
+            q.setParameter(1, userNameOrEmail);
+            q.setParameter(2, userNameOrEmail);
+            User user = (User)q.getSingleResult();
+            return user;
+        }
+        catch(NoResultException nre)
         {
             return null;
         }
     }
 
-    public static NewUserClass loginUser(String email, String password) throws Exception
+    public static User loginUser(String userName, String password) throws Exception
     {
-        NewUserClass user = getNewUserClassByEmail(email);
+        User user = getUserByUserNameOrEmail(userName);
         if(user != null)
         {
             DigestMatcher matcher = new DigestMatcher();
@@ -86,69 +85,5 @@ public class UserDAO
         }
         else
             return null;
-    }
-
-    public static boolean emailExists(String email) throws Exception
-    {
-        try(DBConfig dbConfig = new DBConfig())
-        {
-            EntityManager em = dbConfig.getEntityManager();
-            Query q = em.createNativeQuery("SELECT * FROM `user` WHERE `email` = ?");
-            q.setParameter(1, email);
-            q.getSingleResult();
-            return true;
-        }
-        catch(NoResultException xcp)
-        {
-            return false;
-        }
-    }
-
-    public static void updateNewUser(int userId, String fullname, String address, String phonenumber)
-    {
-        try(DBConfig dbconfig = new DBConfig())
-        {
-            EntityManager em = dbconfig.getEntityManager();
-            NewUserClass user = em.find(NewUserClass.class, userId);
-            em.getTransaction().begin();
-            user.setFullname(fullname);
-            user.setPhonenumber(phonenumber);
-            user.setAddress(address);
-            em.getTransaction().commit();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void NewUsersCollection(CollectionClass collection)
-    {
-        try(DBConfig DBconfig = new DBConfig())
-        {
-            EntityManager DBconfigem = DBconfig.getEntityManager();
-            DBconfigem.getTransaction().begin();
-            DBconfigem.persist(collection);
-            DBconfigem.getTransaction().commit();
-        }
-        catch(Exception DBconfig)
-        {
-            DBconfig.printStackTrace(System.err);
-            throw new RuntimeException(DBconfig);
-        }
-    }
-
-    public static boolean updatePassword(int userId, String hasdPassword) throws Exception
-    {
-        try(DBConfig dbConfig = new DBConfig())
-        {
-            EntityManager em = dbConfig.getEntityManager();
-            em.getTransaction().begin();
-            NewUserClass user = em.find(NewUserClass.class, userId);
-            user.setPassword(hasdPassword);
-            em.getTransaction().commit();
-            return true;
-        }
     }
 }

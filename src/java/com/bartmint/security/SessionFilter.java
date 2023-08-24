@@ -11,7 +11,7 @@
  */
 package com.bartmint.security;
 
-import com.bartmint.users.NewUserClass;
+import com.bartmint.users.User;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -166,11 +166,16 @@ public class SessionFilter implements Filter
         try
         {
             HttpSession session = wrappedRequest.getSession(false);
-            NewUserClass user = (session != null && (NewUserClass)session.getAttribute("user") != null) ? (NewUserClass)session.getAttribute("user") : null;
-            if(user != null && user.getEmail() != null)
-                chain.doFilter(wrappedRequest, wrappedResponse);
+            if(session != null)
+            {
+                User user = (User)session.getAttribute("user");
+                if(user != null)
+                    chain.doFilter(wrappedRequest, wrappedResponse);
+                else
+                    wrappedResponse.sendRedirect("../login");
+            }
             else
-                wrappedResponse.sendRedirect("login");
+                wrappedResponse.sendRedirect("../login");
         }
         catch(Throwable t)
         {

@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="BartMintPU" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.bartmint.users.NewUserClass</class>
-        <class>com.bartmint.users.CollectionClass</class>
-        <class>com.bartmint.wallet.WalletClass</class>
-        <class>com.bartmint.security.ForgotPassword</class>
-        <class>com.bartmint.users.NFT</class>
-        <class>com.bartmint.users.CollectionArt</class>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jjcomec1_bartmint"/>
-            <property name="javax.persistence.jdbc.user" value="jjcomec1_bartadmin"/>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="Pr0j3ct@BArtMint"/>
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
-        </properties>
-    </persistence-unit>
+  <persistence-unit name="BartMintPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.bartmint.users.User</class>
+    <class>com.bartmint.users.UserWallet</class>
+    <class>com.bartmint.transactions.Deposit</class>
+    <class>com.bartmint.transactions.Transaction</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bartmint"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
 </persistence>

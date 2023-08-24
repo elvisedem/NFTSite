@@ -1,35 +1,20 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.security;
 
-import com.bartmint.users.NewUserClass;
+import com.bartmint.users.User;
 import com.bartmint.users.UserDAO;
-import com.google.gson.JsonObject;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.JSONException;
 
 /**
  *
- * @author HULLO
+ * @author BLAZE
  */
 public class LoginServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,45 +25,38 @@ public class LoginServlet extends HttpServlet
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception
+            throws ServletException, IOException
     {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-
+        response.setContentType("text/html");
         try
         {
-            String email = request.getParameter("email");
+            String username = request.getParameter("username");
             String password = request.getParameter("password");
-            NewUserClass user = UserDAO.loginUser(email, password);
-
+            User user = UserDAO.loginUser(username, password);
             if(user != null)
             {
-                HttpSession session = request.getSession();
+                HttpSession session = request.getSession(false);
+                if(session != null)
+                    session.invalidate();
+                session = request.getSession(true);
                 session.setAttribute("user", user);
-                // Set session timeout to one day (in seconds)
-                session.setMaxInactiveInterval(24 * 60 * 60);
-                request.setAttribute("name", user);
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("message", "success");
-                out.print(jsonObject);
-
+                if(request.getParameter("remember") != null)
+                    session.setMaxInactiveInterval(60 * 60 * 24 * 10);
+                else
+                    session.setMaxInactiveInterval(60 * 60);
+                response.sendRedirect("dashboard/home");
             }
             else
-            {
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("message", "Invalid email or password");
-                out.print(jsonObject);
-            }
+                response.sendRedirect("login?I=0");
+            request.setAttribute("username", user);
         }
 
-        catch(JSONException loginException)
+        catch(Exception xcp)
         {
-            loginException.printStackTrace(System.err);
-            throw new RuntimeException(loginException);
-        }
-        finally
-        {
-            out.close();
+            if(xcp instanceof IllegalArgumentException)
+                response.sendRedirect("sign-up?l=0");
+            else
+                throw new RuntimeException(xcp);
         }
     }
 
@@ -91,6 +69,13 @@ public class LoginServlet extends HttpServlet
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
+        processRequest(request, response);
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -103,14 +88,7 @@ public class LoginServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        try
-        {
-            processRequest(request, response);
-        }
-        catch(Exception e)
-        {
-            throw new RuntimeException(e.getMessage());
-        }
+        processRequest(request, response);
     }
 
     /**

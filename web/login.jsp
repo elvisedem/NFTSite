@@ -85,17 +85,17 @@
                             <div class="card-body">
 
 
-                                <form id="loginform" class="mb-4"  method="POST">
+                                <form action="user-login" class="mb-4"  method="GET">
                                     <div class="mb-4">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" value='' placeholder="email" required/>
+                                        <label for="email" class="form-label">Email or Username</label>
+                                        <input type="text" class="form-control" id="email" name="username" value='' placeholder="email" required/>
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
                                     </div>
 
-                                    <button id="submitBtn" class="btn btn-primary d-grid w-100">Continue</button>
+                                    <button type="submit" class="btn btn-primary d-grid w-100">Continue</button>
 
                                 </form>
 

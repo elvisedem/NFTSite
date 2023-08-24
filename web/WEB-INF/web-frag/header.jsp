@@ -41,16 +41,27 @@
                                     MarketPlace
                                 </a>
                             </li>
-                            <li class="aU af">
-                                <a href="login" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
-                                    Login
-                                </a>
-                            </li>
-                            <li class="aU af">
-                                <a href="register" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
-                                    Register
-                                </a>
-                            </li>
+                            <c:choose>
+                                <c:when test="${(user.email ne null) and (user.userId ne null)}">
+                                    <li class="aU af">
+                                        <a href="" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="aU af">
+                                        <a href="login" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li class="aU af">
+                                        <a href="sign-up" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
+                                            Register
+                                        </a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </nav>
                 </div>

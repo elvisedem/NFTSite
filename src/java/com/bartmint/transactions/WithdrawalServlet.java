@@ -9,22 +9,26 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-package com.bartmint.security;
+package com.bartmint.transactions;
 
-import com.bartmint.users.NewUserClass;
-import com.bartmint.users.UserDAO;
+import com.bartmint.users.User;
+import static com.bartmint.util.Constant.TransactionsConstants.TransType.WITHDRAWAL;
+import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
+import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.json.JSONObject;
 
 /**
  *
  * @author BLAZE
  */
-public class UpdatePasswordServlet extends HttpServlet
+public class WithdrawalServlet extends HttpServlet
 {
 
     /**
@@ -38,53 +42,37 @@ public class UpdatePasswordServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
-            String errMsg = validateRequest(request);
-            String emailu = request.getParameter("email");
-            if(errMsg == null)
-            {
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-
-                Digester digester = new Digester();
-                String hashedPassword = digester.doDigest(password);
-                NewUserClass user = UserDAO.getNewUserClassByEmail(email);
-                UserDAO.updatePassword(user.getId(), hashedPassword);
-
-                RequestDispatcher dispatch = request.getRequestDispatcher("login");
-                dispatch.forward(request, response);
-            }
-            else
-            {
-                request.setAttribute("errMsg", errMsg);
-                request.setAttribute("email", emailu);
-                RequestDispatcher dispatch = request.getRequestDispatcher("");// the page to change password
-                dispatch.forward(request, response);
-            }
+            HttpSession session = request.getSession(false);
+            User user = (User)session.getAttribute("user");
+            Withdrawal w = new Withdrawal();
+            w.setAmount(Double.parseDouble(request.getParameter("amount")));
+            w.setStatus(PENDING);
+            w.setWalletAddress(request.getParameter("address"));
+            w.setDate(DateTimeUtil.getTodayTimeZone());
+            w.setUserId(user.getUserId());
+            TransactionDAO.registerNewWithdrawalSlip(w);
+            Transaction t = new Transaction();
+            t.setAmount(Double.parseDouble(request.getParameter("amount")));
+            t.setDate(DateTimeUtil.getTodayTimeZone());
+            t.setStatus(PENDING);
+            t.setUserId(user.getUserId());
+            t.setType(WITHDRAWAL);
+            TransactionDAO.registerNewTransactionSlip(t);
+            JSONObject jsono = new JSONObject();
+            jsono.put("message", "success");
+            out.print(jsono);
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+            e.printStackTrace(out);
         }
-    }
-
-    private static String validateRequest(HttpServletRequest request) throws Exception
-    {
-        String errMsg = null;
-        try
+        finally
         {
-            if(request.getParameter("email").isEmpty() || request.getParameter("email") == null)
-                errMsg = "No Email Found";
-            if(request.getParameter("password").isEmpty() || request.getParameter("password") == null)
-                errMsg = "Please Input a Password";
-            return errMsg;
-        }
-        catch(Exception e)
-        {
-            errMsg = e.getMessage();
-            return errMsg;
+            out.close();
         }
     }
 

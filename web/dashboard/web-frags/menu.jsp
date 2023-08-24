@@ -21,34 +21,34 @@
     <ul class="menu-inner py-3 ps">
         <!-- Dashboard -->
         <li class="menu-item">
-            <a href="d/dashboard" class="menu-link">
+            <a href="home" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Overview</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="d/collection" class="menu-link">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-photo-album"></i>
                 <div>Create collection</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="d/create" class="menu-link">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bxl-sketch"></i>
                 <div>Create an NFT</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="d/explore" class="menu-link">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
                 <div>Explore</div>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="d/withdraw" class="menu-link">
+            <a href="withdraw" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-download"></i>
                 <div>Withdraw</div>
             </a>
@@ -58,7 +58,7 @@
 
 
         <li class="menu-item">
-            <a href="d/transactions" class="menu-link">
+            <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bell"></i>
                 <div>Transactions</div>
             </a>

@@ -1,23 +1,22 @@
-package com.bartmint.users;
+package com.bartmint.dashboard;
 
+import com.bartmint.users.User;
+import com.bartmint.users.UserWallet;
+import com.bartmint.users.UserWalletDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.JSONObject;
 
 /**
  *
  * @author BLAZE
  */
-@MultipartConfig
-public class UploadNFTServlet extends HttpServlet
+public class FundWalletServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,28 +29,23 @@ public class UploadNFTServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("application/json");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
-            NewUserClass user = (NewUserClass)session.getAttribute("user");
-
-            String nftName = request.getParameter("nftName");
-            String pricce = request.getParameter("pricce");
-            double price = Double.parseDouble(pricce);
-            String imageFileName = request.getParameter("file-photo");
-
-            NFT nft = new NFT();
-            nft.setArtWorkName(imageFileName);
-            nft.setPrice(price);
-            nft.setNftName(nftName);
-            nft.setUserId(user.getId());
-            NFTDAO.registerNewNFTs(nft);
-            JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
-            out.println(jsono);
-
+            User user = (User)session.getAttribute("user");
+            if(request.getParameter("amount") != null)
+            {
+                request.setAttribute("amount", request.getParameter("amount"));
+                request.getRequestDispatcher("invoice").forward(request, response);
+            }
+            else
+            {
+                UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
+                request.setAttribute("uw", uw);
+                request.getRequestDispatcher("deposit").forward(request, response);
+            }
         }
         catch(Exception e)
         {

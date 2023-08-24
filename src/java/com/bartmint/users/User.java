@@ -9,40 +9,45 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-package com.bartmint.security;
+package com.bartmint.users;
 
+import static com.bartmint.util.Constant.UserConstants.USER_TABLE;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
  *
  * @author BLAZE
- * @since Jul 14, 2023 1:52:14 PM
+ * @since Aug 21, 2023 7:55:39 PM
  */
 @Entity
-@Table(name = "forget_password")
-public class ForgotPassword implements Serializable
+@Table(name = USER_TABLE)
+public class User implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
+    private String userName;
     private String email;
-    private String token;
+    private String password;
 
-    public ForgotPassword()
+    public User()
     {
     }
 
-    public int getId()
+    public String getUserName()
     {
-        return id;
+        return userName;
     }
 
-    public void setId(int id)
+    public void setUserName(String userName)
     {
-        this.id = id;
+        this.userName = userName;
     }
 
     public String getEmail()
@@ -55,21 +60,23 @@ public class ForgotPassword implements Serializable
         this.email = email;
     }
 
-    public String getToken()
+    public String getPassword()
     {
-        return token;
+        return password;
     }
 
-    public void setToken(String token)
+    public void setPassword(String password)
     {
-        this.token = token;
+        this.password = password;
     }
 
-    public static final class Constraints
+    public int getUserId()
     {
-        public static final String FORGOT_PASSWORD_TABLE = "forget_password";
-        public static final String FORGOT_PASSWORD_ID = "id";
-        public static final String FORGOT_PASSWORD_EMAIL = "email";
-        public static final String FORGOT_PASSWORD_TOKEN = "token";
+        return userId;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
     }
 }

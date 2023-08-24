@@ -11,30 +11,27 @@
  */
 package com.bartmint.users;
 
+import static com.bartmint.util.Constant.UserWalletConstants.USER_WALLET_TABLE;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
  *
  * @author BLAZE
- * @since Jul 28, 2023 11:22:27 PM
+ * @since Aug 21, 2023 7:56:14 PM
  */
 @Entity
-@Table(name = "collection_arts")
-public class CollectionArt implements Serializable
+@Table(name = USER_WALLET_TABLE)
+public class UserWallet implements Serializable
 {
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int cid;
-    private String imageName;
+    private int userId;
+    private double balance;
 
-    public CollectionArt()
+    public UserWallet()
     {
     }
 
@@ -48,24 +45,24 @@ public class CollectionArt implements Serializable
         this.id = id;
     }
 
-    public String getImageName()
+    public int getUserId()
     {
-        return imageName;
+        return userId;
     }
 
-    public void setImageName(String imageName)
+    public void setUserId(int userId)
     {
-        this.imageName = imageName;
+        this.userId = userId;
     }
 
-    public int getCid()
+    public double getBalance()
     {
-        return cid;
+        return balance;
     }
 
-    public void setCid(int cid)
+    public void setBalance(double balance)
     {
-        this.cid = cid;
+        this.balance = balance;
     }
 
 }

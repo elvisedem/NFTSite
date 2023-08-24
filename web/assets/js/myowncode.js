@@ -148,7 +148,7 @@ $(document).ready(function(){
                         text: 'Redirecting to your dashboard.'
                     });
                     setTimeout(function(){
-                        window.location.href = 'dashboard';
+                        window.location.href = '/d/dashboard';
                     }, 50);
                 }
 
