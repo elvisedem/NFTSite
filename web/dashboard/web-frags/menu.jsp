@@ -34,11 +34,11 @@
         </li>
 
         <li class="menu-item">
-            <a href="nft-create" class="menu-link">
+            <a href="create-nft" class="menu-link">
                 <i class="menu-icon tf-icons bx bxl-sketch"></i>
                 <div>Create an NFT</div>
             </a>
-        </li> 
+        </li>
 
         <li class="menu-item">
             <a href="" class="menu-link">

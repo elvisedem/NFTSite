@@ -48,7 +48,7 @@ public class NftServlet extends HttpServlet
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
             request.setAttribute("uw", uw);
-            request.getRequestDispatcher("").forward(request, response);
+            request.getRequestDispatcher("nft-create").forward(request, response);
         }
         catch(Exception e)
         {
