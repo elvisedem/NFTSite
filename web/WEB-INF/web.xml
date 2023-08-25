@@ -73,6 +73,18 @@
         <servlet-name>Nft Servlet</servlet-name>
         <servlet-class>com.bartmint.dashboard.NftServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Create Collection Page (JSP)</servlet-name>
+        <jsp-file>/collection.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Collection Page Servlet</servlet-name>
+        <servlet-class>com.bartmint.dashboard.CollectionPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Upload Collection Servlet</servlet-name>
+        <servlet-class>com.bartmint.arts.CreateNewCollectionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login Page (JSP)</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -132,6 +144,18 @@
     <servlet-mapping>
         <servlet-name>Nft Servlet</servlet-name>
         <url-pattern>/dashboard/create-nft</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Create Collection Page (JSP)</servlet-name>
+        <url-pattern>/dashboard/create-collection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Collection Page Servlet</servlet-name>
+        <url-pattern>/dashboard/collection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Upload Collection Servlet</servlet-name>
+        <url-pattern>/dashboard/upload-collection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

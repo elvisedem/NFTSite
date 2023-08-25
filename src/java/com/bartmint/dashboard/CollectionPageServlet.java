@@ -11,12 +11,16 @@
  */
 package com.bartmint.dashboard;
 
+import com.bartmint.users.User;
+import com.bartmint.users.UserWallet;
+import com.bartmint.users.UserWalletDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,18 +41,22 @@ public class CollectionPageServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        try( PrintWriter out = response.getWriter())
+        PrintWriter out = response.getWriter();
+        try
         {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CollectionPageServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CollectionPageServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession(false);
+            User user = (User)session.getAttribute("user");
+            UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
+            request.setAttribute("uw", uw);
+            request.getRequestDispatcher("create-collection").forward(request, response);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(out);
+        }
+        finally
+        {
+            out.close();
         }
     }
 

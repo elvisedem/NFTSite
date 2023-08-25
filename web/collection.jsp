@@ -842,7 +842,7 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">Create your Collection</h4>
-                                                <span class="float-end">Balance: 0.000ETH</span>
+                                                <span class="float-end">Balance: ${uw.balance} ETH</span>
                                             </div>
                                             <div class="card-body">
                                                 <div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>
@@ -982,7 +982,7 @@
                         url: 'upload-collection',
                         method: 'POST',
                         data: formData,
-                        dataType: 'JSON', 
+                        dataType: 'JSON',
                         beforeSend: function(xhr){
                             $btn.find('i').removeClass('fa-upload').addClass('fa-refresh').addClass('fa-spin');
                         },
