@@ -12,9 +12,15 @@ public class Constant
 
     public final class UserWalletConstants
     {
-
         public static final String USER_WALLET_TABLE = "userwallet";
         public static final String USER_ID = "userId";
+    }
+
+    public final class CollectionConstants
+    {
+
+        public static final String COLLECTION_TABLE = "collections";
+        public static final String COLLECTION_ART_TABLE = "collectionart";
     }
 
     public final class UserDepositConstants

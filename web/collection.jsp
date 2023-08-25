@@ -7,7 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<jsp:useBean id="user" scope="session" class="com.bartmint.users.NewUserClass"/>
 <!DOCTYPE html>
 <html class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free" lang="en"><head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">.swal-icon--error{
@@ -733,7 +732,7 @@
 
         <title>BArtMint -Create Collection</title>
 
-        <jsp:include page="dashboard/web-frags/head-tags.jsp" />
+        <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
 
         <style type="text/css">
             .layout-menu-fixed .layout-navbar-full .layout-menu,
@@ -811,14 +810,14 @@
             <div class="layout-container">
 
                 <!-- Menu -->
-                <jsp:include page="dashboard/web-frags/menu.jsp" />
+                <jsp:include page="../dashboard/web-frags/menu.jsp" />
                 <!-- / Menu -->
 
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
 
-                    <jsp:include page="dashboard/web-frags/navbar.jsp" />
+                    <jsp:include page="../dashboard/web-frags/navbar.jsp" />
 
                     <!-- / Navbar -->
 
@@ -834,7 +833,7 @@
                                     <div class="col-xl-4 col-lg-4 col-md-12">
                                         <div class="card profile_card">
                                             <div class="card-body p-0">
-                                                <img src="nfts/kunno01_abstract_one-stroke_painting_of_a_ford_mustang_painted__d495e053-2f33-4a0f-9ebb-02fd37f91b0f.jpg" style="width:100%">
+                                                <img src="../nfts/kunno01_abstract_one-stroke_painting_of_a_ford_mustang_painted__d495e053-2f33-4a0f-9ebb-02fd37f91b0f.jpg" style="width:100%">
 
                                             </div>
                                         </div>
@@ -842,9 +841,6 @@
                                     <div class="col-xl-8 col-lg-8 col-md-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <c:if test="${param.upl eq 0}">
-                                                    <p class="text-danger">${errMsg}</p>
-                                                </c:if>
                                                 <h4 class="card-title">Create your Collection</h4>
                                                 <span class="float-end">Balance: 0.000ETH</span>
                                             </div>
@@ -864,7 +860,7 @@
                                                         </div>
                                                         <div class="form-group col-xl-6 my-2">
                                                             <div id="picture-box1" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="nfts/00 20170305_080040.jpg" style="width: 164%"/>
+                                                                <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 164%"/>
                                                             </div>
                                                             <button id="picture-btn1" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload ArtWork
@@ -880,7 +876,7 @@
                                                     </div>
                                                     <div class="form-group col-xl-6 my-2">
                                                         <div id="picture-box2" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="nfts/00 20170305_080040.jpg" style="width: 164%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 164%"/>
                                                         </div>
                                                         <button id="picture-btn2" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
@@ -895,7 +891,7 @@
                                                     </div>
                                                     <div class="form-group col-xl-6 my-2">
                                                         <div id="picture-box3" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="nfts/00 20170305_080040.jpg" style="width: 164%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 164%"/>
                                                         </div>
                                                         <button id="picture-btn3" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
@@ -910,7 +906,7 @@
                                                     </div>
                                                     <div class="form-group col-xl-6 my-2">
                                                         <div id="picture-box4" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="nfts/00 20170305_080040.jpg" style="width: 164%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 164%"/>
                                                         </div>
                                                         <button id="picture-btn4" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
@@ -925,7 +921,7 @@
                                                     </div>
                                                     <div class="form-group col-xl-6 my-2">
                                                         <div id="picture-box5" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="nfts/00 20170305_080040.jpg" style="width: 164%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 164%"/>
                                                         </div>
                                                         <button id="picture-btn5" type="button" class="btn btn-info" style="margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
@@ -974,7 +970,7 @@
         <!-- / Layout wrapper -->
 
 
-        <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
+        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
         <script>
             $(document).ready(function(){
@@ -983,10 +979,10 @@
                     var formData = $(this).serialize();
                     var $btn = $('#create-nft');
                     $.ajax({
-                        url: 'd/create-collection',
+                        url: 'upload-collection',
                         method: 'POST',
                         data: formData,
-                        dataType: 'JSON',
+                        dataType: 'JSON', 
                         beforeSend: function(xhr){
                             $btn.find('i').removeClass('fa-upload').addClass('fa-refresh').addClass('fa-spin');
                         },

@@ -9,26 +9,20 @@
  * or visit www.xyneex.com if you need additional information or have any
  * questions.
  */
-package com.bartmint.transactions;
+package com.bartmint.dashboard;
 
-import com.bartmint.users.User;
-import static com.bartmint.util.Constant.TransactionsConstants.TransType.WITHDRAWAL;
-import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
-import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.json.JSONObject;
 
 /**
  *
  * @author BLAZE
  */
-public class WithdrawalServlet extends HttpServlet
+public class CollectionPageServlet extends HttpServlet
 {
 
     /**
@@ -42,38 +36,19 @@ public class WithdrawalServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        try
+        response.setContentType("text/html;charset=UTF-8");
+        try( PrintWriter out = response.getWriter())
         {
-            HttpSession session = request.getSession(false);
-            User user = (User)session.getAttribute("user");
-            double amount = Double.parseDouble(request.getParameter("amount"));
-            Withdrawal w = new Withdrawal();
-            w.setAmount(Double.parseDouble(request.getParameter("amount")));
-            w.setStatus(PENDING);
-            w.setWalletAddress(request.getParameter("address"));
-            w.setDate(DateTimeUtil.getTodayTimeZone());
-            w.setUserId(user.getUserId());
-            TransactionDAO.registerNewWithdrawalSlip(w);
-            Transaction t = new Transaction();
-            t.setAmount(-amount);
-            t.setDate(DateTimeUtil.getTodayTimeZone());
-            t.setStatus(PENDING);
-            t.setUserId(user.getUserId());
-            t.setType(WITHDRAWAL);
-            TransactionDAO.registerNewTransactionSlip(t);
-            JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
-            out.print(jsono);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CollectionPageServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CollectionPageServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

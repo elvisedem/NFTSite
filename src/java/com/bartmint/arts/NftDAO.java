@@ -31,4 +31,28 @@ public class NftDAO
             DBconfigem.getTransaction().commit();
         }
     }
+
+    public static int registerNewCollection(Collection cc) throws Exception
+    {
+        try( DBConfig DBconfig = new DBConfig())
+        {
+            EntityManager DBconfigem = DBconfig.getEntityManager();
+            DBconfigem.getTransaction().begin();
+            DBconfigem.persist(cc);
+            DBconfigem.flush();
+            DBconfigem.getTransaction().commit();
+            return cc.getcId();
+        }
+    }
+
+    public static void registerNewCollectionArt(CollectionArt ca) throws Exception
+    {
+        try( DBConfig DBconfig = new DBConfig())
+        {
+            EntityManager DBconfigem = DBconfig.getEntityManager();
+            DBconfigem.getTransaction().begin();
+            DBconfigem.persist(ca);
+            DBconfigem.getTransaction().commit();
+        }
+    }
 }
