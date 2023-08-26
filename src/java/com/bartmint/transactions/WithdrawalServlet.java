@@ -51,7 +51,7 @@ public class WithdrawalServlet extends HttpServlet
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
-            if(uw.getBalance() >= 0.000000000001)
+            if(uw.getBalance() <= 0.000000000001)
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
