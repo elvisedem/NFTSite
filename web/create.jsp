@@ -873,9 +873,9 @@
                                                         </style>
                                                         <div class="col-3">
                                                             <div id="picture-box" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 164%"/>
+                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 40%"/>
                                                             </div>
-                                                            <button id="picture-btn" type="button" class="btn btn-info" style="margin-top: 20px;">
+                                                            <button id="picture-btn" type="button" class="btn btn-info" style="width: 49%; margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload NFT
                                                             </button>
                                                             <div id="progress-outer" class="progress progress-striped active" style="display:none;">
