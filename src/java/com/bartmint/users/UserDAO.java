@@ -86,4 +86,38 @@ public class UserDAO
         else
             return null;
     }
+
+    public static User getUserByEmail(String email) throws Exception
+    {
+        try( DBConfig dbConfig = new DBConfig())
+        {
+            EntityManager em = dbConfig.getEntityManager();
+            String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + EMAIL + " = ?";
+            Query q = em.createNativeQuery(sql, User.class);
+            q.setParameter(1, email);
+            User user = (User)q.getSingleResult();
+            return user;
+        }
+        catch(NoResultException nre)
+        {
+            return null;
+        }
+    }
+
+    public static User getUserByUserName(String email) throws Exception
+    {
+        try( DBConfig dbConfig = new DBConfig())
+        {
+            EntityManager em = dbConfig.getEntityManager();
+            String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + USER_NAME + " = ?";
+            Query q = em.createNativeQuery(sql, User.class);
+            q.setParameter(1, email);
+            User user = (User)q.getSingleResult();
+            return user;
+        }
+        catch(NoResultException nre)
+        {
+            return null;
+        }
+    }
 }

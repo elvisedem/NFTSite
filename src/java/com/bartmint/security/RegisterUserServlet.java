@@ -33,18 +33,26 @@ public class RegisterUserServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
-
-            User user = validateUser(request);
-            int userId = UserDAO.registerNewUser(user);
-            UserWallet userWallet = new UserWallet();
-            userWallet.setUserId(userId);
-            UserDAO.registerNewUserWallet(userWallet);
             JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
+            User user = validateUser(request);
+            if(UserDAO.getUserByEmail(user.getEmail()) != null)
+                jsono.put("message", "This Email has already been registered.");
+            else if(UserDAO.getUserByUserNameOrEmail(user.getUserName()) != null)
+                jsono.put("message", "This Username has already been taken by another user. Please select another one.");
+            else
+            {
+                int userId = UserDAO.registerNewUser(user);
+                UserWallet userWallet = new UserWallet();
+                userWallet.setUserId(userId);
+                UserDAO.registerNewUserWallet(userWallet);
+                jsono.put("message", "success");
+            }
+
             out.print(jsono);
         }
         catch(Exception e)
         {
+            // Log the error and provide a generic error message
             e.printStackTrace(out);
         }
         finally
@@ -58,7 +66,6 @@ public class RegisterUserServlet extends HttpServlet
         String email = request.getParameter("email").trim();
         String username = request.getParameter("username").trim();
         String password = request.getParameter("password").trim();
-
         Digester digester = new Digester();
         String hashedPassword = digester.doDigest(password);
 
