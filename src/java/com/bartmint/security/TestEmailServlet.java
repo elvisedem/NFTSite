@@ -41,7 +41,7 @@ public class TestEmailServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
-            String sendermail = "bartmint@gmail.com";
+            String sendermail = "contact@bartmint.com";
             String recipentEmail = "donaldbassey0@gmail.com";
             String message = "hi i am working";
             String subject = "test";

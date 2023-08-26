@@ -840,7 +840,7 @@
                                                         <label class="form-label">
                                                             Amount to withdraw( ETH )
                                                         </label>
-                                                        <input type="number" name="amount" required="" class="form-control" placeholder="Enter withdrawal amount">
+                                                        <input type="number" step="any" name="amount" required="" class="form-control" placeholder="Enter withdrawal amount">
                                                     </div>
 
                                                     <div class="form-group mb-3">
