@@ -117,6 +117,10 @@
         <servlet-name>My NFTs Page (JSP)</servlet-name>
         <jsp-file>/nft-collection.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>404 Page (JSP)</servlet-name>
+        <jsp-file>/invalid-link.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login Page (JSP)</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -220,6 +224,10 @@
     <servlet-mapping>
         <servlet-name>My NFTs Page (JSP)</servlet-name>
         <url-pattern>/dashboard/nft-collection</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>404 Page (JSP)</servlet-name>
+        <url-pattern>/invalid</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
