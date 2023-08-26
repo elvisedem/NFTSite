@@ -249,193 +249,193 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-//Create Collection
-    $('#collection').submit(function(e){
-        e.preventDefault();
-        var collection_name = $('#collection_name').val().trim();
-        var mini_withdrawal = $('#mini_withdrawal').val().trim();
-        var price = $('#price').val().trim();
-        var picture_name = $('#picture_name').val().trim();
-
-        /*
-         * Use AJAX to submit the information
-         */
-        $.ajax({
-            url: 'CollectionServlet',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {collection_name: collection_name, mini_withdrawal: mini_withdrawal, price: price, picture_name: picture_name},
-            beforeSend: function(xhr){
-                console.log('Submitting form...');
-            },
-            success: function(data, textStatus, jqXHR){
-                if(data.message !== 'success')
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: data.message
-                    });
-                else{
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Collection Uploaded',
-                        text: 'Reloading.'
-                    });
-                    setTimeout(function(){
-                        window.location.href = 'nftcollection';
-                    }, 5000);
-                }
-
-            },
-            complete: function(jqXHR, textStatus){
-
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: "There was an error, please reload this page. " + errorThrown
-                });
-            }
-        });
-    });
-});
-
-$(document).ready(function(){
-//Create NFT
-    $('#create').submit(function(e){
-        e.preventDefault();
-        var form = $("#create")[0];
-        var formData = new FormData(form);
-
-        /*
-         * Use AJAX to submit the information
-         */
-        $.ajax({
-            url: 'upload-NFT',
-            method: 'POST',
-            dataType: 'JSON',
-            enctype: 'multipart/form-data',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: formData,
-            beforeSend: function(xhr){
-                console.log('Submitting form...');
-            },
-            success: function(data, textStatus, jqXHR){
-                if(data.message !== 'success')
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: data.message
-                    });
-                else{
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'NFT Uploaded',
-                        text: 'Reloading.'
-                    });
-                    setTimeout(function(){
-                        window.location.href = 'nftcollection';
-                    }, 5000);
-                }
-
-            },
-            complete: function(jqXHR, textStatus){
-
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: "There was an error, please reload this page. " + errorThrown
-                });
-            }
-        });
-    });
-});
-
-$(document).ready(function(){
-    //invoice btn
-    $('#invoicebtn').click(function(){
-        var amount = $('#amount').val().trim();
-
-        /*
-         * Use AJAX to submit the information
-         */
-        $.ajax({
-            url: 'WalletServlet',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {balance: amount},
-            beforeSend: function(xhr){
-                console.log('Submitting form...');
-            },
-            success: function(data, textStatus, jqXHR){
-                if(data.message !== 'success')
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: data.message
-                    });
-                else{
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Your balance will be added as soon as your transaction has been confirmed',
-                        text: 'Transaction Pending.'
-                    });
-                    setTimeout(function(){
-                        window.location.href = 'transaction';
-                    }, 5000);
-                }
-            },
-            complete: function(jqXHR, textStatus){
-
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: "There was an error, please reload this page. " + errorThrown
-                });
-            }
-        });
-    });
-});
-
-$(document).ready(function(){
-
-    var dataTable = $("#transactionResults").DataTable();
-    if(dataTable){
-        dataTable.destroy();
-    }
-    //Invoice Transaction Side Table
-
-    // List
-    /*
-     * Use AJAX to submit the information
-     */
-    $.ajax({
-        url: 'ListTransaction',
-        method: 'GET',
-        dataType: 'JSON',
-        success: function(data){
-            // Handle data with datatables cdn
-            $("#transactionResults").DataTable({
-                data: data,
-                columns: [// Corrected "colums" to "columns"
-//                    {data: 'email'},
-                    {data: 'balance'},
-                    {data: 'status'}
-                ]
-            });
-
-        }
+//$(document).ready(function(){
+////Create Collection
+//    $('#collection').submit(function(e){
+//        e.preventDefault();
+//        var collection_name = $('#collection_name').val().trim();
+//        var mini_withdrawal = $('#mini_withdrawal').val().trim();
+//        var price = $('#price').val().trim();
+//        var picture_name = $('#picture_name').val().trim();
 //
-    });
-});
+//        /*
+//         * Use AJAX to submit the information
+//         */
+//        $.ajax({
+//            url: 'CollectionServlet',
+//            method: 'POST',
+//            dataType: 'JSON',
+//            data: {collection_name: collection_name, mini_withdrawal: mini_withdrawal, price: price, picture_name: picture_name},
+//            beforeSend: function(xhr){
+//                console.log('Submitting form...');
+//            },
+//            success: function(data, textStatus, jqXHR){
+//                if(data.message !== 'success')
+//                    Swal.fire({
+//                        icon: 'error',
+//                        title: 'Error',
+//                        text: data.message
+//                    });
+//                else{
+//                    Swal.fire({
+//                        icon: 'success',
+//                        title: 'Collection Uploaded',
+//                        text: 'Reloading.'
+//                    });
+//                    setTimeout(function(){
+//                        window.location.href = 'nft-collection';
+//                    }, 5000);
+//                }
+//
+//            },
+//            complete: function(jqXHR, textStatus){
+//
+//            },
+//            error: function(jqXHR, textStatus, errorThrown){
+//                Swal.fire({
+//                    icon: 'error',
+//                    title: 'Error',
+//                    text: "There was an error, please reload this page. " + errorThrown
+//                });
+//            }
+//        });
+//    });
+//});
+
+//$(document).ready(function(){
+////Create NFT
+//    $('#create').submit(function(e){
+//        e.preventDefault();
+//        var form = $("#create")[0];
+//        var formData = new FormData(form);
+//
+//        /*
+//         * Use AJAX to submit the information
+//         */
+//        $.ajax({
+//            url: 'upload-NFT',
+//            method: 'POST',
+//            dataType: 'JSON',
+//            enctype: 'multipart/form-data',
+//            cache: false,
+//            contentType: false,
+//            processData: false,
+//            data: formData,
+//            beforeSend: function(xhr){
+//                console.log('Submitting form...');
+//            },
+//            success: function(data, textStatus, jqXHR){
+//                if(data.message !== 'success')
+//                    Swal.fire({
+//                        icon: 'error',
+//                        title: 'Error',
+//                        text: data.message
+//                    });
+//                else{
+//                    Swal.fire({
+//                        icon: 'success',
+//                        title: 'NFT Uploaded',
+//                        text: 'Reloading.'
+//                    });
+//                    setTimeout(function(){
+//                        window.location.href = 'nft-collection';
+//                    }, 5000);
+//                }
+//
+//            },
+//            complete: function(jqXHR, textStatus){
+//
+//            },
+//            error: function(jqXHR, textStatus, errorThrown){
+//                Swal.fire({
+//                    icon: 'error',
+//                    title: 'Error',
+//                    text: "There was an error, please reload this page. " + errorThrown
+//                });
+//            }
+//        });
+//    });
+//});
+
+//$(document).ready(function(){
+//    //invoice btn
+//    $('#invoicebtn').click(function(){
+//        var amount = $('#amount').val().trim();
+//
+//        /*
+//         * Use AJAX to submit the information
+//         */
+//        $.ajax({
+//            url: 'WalletServlet',
+//            method: 'POST',
+//            dataType: 'JSON',
+//            data: {balance: amount},
+//            beforeSend: function(xhr){
+//                console.log('Submitting form...');
+//            },
+//            success: function(data, textStatus, jqXHR){
+//                if(data.message !== 'success')
+//                    Swal.fire({
+//                        icon: 'error',
+//                        title: 'Error',
+//                        text: data.message
+//                    });
+//                else{
+//                    Swal.fire({
+//                        icon: 'success',
+//                        title: 'Your balance will be added as soon as your transaction has been confirmed',
+//                        text: 'Transaction Pending.'
+//                    });
+//                    setTimeout(function(){
+//                        window.location.href = 'transaction';
+//                    }, 5000);
+//                }
+//            },
+//            complete: function(jqXHR, textStatus){
+//
+//            },
+//            error: function(jqXHR, textStatus, errorThrown){
+//                Swal.fire({
+//                    icon: 'error',
+//                    title: 'Error',
+//                    text: "There was an error, please reload this page. " + errorThrown
+//                });
+//            }
+//        });
+//    });
+//});
+
+//$(document).ready(function(){
+//
+//    var dataTable = $("#transactionResults").DataTable();
+//    if(dataTable){
+//        dataTable.destroy();
+//    }
+//    //Invoice Transaction Side Table
+//
+//    // List
+//    /*
+//     * Use AJAX to submit the information
+//     */
+//    $.ajax({
+//        url: 'ListTransaction',
+//        method: 'GET',
+//        dataType: 'JSON',
+//        success: function(data){
+//            // Handle data with datatables cdn
+//            $("#transactionResults").DataTable({
+//                data: data,
+//                columns: [// Corrected "colums" to "columns"
+////                    {data: 'email'},
+//                    {data: 'balance'},
+//                    {data: 'status'}
+//                ]
+//            });
+//
+//        }
+////
+//    });
+//});
 
 $(document).ready(function(){
 

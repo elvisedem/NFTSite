@@ -12,6 +12,8 @@
 package com.bartmint.transactions;
 
 import com.bartmint.users.User;
+import com.bartmint.users.UserWallet;
+import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.WITHDRAWAL;
 import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
@@ -48,24 +50,35 @@ public class WithdrawalServlet extends HttpServlet
         {
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
-            double amount = Double.parseDouble(request.getParameter("amount"));
-            Withdrawal w = new Withdrawal();
-            w.setAmount(Double.parseDouble(request.getParameter("amount")));
-            w.setStatus(PENDING);
-            w.setWalletAddress(request.getParameter("address"));
-            w.setDate(DateTimeUtil.getTodayTimeZone());
-            w.setUserId(user.getUserId());
-            TransactionDAO.registerNewWithdrawalSlip(w);
-            Transaction t = new Transaction();
-            t.setAmount(-amount);
-            t.setDate(DateTimeUtil.getTodayTimeZone());
-            t.setStatus(PENDING);
-            t.setUserId(user.getUserId());
-            t.setType(WITHDRAWAL);
-            TransactionDAO.registerNewTransactionSlip(t);
-            JSONObject jsono = new JSONObject();
-            jsono.put("message", "success");
-            out.print(jsono);
+            UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
+            if(uw.getBalance() >= 0.000000000001)
+            {
+                JSONObject jsono = new JSONObject();
+                jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
+                out.println(jsono);
+//                request.getRequestDispatcher("home-page").forward(request, response);
+            }
+            else
+            {
+                double amount = Double.parseDouble(request.getParameter("amount"));
+                Withdrawal w = new Withdrawal();
+                w.setAmount(Double.parseDouble(request.getParameter("amount")));
+                w.setStatus(PENDING);
+                w.setWalletAddress(request.getParameter("address"));
+                w.setDate(DateTimeUtil.getTodayTimeZone());
+                w.setUserId(user.getUserId());
+                TransactionDAO.registerNewWithdrawalSlip(w);
+                Transaction t = new Transaction();
+                t.setAmount(-amount);
+                t.setDate(DateTimeUtil.getTodayTimeZone());
+                t.setStatus(PENDING);
+                t.setUserId(user.getUserId());
+                t.setType(WITHDRAWAL);
+                TransactionDAO.registerNewTransactionSlip(t);
+                JSONObject jsono = new JSONObject();
+                jsono.put("message", "success");
+                out.print(jsono);
+            }
         }
         catch(Exception e)
         {

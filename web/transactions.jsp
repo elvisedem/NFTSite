@@ -119,15 +119,25 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="table-responsive">
-                                                    <table id="DashboardTransactionResults" class="display cell-border" style="margin-top: 5px;">
+                                                    <table id="DashboardTransactionResults" class="display cell-border" style="margin-top: 5px; color: black">
                                                         <thead>
                                                             <tr>
-                                                                <th>Amount</th>
                                                                 <th>Type</th>
-                                                                <th>Date</th>
                                                                 <th>Status</th>
+                                                                <th>Amount</th>
+                                                                <th>Date</th>
                                                             </tr>
                                                         </thead>
+                                                        <tbody>
+                                                            <c:forEach var="transaction" items="${transactions}">
+                                                                <tr>
+                                                                    <td>${transaction.type}</td>
+                                                                    <td>${transaction.status}</td>
+                                                                    <td>${transaction.amount}</td>
+                                                                    <td>${transaction.date}</td>
+                                                                </tr>
+                                                            </c:forEach>
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -167,12 +177,7 @@
 
         <script>
             $(document).ready(function(){
-                if(!$.fn.DataTable.isDataTable('#DashboardTransactionResults')){
-                    $('#DashboardTransactionResults').DataTable({
-                        // Your options here
-                        searching: false // Disable the search bar
-                    });
-                }
-            });
+                    $('#DashboardTransactionResults').DataTable();
+                });
         </script>
 </html>

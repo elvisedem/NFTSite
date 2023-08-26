@@ -58,7 +58,7 @@
 
 
         <li class="menu-item">
-            <a href="" class="menu-link">
+            <a href="transaction" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bell"></i>
                 <div>Transactions</div>
             </a>
@@ -75,12 +75,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="d/profile" class="menu-link">
+                    <a href="profile" class="menu-link">
                         <div data-i18n="Account">Account settings</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="d/view-arts" class="menu-link">
+                    <a href="nft-collection" class="menu-link">
                         <div data-i18n="Account">My NFT's</div>
                     </a>
                 </li>

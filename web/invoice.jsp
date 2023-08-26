@@ -887,14 +887,24 @@
                                                 <span id="address" style="font-weight:200;">Real-time historical records of your incoming invoice payments</span>
                                                 <div class="table-responsive">
 
-                                                    <table id="transactionResults" class="display cell-border" style="margin-top: 5px;">
-                                                        <thead>
+                                                    <table id="DashboardTransactionResults" class="display cell-border" style="margin-top: 5px; color: black">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Status</th>
+                                                            <th>Amount</th>
+                                                            <th>Date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach var="transaction" items="${transactions}">
                                                             <tr>
-                                                                <th>Balance</th>
-                                                                <th align="center">Status</th>
+                                                                <td>${transaction.status}</td>
+                                                                <td>${transaction.amount}</td>
+                                                                <td>${transaction.date}</td>
                                                             </tr>
-                                                        </thead>
-                                                    </table>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -936,6 +946,10 @@
                 alert("Copied the text ");
 
             }
+
+            $(document).ready(function(){
+                    $('#DashboardTransactionResults').DataTable();
+                });
         </script>
         <script>
 

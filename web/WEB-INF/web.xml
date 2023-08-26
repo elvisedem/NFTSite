@@ -3,7 +3,7 @@
     <filter>
         <filter-name>SessionFilter</filter-name>
         <filter-class>com.bartmint.security.SessionFilter</filter-class>
-    </filter> 
+    </filter>
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
         <url-pattern>/dashboard/*</url-pattern>
@@ -105,6 +105,18 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.bartmint.security.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Transaction Page (JSP)</servlet-name>
+        <jsp-file>/transactions.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Profile Page (JSP)</servlet-name>
+        <jsp-file>/profile.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>My NFTs Page (JSP)</servlet-name>
+        <jsp-file>/nft-collection.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login Page (JSP)</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -196,6 +208,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Transaction Page (JSP)</servlet-name>
+        <url-pattern>/dashboard/transaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profile Page (JSP)</servlet-name>
+        <url-pattern>/dashboard/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>My NFTs Page (JSP)</servlet-name>
+        <url-pattern>/dashboard/nft-collection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

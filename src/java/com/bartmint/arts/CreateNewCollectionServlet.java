@@ -106,7 +106,7 @@ public class CreateNewCollectionServlet extends HttpServlet
             else
             {
                 JSONObject jsono = new JSONObject();
-                jsono.put("message", "Insufficient Funds, Make a Deposit or Sale a NFT");
+                jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
                 out.println(jsono);
             }
         }

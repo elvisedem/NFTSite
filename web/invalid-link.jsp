@@ -124,7 +124,7 @@
                                 </a>
                             </div>
                             <!-- /Logo -->
-                            <h4 class="mb-2 text-align-center">Check your email for a reset link.</h4>
+                            <h4 class="mb-2 text-align-center">404, Page cant be found.</h4>
 
 
                         </div>
