@@ -798,7 +798,7 @@
                 }
             </style>
         </head>
-        <body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="8.906.0">
+        <body style="background-color: black;" data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="8.906.0">
             <!-- Layout wrapper -->
             <div class="row d-md-none">
                 <div class="mx-auto">
