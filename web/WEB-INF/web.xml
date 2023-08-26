@@ -3,7 +3,7 @@
     <filter>
         <filter-name>SessionFilter</filter-name>
         <filter-class>com.bartmint.security.SessionFilter</filter-class>
-    </filter>
+    </filter> 
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
         <url-pattern>/dashboard/*</url-pattern>

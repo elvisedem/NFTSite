@@ -65,7 +65,6 @@
                                 <div class="a2b a3 a5 ah">
                                     <div class="a4">
                                         <div class="a3 a5">
-                                            <input name="creator" hidden="" value="${nftArt.userId}"/>
                                             <div class="a4">
                                                 <h4 class="a2Y aX aZ">
                                                     <a href="javascript:void(0)">@${nftArt.userId}</a>
@@ -88,9 +87,12 @@
                                 <div class="a3 a5 ah a34 a1G a35">
                                     <c:choose>
                                         <c:when test="${user.userId ne nftArt.userId}">
-                                            <a href="" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                Place Bid
-                                            </a>
+                                            <form id="buy-art">
+                                                <input name="id" hidden="" value="${nftArt.artId}"/>
+                                                <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                                    Place Bid
+                                                </button>
+                                            </form>
                                         </c:when>
                                         <c:otherwise>
 
@@ -124,7 +126,36 @@
         <jsp:include page="WEB-INF/web-frag/footer.jsp" />
 
         <jsp:include page="WEB-INF/web-frag/footer-scripts.jsp" />
+        <script>
+            $(document).ready(function(){
+                $('#buy-art').submit(function(e){
+                    e.preventDefault();
+                    var formData = $(this).serialize();
+                     $.ajax({
+                        url: 'dashboard/buy-nft',
+                        method: 'POST',
+                        data: formData,
+                        dataType: 'JSON',
+                        beforeSend: function(xhr){
+                            $btn.find('i').removeClass('fa-upload').addClass('fa-refresh').addClass('fa-spin');
+                        },
+                        success: function(data, textStatus, jqXHR){
+                            if(data.message === 'success'){
+                                swal.fire("Success!", "You Have Purchase this Art Successfully!", "success");
 
+                            }else
+                                swal.fire("Error!", data.message, "error");
+                        },
+                        complete: function(jqXHR, textStatus){
+                            $btn.find('i').addClass('fa-upload').removeClass('fa-refresh').removeClass('fa-spin');
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            swal("Error!", "There was an error!", "error");
+                        }
+                    });
+                });
+            });
+        </script>
 
         <script>
             var returnedSuggestion = ''

@@ -12,6 +12,7 @@
 package com.bartmint.arts;
 
 import com.bartmint.dbconfig.DBConfig;
+import static com.bartmint.util.Constant.NFTConstants.NFT_ART_ID;
 import static com.bartmint.util.Constant.NFTConstants.NFT_TABLE;
 import java.util.List;
 import javax.persistence.CacheStoreMode;
@@ -131,4 +132,17 @@ public class NftDAO
         }
     }
 
+    public static NftArt getNftArtById(int artId) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            String sql = "SELECT * FROM " + NFT_TABLE + "WHERE " + NFT_ART_ID + " =?";
+            Query q = em.createNativeQuery(sql, NftArt.class);
+            q.setParameter(1, artId);
+            NftArt nftArt = (NftArt)q.getSingleResult();
+            return nftArt;
+        }
+    }
 }

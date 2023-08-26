@@ -47,6 +47,7 @@ public class Constant
     {
 
         public static final String NFT_TABLE = "nft";
+        public static final String NFT_ART_ID = "artId";
         public static final String USER_ID = "userId";
     }
 
