@@ -116,20 +116,20 @@
                                             <ul class="">
                                                 <h3>My collections </h3>
                                                 <div class="row">
-                                                    <c:if test="${fn:length(cc) == 0}">
-                                                        <p class="text-warning">Oops, You don't have any Collection, create more at the create Collection Section</p>
-                                                    </c:if>
-                                                    <c:forEach var="collection" items="${cc}">
+                                                    <%--<c:if test="${fn:length(cc) == 0}">--%>
+                                                    <p class="text-warning">Oops, You don't have any Collection, create more at the <a href="collection">Create a Collection Section</a></p>
+                                                    <%--</c:if>--%>
+                                                    <%--<c:forEach var="collection" items="${cc}">--%>
                                                         <div class="col-6 col-sm-6 col-lg-3 m-2">
                                                             <div class="card border">
                                                                 <div class="card-body ">
                                                                     <h4>${collection.collection_name}</h4>
-                                                                    <c:set var="artList" value="${collection.collectionArts}"/>
-                                                                  <p>Artworks: ${fn:length(artList)}</p>
+                                                                    <%--<c:set var="artList" value="${collection.collectionArts}"/>--%>
+                                                                  <!--<p>Artworks: </p>-->
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </c:forEach>
+                                                    <%--</c:forEach>--%>
                                                 </div>
                                             </ul>
                                         </div>
@@ -138,6 +138,7 @@
                             </div>
                             <div class="row p-2">
                                 <h3 class="p-2">NFT Artworks</h3>
+                                <p class="text-warning">Oops, You don't have any NFT, create more at the <a href="create-nft">Create an NFT Section</a></p>
                                 <c:forEach var="nft" items="${nfts}">
                                     <div class="col-12 col-lg-4 my-2">
                                         <div class="card shadow-sm">
@@ -179,7 +180,7 @@
                 </div>
                 <!-- / Layout page -->
             </div>
- 
+
             <!-- Overlay -->
             <div class="layout-overlay layout-menu-toggle"></div>
         </div>

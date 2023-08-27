@@ -847,12 +847,12 @@
                                             </div>
                                             <div class="card-body">
                                                 <form id="nft-upload">
-                                                    <div class="row">
-                                                        <div class="form-group col-xl-6 my-2">
+                                                    <div class="">
+                                                        <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">NFT Name </label>
                                                             <input type="text" id="nftName" class="form-control" placeholder="Name your NFT" name="nftName" required>
                                                         </div>
-                                                        <div class="form-group col-xl-6 my-2">
+                                                        <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">Price (USD)</label>
                                                             <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
@@ -871,11 +871,11 @@
                                                                 color: #660000;
                                                             }
                                                         </style>
-                                                        <div class="col-3">
+                                                        <div class="col-12">
                                                             <div id="picture-box" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 40%"/>
+                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 100%"/>
                                                             </div>
-                                                            <button id="picture-btn" type="button" class="btn btn-info" style="width: 49%; margin-top: 20px;">
+                                                            <button id="picture-btn" type="button" class="btn btn-info" style="width: 100%; margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload NFT
                                                             </button>
                                                             <div id="progress-outer" class="progress progress-striped active" style="display:none;">

@@ -52,7 +52,7 @@ public class WithdrawalServlet extends HttpServlet
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
                 out.println(jsono);
-                SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry yo don't have tthe mininmum withdrawal amont to make this request, try again when you balance has reached 0.000001! Thanks");
+                SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum withdrawal amount to make this request, try again when you balance has reached 0.000001! Thanks");
             }
             else
             {

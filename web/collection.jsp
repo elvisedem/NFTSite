@@ -849,7 +849,7 @@
                                                 <!--<div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>-->
 
                                                 <form id="collection-form">
-                                                    <div class="row">
+                                                    <div class="">
                                                         <div class="form-group col-xl-12 my-2">
                                                             <label class="mr-sm-2 form-label">Collection Name </label>
                                                             <input type="text" id="collection_name" class="form-control" placeholder="Name your collection" name="collectionName" required="">
@@ -858,11 +858,11 @@
                                                             <label class="mr-sm-2 form-label">Price (ETH)</label>
                                                             <input type="number" id="price" class="form-control" placeholder="Set pricing for your NFT" name="price" step="any">
                                                         </div>
-                                                        <div class="form-group col-xl-6 my-2">
+                                                        <div class="form-group col-xl-12 my-2">
                                                             <div id="picture-box1" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
+                                                                <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
                                                             </div>
-                                                            <button id="picture-btn1" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
+                                                            <button id="picture-btn1" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload ArtWork
                                                             </button>
                                                             <div id="progress-outer1" class="progress progress-striped active" style="display:none;">
@@ -874,11 +874,11 @@
                                                             <input type="hidden" name="image1" id="fileName1" value=""/>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group col-xl-6 my-2">
+                                                    <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box2" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
                                                         </div>
-                                                        <button id="picture-btn2" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
+                                                        <button id="picture-btn2" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer2" class="progress progress-striped active" style="display:none;">
@@ -889,11 +889,11 @@
                                                         </div>
                                                         <input type="hidden" name="image2" id="fileName2" value=""/>
                                                     </div>
-                                                    <div class="form-group col-xl-6 my-2">
+                                                    <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box3" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
                                                         </div>
-                                                        <button id="picture-btn3" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
+                                                        <button id="picture-btn3" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer3" class="progress progress-striped active" style="display:none;">
@@ -904,11 +904,11 @@
                                                         </div>
                                                         <input type="hidden" name="image3" id="fileName3" value=""/>
                                                     </div>
-                                                    <div class="form-group col-xl-6 my-2">
+                                                    <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box4" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
                                                         </div>
-                                                        <button id="picture-btn4" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
+                                                        <button id="picture-btn4" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer4" class="progress progress-striped active" style="display:none;">
@@ -919,11 +919,11 @@
                                                         </div>
                                                         <input type="hidden" name="image4" id="fileName4" value=""/>
                                                     </div>
-                                                    <div class="form-group col-xl-6 my-2">
+                                                    <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box5" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
                                                         </div>
-                                                        <button id="picture-btn5" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
+                                                        <button id="picture-btn5" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer5" class="progress progress-striped active" style="display:none;">

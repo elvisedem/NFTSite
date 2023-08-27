@@ -908,7 +908,7 @@
                             else{
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Your Wallet Address will be credited as soon as your transaction has been confirmed',
+                                    title: 'Your Wallet will be credited as soon as your transaction has been confirmed',
                                     text: 'Transaction Pending.'
                                 });
                                 setTimeout(function(){

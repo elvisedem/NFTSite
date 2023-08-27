@@ -796,6 +796,9 @@
                 th{
                     color:white !important;
                 }
+                td{
+                color:white !important;
+            }
             </style>
         </head>
         <body style="background-color: black;" data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="8.906.0">

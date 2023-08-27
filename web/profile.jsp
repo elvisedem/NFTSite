@@ -13,7 +13,7 @@
 
         <title>BArtMint -Profile</title>
 
-        <jsp:include page="dashboard/web-frags/head-tags.jsp" />
+        <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
 
         <style>
             .card{
@@ -81,14 +81,14 @@
 
             <div class="layout-container">
                 <!-- Menu -->
-                <jsp:include page="dashboard/web-frags/menu.jsp" />
+                <jsp:include page="../dashboard/web-frags/menu.jsp" />
                 <!-- / Menu -->
 
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
 
-                    <jsp:include page="dashboard/web-frags/navbar.jsp" />
+                    <jsp:include page="../dashboard/web-frags/navbar.jsp" />
 
                     <!-- / Navbar -->
 
@@ -117,7 +117,7 @@
                                                 <form id="updateform" method="POST">
 
                                                     <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                                        <img src="assets/images/avatar/default-profile-picture.jpg" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
+                                                        <img src="../assets/images/avatar/default-profile-picture.jpg" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar"/>
 
                                                         <div class="button-wrapper">
                                                             <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
@@ -134,23 +134,23 @@
                                                     <div class="row">
                                                         <div class="mb-3 col-md-6">
                                                             <label for="userName" class="form-label">Username</label>
-                                                            <input class="form-control" type="text" id="username" name="username" value="${user.username}" readonly/>
+                                                            <input class="form-control" type="text" id="username" name="username" value="" readonly/>
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="fullName" class="form-label">Full Name</label>
-                                                            <input class="form-control" type="text" name="name" id="fullname" value='${user.fullname}' />
+                                                            <input class="form-control" type="text" name="name" id="fullname" value='' />
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="address" class="form-label">Address</label>
-                                                            <input class="form-control" type="text" name="address" id="address" value='${user.address}' />
+                                                            <input class="form-control" type="text" name="address" id="address" value='' />
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="email" class="form-label">E-mail</label>
-                                                            <input class="form-control" type="text" id="email" name="email" value='${user.email}'
-                                                                   placeholder="${user.email}" readonly />
+                                                            <input class="form-control" type="text" id="email" name="email" value=''
+                                                                   placeholder="" readonly />
                                                         </div>
 
                                                         <div class="mb-3 col-12">
@@ -163,7 +163,7 @@
                                                                     name="phonenumber"
                                                                     class="form-control"
                                                                     placeholder="202 555 0111"
-                                                                    value='${user.phonenumber}'
+                                                                    value=''
                                                                     />
                                                             </div>
                                                         </div>
@@ -210,7 +210,7 @@
         </div>
         <!-- / Layout wrapper -->
 
-        <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
+        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
 
     </body>

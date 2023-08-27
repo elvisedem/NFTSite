@@ -77,6 +77,9 @@
             th{
                 color:white !important;
             }
+            td{
+                color:white !important;
+            }
         </style>
 
     </head>
