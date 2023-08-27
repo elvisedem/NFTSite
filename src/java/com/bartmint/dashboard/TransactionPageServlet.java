@@ -1,13 +1,20 @@
+/*
+ * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * You are not meant to edit or modify this source code unless you are
+ * authorized to do so.
+ *
+ * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
+ * or visit www.xyneex.com if you need additional information or have any
+ * questions.
+ */
 package com.bartmint.dashboard;
 
-import com.bartmint.arts.NftDAO;
 import com.bartmint.transactions.Transaction;
 import com.bartmint.transactions.TransactionDAO;
 import com.bartmint.users.User;
-import com.bartmint.users.UserWallet;
-import com.bartmint.users.UserWalletDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +22,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class DashboardServlet extends HttpServlet
+/**
+ *
+ * @author BLAZE
+ */
+public class TransactionPageServlet extends HttpServlet
 {
 
     /**
@@ -30,26 +41,17 @@ public class DashboardServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
-            UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
             List<Transaction> transactions = TransactionDAO.getAllTransactionOfUser(user.getUserId());
-            int nftCount = NftDAO.getTotalUserNftArts(user.getUserId());
-            request.setAttribute("uw", uw);
-            request.setAttribute("nftCount", nftCount);
             request.setAttribute("transactions", transactions);
-            request.getRequestDispatcher("home-page").forward(request, response);
+            request.getRequestDispatcher("transaction").forward(request, response);
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            throw new RuntimeException(e);
         }
     }
 

@@ -12,8 +12,7 @@
 package com.bartmint.arts;
 
 import com.bartmint.dbconfig.DBConfig;
-import static com.bartmint.util.Constant.NFTConstants.NFT_ART_ID;
-import static com.bartmint.util.Constant.NFTConstants.NFT_TABLE;
+import static com.bartmint.util.Constant.NFTConstants.*;
 import java.util.List;
 import javax.persistence.CacheStoreMode;
 import javax.persistence.EntityManager;
@@ -93,6 +92,32 @@ public class NftDAO
         {
             e.printStackTrace(System.err);
             return -1;
+        }
+    }
+
+    public static int getTotalUserNftArts(int userId) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+
+            String sql = "SELECT COUNT(*) FROM " + NFT_TABLE + " WHERE " + USER_ID + " = ?";
+            Query q = em.createNativeQuery(sql);
+            q.setParameter(1, userId);
+
+            // Execute the query and get the result
+            Object result = q.getSingleResult();
+
+            em.getTransaction().commit(); // Commit the transaction
+
+            // Cast the result to Long (as count result can be large) and return as int
+            return ((Number)result).intValue();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw e; // Rethrow the exception to indicate the error to the caller
         }
     }
 

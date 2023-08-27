@@ -11,13 +11,13 @@
     <div class="offcanvas-header mb-4">
 
         <button type="button" class="float-end close-btn btn-dark text-white" data-bs-dismiss="offcanvas">&times;</button>
-    </div>
+    </div> 
     <div class="offcanvas-body p-3 mt-4">
-        <li class="menu-item"><a href="home">Home</a></li>
+        <li class="menu-item"><a href="/dashboard/home">Home</a></li>
         <li class="menu-item"><a href="explore">MarketPlace</a></li>
             <c:choose>
                 <c:when test="${(user.email ne null) and (user.userId ne null)}">
-                <li class="menu-item"><a href="home">My Account</a></li>
+                <li class="menu-item"><a href="dashboard/home">My Account</a></li>
                 <li class="menu-item"><a href="login">Logout</a></li>
                 </c:when>
                 <c:otherwise>

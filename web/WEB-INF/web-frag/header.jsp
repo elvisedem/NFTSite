@@ -32,7 +32,7 @@
                     <nav :class="!navbarOpen &amp;&amp; &#39;aA&#39; " id="navbarCollapse" class="ar as aK a4 aL[250px] av aM aN lg:aO lg:al lg:a4 lg:aj lg:a6 aP lg:aQ lg:ak lg:aR xl:aS aA">
                         <ul class="aT lg:a3">
                             <li class="aU af">
-                                <a href="home" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
+                                <a href="/dashboard/home" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
                                     Home
                                 </a>
                             </li>
@@ -40,7 +40,7 @@
                                 <a href="explore" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
                                     MarketPlace
                                 </a>
-                            </li>
+                            </li>  
                             <c:choose>
                                 <c:when test="${(user.email ne null) and (user.userId ne null)}">
                                     <li class="aU af">
