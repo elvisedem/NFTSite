@@ -13,7 +13,7 @@
 
         <title>BArtMint -Transactions</title>
 
-        <jsp:include page="dashboard/web-frags/head-tags.jsp" />
+        <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
 
         <style type="text/css">
             .layout-menu-fixed .layout-navbar-full .layout-menu,
@@ -93,14 +93,14 @@
 
             <div class="layout-container">
                 <!-- Menu -->
-                <jsp:include page="dashboard/web-frags/menu.jsp" />
+                <jsp:include page="../dashboard/web-frags/menu.jsp" />
                 <!-- / Menu -->
 
                 <!-- Layout container -->
                 <div class="layout-page">
                     <!-- Navbar -->
 
-                    <jsp:include page="dashboard/web-frags/navbar.jsp" />
+                    <jsp:include page="../dashboard/web-frags/navbar.jsp" />
 
                     <!-- / Navbar -->
 
@@ -173,7 +173,7 @@
         <!-- / Layout wrapper -->
 
 
-        <jsp:include page="dashboard/web-frags/footer-scripts.jsp" />
+        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
         <script>
             $(document).ready(function(){

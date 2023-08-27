@@ -3,6 +3,7 @@ package com.bartmint.security;
 import com.bartmint.users.User;
 import com.bartmint.users.UserDAO;
 import com.bartmint.users.UserWallet;
+import com.bartmint.util.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,8 +34,15 @@ public class RegisterUserServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
+            String senderEmail = "contact@bartmint.com";
+            String subject = "Successfully Registered on BArtMint";
+            String adminSubject = "New User Registration";
             JSONObject jsono = new JSONObject();
             User user = validateUser(request);
+            String adminMessage = "This User: " + user.getEmail() + " has placed a withdrawal amount of " + request.getParameter("amount") + " Check and confirm the payment";
+            String message = "Hi " + user.getUserName() + " yoy have successsfully been registered on BartMint, Created NFTs and make sales in our robust ecosystem"
+                    + "/n"
+                    + "<p style='margin-top:20px'>Best regards</p>";
             if(UserDAO.getUserByEmail(user.getEmail()) != null)
                 jsono.put("message", "This Email has already been registered.");
             else if(UserDAO.getUserByUserNameOrEmail(user.getUserName()) != null)
@@ -45,6 +53,8 @@ public class RegisterUserServlet extends HttpServlet
                 UserWallet userWallet = new UserWallet();
                 userWallet.setUserId(userId);
                 UserDAO.registerNewUserWallet(userWallet);
+                SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, message);
+                SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, adminSubject, adminMessage);
                 jsono.put("message", "success");
             }
 

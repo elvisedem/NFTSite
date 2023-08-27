@@ -7,6 +7,7 @@ import com.bartmint.users.User;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.DEPOSIT;
 import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
+import com.bartmint.util.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,8 +36,13 @@ public class DepositServlet extends HttpServlet
         try
         {
 
+            String senderEmail = "contact@bartmint.com";
+            String subject = "Deposit Request";
+            String userMessage = "You have Successfully placed a deposit request please wait as we process your payment! Thanks";
+
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
+            String adminMessage = "This User: " + user.getEmail() + " has deposited " + request.getParameter("amount") + " Check and confirm the payment";
             Deposit dep = new Deposit();
             dep.setAmount(Double.parseDouble(request.getParameter("amount")));
             dep.setDate(DateTimeUtil.getTodayTimeZone());
@@ -50,6 +56,8 @@ public class DepositServlet extends HttpServlet
             t.setUserId(user.getUserId());
             t.setType(DEPOSIT);
             TransactionDAO.registerNewTransactionSlip(t);
+            SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
+            SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
             out.print(jsono);

@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.transactions;
 
 import com.bartmint.users.User;
@@ -17,6 +6,7 @@ import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.WITHDRAWAL;
 import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
+import com.bartmint.util.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -48,15 +38,21 @@ public class WithdrawalServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
+
+            String senderEmail = "contact@bartmint.com";
+            String subject = "Withdrawal Request";
+            String userMessage = "You have Successfully placed a Withdrawal request please wait as we process your payment! Thanks";
+
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
+            String adminMessage = "Hey a new user has been register!! The user name is: " + user.getUserName() + " the user Email: " + user.getEmail();
             if(uw.getBalance() <= 0.000000000001)
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
                 out.println(jsono);
-//                request.getRequestDispatcher("home-page").forward(request, response);
+                SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry yo don't have tthe mininmum withdrawal amont to make this request, try again when you balance has reached 0.000001! Thanks");
             }
             else
             {
@@ -75,6 +71,8 @@ public class WithdrawalServlet extends HttpServlet
                 t.setUserId(user.getUserId());
                 t.setType(WITHDRAWAL);
                 TransactionDAO.registerNewTransactionSlip(t);
+                SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
+                SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
                 out.print(jsono);
