@@ -44,7 +44,7 @@
                             <c:choose>
                                 <c:when test="${(user.email ne null) and (user.userId ne null)}">
                                     <li class="aU af">
-                                        <a href="home" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
+                                        <a href="/dashboard/home" class="aV a3 an aW aX aY[#bababa] group-hover:aZ lg:a_ lg:a13 lg:a10 lg:a11 lg:a12 xl:a14">
                                             My Account
                                         </a>
                                     </li>
