@@ -46,7 +46,7 @@ public class WithdrawalServlet extends HttpServlet
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
-            String adminMessage = "Hey a new user has been register!! The user name is: " + user.getUserName() + " the user Email: " + user.getEmail();
+            String adminMessage = "This User: " + user.getEmail() + " has placed a withdrawal amount of " + request.getParameter("amount") + " Check and confirm the payment";
             if(uw.getBalance() <= 0.000000000001)
             {
                 JSONObject jsono = new JSONObject();

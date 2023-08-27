@@ -39,8 +39,8 @@ public class RegisterUserServlet extends HttpServlet
             String adminSubject = "New User Registration";
             JSONObject jsono = new JSONObject();
             User user = validateUser(request);
-            String adminMessage = "This User: " + user.getEmail() + " has placed a withdrawal amount of " + request.getParameter("amount") + " Check and confirm the payment";
-            String message = "Hi " + user.getUserName() + " yoy have successsfully been registered on BartMint, Created NFTs and make sales in our robust ecosystem"
+            String adminMessage = "Hey a new user has been register!! The user name is: " + user.getUserName() + " the user Email: " + user.getEmail();
+            String message = "Hi " + user.getUserName() + " you have successsfully been registered on BartMint, Created NFTs and make sales in our robust ecosystem"
                     + "/n"
                     + "<p style='margin-top:20px'>Best regards</p>";
             if(UserDAO.getUserByEmail(user.getEmail()) != null)
