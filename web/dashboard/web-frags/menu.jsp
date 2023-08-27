@@ -58,7 +58,7 @@
 
 
         <li class="menu-item">
-            <a href="transaction" class="menu-link">
+            <a href="user-transaction" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bell"></i>
                 <div>Transactions</div>
             </a>

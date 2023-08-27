@@ -794,7 +794,7 @@
                     border-radius:2px;
                 }
                 th{
-                    color:black !important;
+                    color:white !important;
                 }
             </style>
         </head>
@@ -846,7 +846,7 @@
                                                     <small>My NFTs</small>
                                                     <strong>
                                                         <h3 class="py-2 text-white">
-                                                            0                </h3>
+                                                           ${nftCount}               </h3>
                                                     </strong>
                                                 </div>
                                             </div>

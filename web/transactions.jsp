@@ -171,7 +171,7 @@
             <div class="layout-overlay layout-menu-toggle"></div>
         </div>
         <!-- / Layout wrapper -->
- 
+
 
         <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
