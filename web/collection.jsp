@@ -1,7 +1,7 @@
 <%--
     Document   : collection
     Created on : 28-Jun-2023, 14:45:12
-    Author     : HULLO
+    Author     : HULLO, NFT SITE
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -845,8 +845,6 @@
                                                 <span class="float-end">Balance: ${uw.balance} ETH</span>
                                             </div>
                                             <div class="card-body">
-                                                <!--<div id="errorBox" class="alert alert-danger show flex items-center mb-2" style="display: none;"></div>-->
-                                                <!--<div id="successBox" class="alert alert-success show flex items-center mb-2" style="display: none;"></div>-->
 
                                                 <form id="collection-form">
                                                     <div class="">

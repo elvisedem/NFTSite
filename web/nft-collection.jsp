@@ -77,7 +77,6 @@
         </style>
 
     </head>
-    <c:set value="https://bartmint.com/images/" var="imageUrl" scope="application"/>
     <body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="">
         <!-- Layout wrapper -->
         <div class="row d-md-none">
@@ -106,88 +105,54 @@
                         <!-- Content -->
 
                         <div class="container-fluid flex-grow-1 container-p-y">
-                            <c:if test="${param.upl eq 1}">
-                                <p class="text-success"> ${succMsg}</p>
-                            </c:if>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body p-1 pt-3">
                                             <ul class="">
-                                                <h3>My collections </h3>
-                                                <div class="row">
-                                                    <%--<c:if test="${fn:length(cc) == 0}">--%>
-                                                    <p class="text-warning">Oops, You don't have any Collection, create more at the <a href="collection">Create a Collection Section</a></p>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:forEach var="collection" items="${cc}">--%>
-                                                        <div class="col-6 col-sm-6 col-lg-3 m-2">
-                                                            <div class="card border">
-                                                                <div class="card-body ">
-                                                                    <h4>${collection.collection_name}</h4>
-                                                                    <%--<c:set var="artList" value="${collection.collectionArts}"/>--%>
-                                                                  <!--<p>Artworks: </p>-->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    <%--</c:forEach>--%>
-                                                </div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row p-2">
-                                <h3 class="p-2">NFT Artworks</h3>
-                                <p class="text-warning">Oops, You don't have any NFT, create more at the <a href="create-nft">Create an NFT Section</a></p>
-                                <c:forEach var="nft" items="${nfts}">
-                                    <div class="col-12 col-lg-4 my-2">
-                                        <div class="card shadow-sm">
-                                            <div class="card-body">
-                                                <span class="badge bg-primary float-end">
-                                                    ${user.username}               </span>
-                                                <img class="card-img-top" src="${imageUrl}${nft.artWorkName}" alt="Card image" style="width:100%; height:250px;">
-                                                <div class="p-2 border-top-1">
-                                                    ${nft.nftName}                   </div>
-                                                <div class="p-2 border-top-1">
-                                                    Price: ${nft.price}
-                                                </div>
-                                                <div class="p-2 border-top-1">
+                                                <h3>My Collections </h3>
 
-                                                </div>
+                                                <p class="text-warning">Oops, You don't have any Collection, create more at the <a href="collection">Create a Collection Section</a></p>
+
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </c:forEach>
+                                </div>
+                                <div class="row p-2">
+                                    <h3 class="p-2">NFT Artworks</h3>
+                                    <p class="text-warning">Oops, You don't have any NFT, create more at the <a href="create-nft">Create an NFT Section</a></p>
+
+
+                                </div>
+
 
                             </div>
+                            <!-- / Content -->
+
+                            <!-- Footer -->
+                            <footer class="content-footer footer">
+                                <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
 
 
+                                </div>
+                            </footer>
+                            <!-- / Footer -->
+
+                            <div class="content-backdrop fade"></div>
                         </div>
-                        <!-- / Content -->
-
-                        <!-- Footer -->
-                        <footer class="content-footer footer">
-                            <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-
-
-                            </div>
-                        </footer>
-                        <!-- / Footer -->
-
-                        <div class="content-backdrop fade"></div>
+                        <!-- Content wrapper -->
                     </div>
-                    <!-- Content wrapper -->
+                    <!-- / Layout page -->
                 </div>
-                <!-- / Layout page -->
+
+                <!-- Overlay -->
+                <div class="layout-overlay layout-menu-toggle"></div>
             </div>
-
-            <!-- Overlay -->
-            <div class="layout-overlay layout-menu-toggle"></div>
-        </div>
-        <!-- / Layout wrapper -->
+            <!-- / Layout wrapper -->
 
 
-        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
+            <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
 
 
-</html>
+    </html>

@@ -50,6 +50,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="a1R a3 a1S">
                 <c:forEach var="nftArt" items="${nftArts}">
                     <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
@@ -105,6 +106,7 @@
                 </c:forEach>
             </div>
 
+<!--
             <div class="a1R a3 a1S">
 
 
@@ -1130,26 +1132,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
-            <div class="row">
+<!--            <div class="row">
                 <form method="GET" action="previous-art-page" class="float-left">
                     <input hidden="" value="${page -1}" name="page"/>
-                    <c:if test="${page > 1}">
+                    <%--<c:if test="${page > 1}">--%>
                         <div class="col-7">
                             <button class="btn btn-secondary"><i class="icon-arrow-left"></i> Previous</button>
                         </div>
-                    </c:if>
+                    <%--</c:if>--%>
                 </form>
                 <form method="GET" action="next-art-page" class="float-right">
                     <input hidden="" value="${page}" name="page"/>
-                    <c:if test="${page < totalPages}">
+                    <%--<c:if test="${page < totalPages}">--%>
                         <div class="col-7">
                             <button id="loadMore" class="btn btn-secondary" type="submit">Next <i class="icon-arrow-right"></i></button>
                         </div>
-                    </c:if>
+                    <%--</c:if>--%>
                 </form>
-            </div>
+            </div>-->
         </div>
         <jsp:include page="WEB-INF/web-frag/footer.jsp" />
 

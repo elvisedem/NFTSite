@@ -129,6 +129,10 @@
         <servlet-name>Transaction Page Servlet</servlet-name>
         <servlet-class>com.bartmint.dashboard.TransactionPageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>User Collection Page (jsp)</servlet-name>
+        <jsp-file>/user-collection.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login Page (JSP)</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -244,6 +248,10 @@
     <servlet-mapping>
         <servlet-name>Transaction Page Servlet</servlet-name>
         <url-pattern>/dashboard/user-transaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>User Collection Page (jsp)</servlet-name>
+        <url-pattern>/dashboard/user-collection</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

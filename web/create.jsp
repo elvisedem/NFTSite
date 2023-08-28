@@ -1,7 +1,7 @@
 <%--
     Document   : create
     Created on : 28-Jun-2023, 14:58:45
-    Author     : HULLO
+    Author     : HULLO, NFT SITE
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
