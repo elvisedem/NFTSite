@@ -47,8 +47,11 @@ public class LoginServlet extends HttpServlet
                 response.sendRedirect("dashboard/home");
             }
             else
-                response.sendRedirect("login?I=0");
-            request.setAttribute("username", user);
+//                response.sendRedirect("login?I=0");
+//            request.setAttribute("username", user);
+
+                request.setAttribute("errorMessage", "Your account couldn't be found. Kindly register an account.");
+            request.getRequestDispatcher("sign-up").forward(request, response);
         }
 
         catch(Exception xcp)

@@ -4,6 +4,7 @@
     Author     : HULLO
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -83,6 +84,10 @@
                     <div class="col col-lg-4 mx-auto my-4">
                         <div class="card">
                             <div class="card-body">
+
+                                <c:if test="${not empty errorMessage}">
+                                    <p style="color: red;">${errorMessage}</p>
+                                </c:if>
 
 
                                 <form id="signup" class="mb-3"  method="POST">
