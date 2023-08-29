@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -48,10 +49,8 @@ public class LoginServlet extends HttpServlet
             }
             else
 //                response.sendRedirect("login?I=0");
-//            request.setAttribute("username", user);
-
-                request.setAttribute("errorMessage", "Your account couldn't be found. Kindly register an account.");
-            request.getRequestDispatcher("sign-up").forward(request, response);
+                response.sendRedirect("login?error=account_not_found");
+            request.setAttribute("username", user);
         }
 
         catch(Exception xcp)

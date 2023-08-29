@@ -85,10 +85,6 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <c:if test="${not empty errorMessage}">
-                                    <p style="color: red;">${errorMessage}</p>
-                                </c:if>
-
 
                                 <form id="signup" class="mb-3"  method="POST">
                                     <div class="mb-3">

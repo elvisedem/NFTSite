@@ -793,6 +793,12 @@
             .btn{
                 border-radius:2px;
             }
+            th{
+                color:white !important;
+            }
+            td{
+                color:white !important;
+            }
         </style>
 
     </head>
@@ -853,7 +859,7 @@
                                                             </tr>
                                                             <tr id="invDetails2">
                                                                 <td><span>QR CODE :</span><br><br>
-                                                                    <img src="images/QR.jpg" alt="" class="img-fluid" style="height: auto; max-width: 50% !important;">
+                                                                    <img src="../images/QR.jpg" alt="" class="img-fluid" style="height: auto; max-width: 50% !important;">
                                                                     <br><h5 style="color:grey;"><small>If the QR code doesn't work with your wallet, simply copy and paste the address displayed above.</small></h5>
                                                                 </td>
                                                             </tr>

@@ -85,6 +85,13 @@
                         <div class="card">
                             <div class="card-body">
 
+                                <c:choose>
+                                    <c:when test="${param.error == 'account_not_found'}">
+                                        <p style="color: red;">Your account couldn't be found. Kindly register an account.</p>
+                                    </c:when>
+                                    
+                                </c:choose>
+
 
                                 <form action="user-login" class="mb-4"  method="GET">
                                     <div class="mb-4">

@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 public class DepositServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,13 +36,43 @@ public class DepositServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
-
-            String senderEmail = "contact@bartmint.com";
-            String subject = "Deposit Request";
-            String userMessage = "You have Successfully placed a deposit request please wait as we process your payment! Thanks";
-
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
+            String senderEmail = "contact@bartmint.com";
+            String subject = "Deposit Request";
+            String userMessage = "<!DOCTYPE html>\n"
+                    + "<html>\n"
+                    + "    <head>\n"
+                    + "        <title>Thank You</title>\n"
+                    + "        <meta charset=\"UTF-8\">\n"
+                    + "    </head>\n"
+                    + "    <body>\n"
+                    + "        <!-- Header section -->\n"
+                    + "        <div style=\"text-align: center; padding: 20px; background-color: #212529;\">\n"
+                    + "            <h1 style=\"color: white; font-size: 30px; border: 5px solid white; padding: 10px;\">BArtMint</h1>\n"
+                    + "        </div>\n"
+                    + "\n"
+                    + "        <!-- Body -->\n"
+                    + "        <div style=\"padding: 20px; background-color: #212529; color: white;\">\n"
+                    + "            <h2>Hi " + user.getUserName() + " ,</h2>\n"
+                    + "            <p style=\"font-size: 18px;\">You have Successfully placed a deposit request please wait as we process your payment! Thanks</p>\n"
+                    + "        </div>\n"
+                    + "\n"
+                    + "        <!-- Under Part -->\n"
+                    + "        <div style=\"text-align: center; padding: 10px;\">\n"
+                    + "            <a href=\"#\" style=\"padding-right: 10px; border-right: 2px solid black; color: black; text-decoration: none;\">Terms and Conditions</a>\n"
+                    + "            <a href=\"#\" style=\"padding-left: 10px; padding-right: 10px; color: black; text-decoration: none; border-right: 2px solid black;\">Privacy Policy</a>\n"
+                    + "            <a href=\"#\" style=\"padding-left: 10px; color: black; text-decoration: none;\">Contact Us</a>\n"
+                    + "            <div>\n"
+                    + "                <p style=\"opacity: 0.5; font-size: 20px;\">&copy; 2021 BArtMint<p>\n"
+                    + "                \n"
+                    + "            </div>\n"
+                    + "        </div>\n"
+                    + "    </body>\n"
+                    + "</html>";
+
+//            HttpSession session = request.getSession(false);
+//            User user = (User)session.getAttribute("user");
             String adminMessage = "This User: " + user.getEmail() + " has deposited " + request.getParameter("amount") + " Check and confirm the payment";
             Deposit dep = new Deposit();
             dep.setAmount(Double.parseDouble(request.getParameter("amount")));
