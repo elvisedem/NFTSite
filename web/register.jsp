@@ -1,70 +1,13 @@
-<%--
-    Document   : register
-    Created on : 28-Jun-2023, 13:36:05
-    Author     : HULLO
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<!-- saved from url=(0040)https://nft-tailwind.preview.uideck.com/ -->
 <html lang="en">
-    <!-- Mirrored from algromint.com/register by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:42:21 GMT -->
-    <!-- Added by HTTrack --><!-- /Added by HTTrack -->
     <head>
-
         <jsp:include page="WEB-INF/web-frag/head-tags.jsp" />
-
         <title>BArtMint -Register</title>
-
-        <style>
-            .menu-item{
-                list-style-type:none;
-                font-size:23px;
-                margin-bottom:10px;
-            }
-            .close-btn{
-                font-size:36px;
-            }
-            .card{
-                background:  #191919;
-            }
-            .btn-primary{
-                background-color: #696cff !important;
-                border-color: #696cff !important;
-            }
-            .bg-primary,.app-brand .layout-menu-toggle{
-                background: #696cff !important;
-            }
-            .btn{
-                box-shadow :none !important;
-            }
-            html,body{
-                overflow-x: hidden;
-                background-color:#050505;
-            }
-            h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
-                color:#fff;
-            }
-            .table:not(.table-dark) th {
-                color: #fff;
-            }
-            .custom-dark{
-                background:#191919 !important;
-                color:#fff !important;
-            }
-            .menu-link{
-                color:azure !important;
-            }
-            .form-label{
-                color:#fff;
-            }
-            input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, input:-internal-autofill-selected {
-                background-clip: text !important;
-                -webkit-background-clip: border-box !important;
-            }
-        </style>
     </head>
     <body class="a0" x-data="
           {
@@ -118,7 +61,6 @@
 
 
         <jsp:include page="WEB-INF/web-frag/footer.jsp" />
-
         <jsp:include page="WEB-INF/web-frag/footer-scripts.jsp" />
         <script>
             $(document).ready(function(){
@@ -215,7 +157,5 @@
                 }
             });
         </script>
-
-    </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
-    <!-- Mirrored from algromint.com/register by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:42:21 GMT -->
+    </body>
 </html>

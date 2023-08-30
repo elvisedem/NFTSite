@@ -1,8 +1,4 @@
-<%--
-    Document   : forgot-password
-    Created on : 28-Jun-2023, 15:58:55
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -15,9 +11,7 @@
     data-assets-path="assets"
     data-template="vertical-menu-template-free"
     >
-
-    <!-- Mirrored from algromint.com/dashboard/forgot-password by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:45:33 GMT -->
-    <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <head>
         <meta name="robots" content="noindex, nofollow" />
         <meta charset="utf-8" />
@@ -155,6 +149,4 @@
 
         <!-- Page JS -->
     </body>
-
-    <!-- Mirrored from algromint.com/dashboard/forgot-password by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:45:35 GMT -->
 </html>

@@ -1,8 +1,4 @@
-<%--
-    Document   : footer-scripts
-    Created on : 28-Jun-2023, 14:15:51
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -20,7 +16,7 @@
 <!-- Main JS -->
 <script src="../assets/js/main.js"></script>
 
-<!--<script src="../assets/js/myowncode.js"></script>-->
+<script src="../assets/js/myowncode.js"></script>
 <script src="../assets/js/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/jquery-3.3.1.min.js"></script>
 <script src="../assets/js/sweetalert2.js"></script>

@@ -18,6 +18,7 @@ import org.json.JSONObject;
  */
 public class RegisterUserServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -107,7 +108,6 @@ public class RegisterUserServlet extends HttpServlet
         }
         catch(Exception e)
         {
-            // Log the error and provide a generic error message
             e.printStackTrace(out);
         }
         finally

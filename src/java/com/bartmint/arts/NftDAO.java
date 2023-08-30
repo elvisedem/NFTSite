@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.arts;
 
 import com.bartmint.dbconfig.DBConfig;
@@ -27,7 +16,7 @@ public class NftDAO
 {
     public static void registerNewNFTs(NftArt nft) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -38,7 +27,7 @@ public class NftDAO
 
     public static int registerNewCollection(Collection cc) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -51,7 +40,7 @@ public class NftDAO
 
     public static void registerNewCollectionArt(CollectionArt ca) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -62,7 +51,7 @@ public class NftDAO
 
     public static List<NftArt> getArts() throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -76,7 +65,7 @@ public class NftDAO
 
     public static int getTotalNftArts()
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -97,7 +86,7 @@ public class NftDAO
 
     public static int getTotalUserNftArts(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -123,7 +112,7 @@ public class NftDAO
 
     public static List<NftArt> viewPreviousArts(int lastIndex)
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -143,7 +132,7 @@ public class NftDAO
 
     public static List<NftArt> viewMoreNftArts(int lastIndex) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -159,7 +148,7 @@ public class NftDAO
 
     public static NftArt getNftArtById(int artId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();

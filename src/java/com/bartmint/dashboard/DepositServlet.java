@@ -71,8 +71,6 @@ public class DepositServlet extends HttpServlet
                     + "    </body>\n"
                     + "</html>";
 
-//            HttpSession session = request.getSession(false);
-//            User user = (User)session.getAttribute("user");
             String adminMessage = "This User: " + user.getEmail() + " has deposited " + request.getParameter("amount") + " Check and confirm the payment";
             Deposit dep = new Deposit();
             dep.setAmount(Double.parseDouble(request.getParameter("amount")));

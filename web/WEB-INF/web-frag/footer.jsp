@@ -1,8 +1,4 @@
-<%--
-    Document   : footer
-    Created on : 27-Jun-2023, 13:08:30
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -12,9 +8,8 @@
             <div class="a4 ak sm:a25/12 lg:a26/12 xl:a27/12">
                 <div class="a28">
                     <div class="aL[300px]">
-                        <a href="home" class="a29 a2a">
+                        <a href="index.jsp" class="a29 a2a">
                             <h3 style="color:azure;font-size:23px;font-weight:600">
-                                <!--                                                    <img src="logo.png" alt="logo" class="aq" style="display:inline;">-->
                                 BArtmint
                             </h3>
                         </a>

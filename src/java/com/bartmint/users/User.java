@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.users;
 
 import static com.bartmint.util.Constant.UserConstants.USER_TABLE;
@@ -35,6 +24,9 @@ public class User implements Serializable
     private String userName;
     private String email;
     private String password;
+    private String fullName;
+    private String address;
+    private String phoneNumber;
 
     public User()
     {
@@ -78,5 +70,35 @@ public class User implements Serializable
     public void setUserId(int userId)
     {
         this.userId = userId;
+    }
+
+    public String getFullName()
+    {
+        return fullName;
+    }
+
+    public void setFullName(String fullName)
+    {
+        this.fullName = fullName;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
     }
 }

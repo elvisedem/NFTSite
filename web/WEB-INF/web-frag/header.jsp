@@ -1,8 +1,4 @@
-<%--
-    Document   : header
-    Created on : 27-Jun-2023, 13:14:56
-    Author     : HULLO
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -17,7 +13,6 @@
             <div class="ai aj ak">
                 <a href="index.html" class="header-logo al a4 ao lg:ap" :class="scrolledFromTop ? &#39;am lg:an&#39; : &#39;ao lg:ap&#39; ">
                     <h3 style="color:azure;font-size:23px;font-weight:600">
-                        <!--<img src="logo.png" alt="logo" class="aq" style="display:inline !important;">-->
                         BArtMint
                     </h3>
                 </a>

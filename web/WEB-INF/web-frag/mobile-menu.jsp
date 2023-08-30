@@ -1,8 +1,4 @@
-<%--
-    Document   : mobile-menu
-    Created on : 27-Jun-2023, 13:16:24
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.users;
 
 import com.bartmint.dbconfig.DBConfig;
@@ -27,7 +16,7 @@ public class UserWalletDAO
 
     public static UserWallet getUserWalletById(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -41,7 +30,7 @@ public class UserWalletDAO
 
     public static void updateUserBalance(UserWallet uw, double balance) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();

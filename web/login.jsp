@@ -1,70 +1,14 @@
-<%--
-    Document   : login
-    Created on : 28-Jun-2023, 13:06:39
-    Author     : HULLO
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<!-- saved from url=(0040)https://nft-tailwind.preview.uideck.com/ -->
 <html lang="en">
-    <!-- Mirrored from algromint.com/login by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:41:44 GMT -->
-    <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <head>
-
         <jsp:include page="WEB-INF/web-frag/head-tags.jsp" />
-
         <title>BArtMint -Login</title>
-
-        <style>
-            .menu-item{
-                list-style-type:none;
-                font-size:23px;
-                margin-bottom:10px;
-            }
-            .close-btn{
-                font-size:36px;
-            }
-            .card{
-                background:  #191919;
-            }
-            .btn-primary{
-                background-color: #696cff !important;
-                border-color: #696cff !important;
-            }
-            .bg-primary,.app-brand .layout-menu-toggle{
-                background: #696cff !important;
-            }
-            .btn{
-                box-shadow :none !important;
-            }
-            html,body{
-                overflow-x: hidden;
-
-            }
-            h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
-                color:#fff;
-            }
-            .table:not(.table-dark) th {
-                color: #fff;
-            }
-            .custom-dark{
-                background:#191919 !important;
-                color:#fff !important;
-            }
-            .menu-link{
-                color:azure !important;
-            }
-            .form-label{
-                color:#fff;
-            }
-            input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, input:-internal-autofill-selected {
-                background-clip: text !important;
-                -webkit-background-clip: border-box !important;
-            }
-        </style>
     </head>
     <body class="a0" x-data="
           {
@@ -89,7 +33,7 @@
                                     <c:when test="${param.error == 'account_not_found'}">
                                         <p style="color: red;">Your account couldn't be found. Kindly register an account.</p>
                                     </c:when>
-                                    
+
                                 </c:choose>
 
 
@@ -123,54 +67,6 @@
 
 
         <jsp:include page="WEB-INF/web-frag/footer.jsp" />
-
         <jsp:include page="WEB-INF/web-frag/footer-scripts.jsp" />
-
-        <script>
-            var returnedSuggestion = ''
-            let editor, doc, cursor, line, pos
-            document.addEventListener("keydown", (event) => {
-                setTimeout(() => {
-                    editor = event.target.closest('.CodeMirror');
-                    if(editor){
-                        doc = editor.CodeMirror.getDoc()
-                        cursor = doc.getCursor()
-                        line = doc.getLine(cursor.line)
-                        pos = {line: cursor.line, ch: line.length}
-                        if(event.key == "Enter"){
-                            var query = doc.getRange({line: Math.max(0, cursor.line - 10), ch: 0}, {line: cursor.line, ch: 0})
-                            window.postMessage({source: 'getSuggestion', payload: {data: query}})
-                            //displayGrey(query)
-                        }else if(event.key == "ArrowRight"){
-                            acceptTab(returnedSuggestion)
-                        }
-                    }
-                }, 0)
-            })
-
-            function acceptTab(text){
-                if(suggestionDisplayed){
-                    doc.replaceRange(text, pos)
-                    suggestionDisplayed = false
-                }
-            }
-            function displayGrey(text){
-                var element = document.createElement('span')
-                element.innerText = text
-                element.style = 'color:grey'
-                var lineIndex = pos.line;
-                editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(element)
-                suggestionDisplayed = true
-            }
-            window.addEventListener('message', (event) => {
-                if(event.source !== window)
-                    return
-                if(event.data.source == 'return'){
-                    returnedSuggestion = event.data.payload.data
-                    displayGrey(event.data.payload.data)
-                }
-            })
-        </script>
     </body>
-    <!-- Mirrored from algromint.com/login by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Jun 2023 21:42:20 GMT -->
 </html>

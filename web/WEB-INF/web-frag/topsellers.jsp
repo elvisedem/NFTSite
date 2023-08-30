@@ -1,8 +1,4 @@
-<%--
-    Document   : topsellers
-    Created on : 27-Jun-2023, 13:00:29
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

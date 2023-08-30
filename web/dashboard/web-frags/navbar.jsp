@@ -1,8 +1,4 @@
-<%--
-    Document   : navbar
-    Created on : 28-Jun-2023, 14:37:10
-    Author     : HULLO
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -52,7 +48,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="profile">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

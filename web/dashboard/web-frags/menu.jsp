@@ -1,8 +1,4 @@
-<%--
-    Document   : menu
-    Created on : 28-Jun-2023, 14:35:16
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

@@ -1,8 +1,4 @@
-<%--
-    Document   : head-tags
-    Created on : 27-Jun-2023, 13:37:49
-    Author     : HULLO
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -34,5 +30,93 @@
     new WOW().init();
 </script>
 <script defer="" src="assets/home_files/alpine.min.js.download"></script>
+
+<style>
+    .menu-item{
+        list-style-type:none;
+        font-size:23px;
+        margin-bottom:10px;
+    }
+    .close-btn{
+        font-size:36px;
+    }
+    .heading {
+        text-align: center;
+        color: #454343;
+        font-size: 30px;
+        font-weight: 700;
+        position: relative;
+        margin-bottom: 70px;
+        text-transform: uppercase;
+        z-index: 999;
+    }
+    .white-heading{
+        color: #ffffff;
+    }
+    .heading:after {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        height: 40px;
+        width: 180px;
+        border-radius: 4px;
+        transform: translateX(-50%);
+        background: url(img/heading-line.html);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .white-heading:after {
+        background: url(../i.ibb.co/d7tSD1R/heading-line-white.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .heading span {
+        font-size: 18px;
+        display: block;
+        font-weight: 500;
+    }
+    .white-heading span {
+        color: #ffffff;
+    }
+    .card{
+        background:  #191919;
+    }
+    .btn-primary{
+        background-color: #696cff !important;
+        border-color: #696cff !important;
+    }
+    .bg-primary,.app-brand .layout-menu-toggle{
+        background: #696cff !important;
+    }
+    .btn{
+        box-shadow :none !important;
+    }
+    html,body{
+        overflow-x: hidden;
+
+    }
+    h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1{
+        color:#fff;
+    }
+    .table:not(.table-dark) th {
+        color: #fff;
+    }
+    .custom-dark{
+        background:#191919 !important;
+        color:#fff !important;
+    }
+    .menu-link{
+        color:azure !important;
+    }
+    .form-label{
+        color:#fff;
+    }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, input:-internal-autofill-selected {
+        background-clip: text !important;
+        -webkit-background-clip: border-box !important;
+    }
+</style>
 
 

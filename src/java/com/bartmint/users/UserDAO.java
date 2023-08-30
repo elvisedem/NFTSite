@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.users;
 
 import com.bartmint.dbconfig.DBConfig;
@@ -27,7 +16,7 @@ public class UserDAO
 {
     public static int registerNewUser(User user) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -40,7 +29,7 @@ public class UserDAO
 
     public static void registerNewUserWallet(UserWallet uw) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -51,7 +40,7 @@ public class UserDAO
 
     public static User getUserByUserNameOrEmail(String userNameOrEmail) throws Exception
     {
-        try( DBConfig dbConfig = new DBConfig())
+        try(DBConfig dbConfig = new DBConfig())
         {
             EntityManager em = dbConfig.getEntityManager();
             String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + EMAIL + " = ? OR " + USER_NAME + " = ?";
@@ -89,7 +78,7 @@ public class UserDAO
 
     public static User getUserByEmail(String email) throws Exception
     {
-        try( DBConfig dbConfig = new DBConfig())
+        try(DBConfig dbConfig = new DBConfig())
         {
             EntityManager em = dbConfig.getEntityManager();
             String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + EMAIL + " = ?";
@@ -106,7 +95,7 @@ public class UserDAO
 
     public static User getUserByUserName(String email) throws Exception
     {
-        try( DBConfig dbConfig = new DBConfig())
+        try(DBConfig dbConfig = new DBConfig())
         {
             EntityManager em = dbConfig.getEntityManager();
             String sql = "SELECT * FROM " + USER_TABLE + " WHERE " + USER_NAME + " = ?";
@@ -118,6 +107,25 @@ public class UserDAO
         catch(NoResultException nre)
         {
             return null;
+        }
+    }
+
+    public static void updateNewUser(int userId, String fullname, String address, String phonenumber)
+    {
+        try(DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            User user = em.find(User.class, userId);
+            em.getTransaction().begin();
+            user.setFullName(fullname);
+            user.setPhoneNumber(phonenumber);
+            user.setAddress(address);
+            em.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 }

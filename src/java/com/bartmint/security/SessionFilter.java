@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.security;
 
 import com.bartmint.users.User;
@@ -172,10 +161,10 @@ public class SessionFilter implements Filter
                 if(user != null)
                     chain.doFilter(wrappedRequest, wrappedResponse);
                 else
-                    wrappedResponse.sendRedirect("../login");
+                    wrappedResponse.sendRedirect("../invalid");
             }
             else
-                wrappedResponse.sendRedirect("../login");
+                wrappedResponse.sendRedirect("../invalid");
         }
         catch(Throwable t)
         {

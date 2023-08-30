@@ -22,6 +22,7 @@ import org.json.JSONObject;
  */
 public class WithdrawalServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

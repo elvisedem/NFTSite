@@ -1,14 +1,3 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
 package com.bartmint.transactions;
 
 import com.bartmint.dbconfig.DBConfig;
@@ -28,7 +17,7 @@ public class TransactionDAO
 {
     public static void registerNewUserDeposit(Deposit dep) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -39,7 +28,7 @@ public class TransactionDAO
 
     public static void registerNewTransactionSlip(Transaction dep) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -50,7 +39,7 @@ public class TransactionDAO
 
     public static void registerNewWithdrawalSlip(Withdrawal withdrawal) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -61,7 +50,7 @@ public class TransactionDAO
 
     public static List<Transaction> getAllTransactionOfUser(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();

@@ -1,14 +1,4 @@
-/*
- * Copyright (c) 2018, Xyneex Technologies. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * You are not meant to edit or modify this source code unless you are
- * authorized to do so.
- *
- * Please contact Xyneex Technologies, #1 Orok Orok Street, Calabar, Nigeria.
- * or visit www.xyneex.com if you need additional information or have any
- * questions.
- */
+
 
 
 /* global form */
@@ -113,61 +103,61 @@ $(document).ready(function(){
     }
 });
 
-$(document).ready(function(){
-//login a user
-    $('#loginform').submit(function(e){
-        e.preventDefault();
-        var email = $('#email').val().trim();
-        var password = $('#password').val().trim();
-        /*
-         * Use AJAX to submit the information
-         */
-        $.ajax({
-            url: 'LoginServlet',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {email: email, password: password},
-            beforeSend: function(xhr){
-                console.log('Submitting form...');
-                $('#submitBtn').attr("disabled", true);
-                $('#submitBtn').html('<i class="fa fa-refresh fa-spin"> </i> Logging In...');
-            },
-            success: function(data, textStatus, jqXHR){
-                $('#submitBtn').removeAttr("disabled");
-                $('#submitBtn').html('<i class="fa fa-save"> </i> Log In');
-                if(data.message !== 'success')
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: data.message
-                    });
-                else{
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'User Logged In',
-                        text: 'Redirecting to your dashboard.'
-                    });
-                    setTimeout(function(){
-                        window.location.href = '/d/dashboard';
-                    }, 50);
-                }
-
-            },
-            complete: function(jqXHR, textStatus){
-
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                $('#submitBtn').removeAttr("disabled");
-                $('#submitBtn').html('<i class="fa fa-save"> </i> Log In');
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: "There was an error, please reload this page. " + errorThrown
-                });
-            }
-        });
-    });
-});
+//$(document).ready(function(){
+////login a user
+//    $('#loginform').submit(function(e){
+//        e.preventDefault();
+//        var email = $('#email').val().trim();
+//        var password = $('#password').val().trim();
+//        /*
+//         * Use AJAX to submit the information
+//         */
+//        $.ajax({
+//            url: 'LoginServlet',
+//            method: 'POST',
+//            dataType: 'JSON',
+//            data: {email: email, password: password},
+//            beforeSend: function(xhr){
+//                console.log('Submitting form...');
+//                $('#submitBtn').attr("disabled", true);
+//                $('#submitBtn').html('<i class="fa fa-refresh fa-spin"> </i> Logging In...');
+//            },
+//            success: function(data, textStatus, jqXHR){
+//                $('#submitBtn').removeAttr("disabled");
+//                $('#submitBtn').html('<i class="fa fa-save"> </i> Log In');
+//                if(data.message !== 'success')
+//                    Swal.fire({
+//                        icon: 'error',
+//                        title: 'Error',
+//                        text: data.message
+//                    });
+//                else{
+//                    Swal.fire({
+//                        icon: 'success',
+//                        title: 'User Logged In',
+//                        text: 'Redirecting to your dashboard.'
+//                    });
+//                    setTimeout(function(){
+//                        window.location.href = '/d/dashboard';
+//                    }, 50);
+//                }
+//
+//            },
+//            complete: function(jqXHR, textStatus){
+//
+//            },
+//            error: function(jqXHR, textStatus, errorThrown){
+//                $('#submitBtn').removeAttr("disabled");
+//                $('#submitBtn').html('<i class="fa fa-save"> </i> Log In');
+//                Swal.fire({
+//                    icon: 'error',
+//                    title: 'Error',
+//                    text: "There was an error, please reload this page. " + errorThrown
+//                });
+//            }
+//        });
+//    });
+//});
 
 $(document).ready(function(){
 //update a user
@@ -209,7 +199,7 @@ $(document).ready(function(){
          * Use AJAX to submit the information
          */
         $.ajax({
-            url: 'UpdateUserServlet',
+            url: 'update-user',
             method: 'POST',
             dataType: 'JSON',
             data: {fullname: fullname, address: address, phonenumber: phonenumber},
