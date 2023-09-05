@@ -222,7 +222,9 @@
                         success: function(data, textStatus, jqXHR){
                             if(data.message === 'success'){
                                 swal.fire("Success!", "Your NFT was created successfully!", "success");
-                                ajaxPageLoad('view-arts', 'ART ROOM');
+                                setTimeout(function(){
+                                    window.location.href = 'home';
+                                }, 10000);
                             }else
                                 swal.fire("Error!", data.message, "error");
                         },

@@ -1,8 +1,11 @@
-package com.bartmint.security;
+package com.bartmint.dashboard;
 
+import com.bartmint.arts.Collection;
+import com.bartmint.arts.NftArt;
+import com.bartmint.arts.NftDAO;
 import com.bartmint.users.User;
-import com.bartmint.users.UserDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +16,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author BLAZE
  */
-public class LoginServlet extends HttpServlet
+public class MyNftsServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,40 +30,25 @@ public class LoginServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         try
         {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            User user = UserDAO.loginUser(username, password);
-            if(user != null)
-            {
-                HttpSession session = request.getSession(false);
-                if(session != null)
-                    session.invalidate();
-                session = request.getSession(true);
-                session.setAttribute("user", user);
-                if(request.getParameter("remember") != null)
-                    session.setMaxInactiveInterval(60 * 60 * 24 * 10);
-                else
-                    session.setMaxInactiveInterval(60 * 60);
-                response.sendRedirect("dashboard/home");
-            }
-            else
-                response.sendRedirect("login?error=0");
-            request.setAttribute("username", user);
-        }
 
-        catch(Exception xcp)
+            HttpSession session = request.getSession(false);
+            User user = (User)session.getAttribute("user");
+            List<NftArt> nftArts = NftDAO.getNftArtByUserId(user.getUserId());
+            List<Collection> collections = NftDAO.getCollectionsByUserId(user.getUserId());
+            request.setAttribute("nftArts", nftArts);
+            request.setAttribute("collections", collections);
+            request.getRequestDispatcher("nft-collection").forward(request, response);
+        }
+        catch(Exception e)
         {
-            if(xcp instanceof IllegalArgumentException)
-                response.sendRedirect("sign-up?l=0");
-            else
-                throw new RuntimeException(xcp);
+            throw new RuntimeException(e);
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

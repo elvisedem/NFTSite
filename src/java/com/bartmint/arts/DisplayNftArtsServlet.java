@@ -40,7 +40,7 @@ public class DisplayNftArtsServlet extends HttpServlet
             request.setAttribute("totalPages", totalPages);
             request.setAttribute("page", page);
             request.setAttribute("nftArts", nftArts);
-            request.getRequestDispatcher("explore.jsp").forward(request, response);
+            request.getRequestDispatcher("explore-page").forward(request, response);
         }
         catch(Exception e)
         {

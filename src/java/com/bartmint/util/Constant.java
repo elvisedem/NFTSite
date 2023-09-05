@@ -21,6 +21,7 @@ public class Constant
 
         public static final String COLLECTION_TABLE = "collections";
         public static final String COLLECTION_ART_TABLE = "collectionart";
+        public static final String C_ID = "cId";
     }
 
     public final class UserDepositConstants

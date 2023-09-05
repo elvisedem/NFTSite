@@ -53,10 +53,10 @@
                                                 <div class="card-body">
 
                                                     <small>My NFTs</small>
-                                                    <strong>
-                                                        <h3 class="py-2 text-white">
-                                                           ${nftCount}               </h3>
-                                                    </strong>
+                                                    <h3 class="py-2 text-white text-bold">
+                                                        ${nftCount}
+                                                    </h3>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -65,11 +65,9 @@
                                                 <div class="card-body text-white h-100">
 
                                                     <small>Current Mint fee</small>
-                                                    <strong>
-                                                        <h3 class="py-2 text-white">
+                                                        <h3 class="py-2 text-white text-bold">
                                                             0.1482ETH
                                                         </h3>
-                                                    </strong>
                                                 </div>
                                             </div>
 

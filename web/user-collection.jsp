@@ -1,7 +1,6 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html
     lang="en"
@@ -26,84 +25,50 @@
                     <div class="card-body">
 
                         <ul class="">
-                            <h3>Joshart_04's collection </h3>
+                            <h3>${collection.collectionName} collection </h3>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="row p-2">
+            <c:forEach var="cArt" items="${cArts}">
+                <div class="col-12 col-lg-4 my-2">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <span class="badge bg-primary float-end">
+                                ${collection.collectionName}
+                            </span>
+                            <img class="card-img-top" src="/FileUploaderApp/temp/${cArt.imageName}" alt="Card image" style="width:100%; height:250px;">
+                            <div class="p-2 border-top-1">
+                                Price:<p class="text-primary"> ${collection.price}</p>
+                            </div>
+                            <div class="p-2 border-top-1">
 
-            <div class="col-12 col-lg-4 my-2">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <img class="card-img-top" src="../nfts/IMG_20230220_112045.jpg" alt="Card image" style="width:100%; height:250px;">
-                        <div class="p-2 border-top-1">
-                            Man                    </div>
-                        <div class="p-2 border-top-1">
-                            Status: <span class="badge badge-primary">approved</span>
-                        </div>
-                        <div class="p-2 border-top-1">
-                            Price: 1.0621 ETH
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-4 my-2">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <img class="card-img-top" src="../nfts/IMG_20230220_112045.jpg" alt="Card image" style="width:100%; height:250px;">
-                        <div class="p-2 border-top-1">
-                            Man                    </div>
-                        <div class="p-2 border-top-1">
-                            Status: <span class="badge badge-primary">approved</span>
-                        </div>
-                        <div class="p-2 border-top-1">
-                            Price: 1.0621 ETH
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
+            <!-- / Content -->
 
-            <div class="col-12 col-lg-4 my-2">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <img class="card-img-top" src="../nfts/IMG_20230220_112045.jpg" alt="Card image" style="width:100%; height:250px;">
-                        <div class="p-2 border-top-1">
-                            Man                    </div>
-                        <div class="p-2 border-top-1">
-                            Status: <span class="badge badge-primary">approved</span>
-                        </div>
-                        <div class="p-2 border-top-1">
-                            Price: 1.0621 ETH
-                        </div>
-                    </div>
+            <!-- Footer -->
+            <footer class="content-footer footer">
+                <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+
+
                 </div>
-            </div>
+            </footer>
+            <!-- / Footer -->
 
-        </div>
-        <!-- / Content -->
+            <div class="content-backdrop fade"></div>
 
-        <!-- Footer -->
-        <footer class="content-footer footer">
-            <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-
-
-            </div>
-        </footer>
-        <!-- / Footer -->
-
-        <div class="content-backdrop fade"></div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-        <!-- / Layout wrapper -->
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+            <!-- / Layout wrapper -->
 
 
-        <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
+            <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
     </body>
 </html>
 

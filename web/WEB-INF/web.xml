@@ -137,6 +137,18 @@
         <servlet-name>Update User Servlet</servlet-name>
         <servlet-class>com.bartmint.users.UserUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>My Nfts Servlet</servlet-name>
+        <servlet-class>com.bartmint.dashboard.MyNftsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Get Collection Arts Servlet</servlet-name>
+        <servlet-class>com.bartmint.dashboard.GetCollectionArtsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Explore Page</servlet-name>
+        <jsp-file>/explore.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login Page (JSP)</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -260,6 +272,18 @@
     <servlet-mapping>
         <servlet-name>Update User Servlet</servlet-name>
         <url-pattern>/dashboard/update-user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>My Nfts Servlet</servlet-name>
+        <url-pattern>/dashboard/my-arts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Get Collection Arts Servlet</servlet-name>
+        <url-pattern>/dashboard/collection-arts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Explore Page</servlet-name>
+        <url-pattern>/explore-page</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

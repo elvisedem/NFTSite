@@ -28,15 +28,9 @@
                     <div class="col col-lg-4 mx-auto my-4 pt-4">
                         <div class="card">
                             <div class="card-body">
-
-                                <c:choose>
-                                    <c:when test="${param.error == 'account_not_found'}">
-                                        <p style="color: red;">Your account couldn't be found. Kindly register an account.</p>
-                                    </c:when>
-
-                                </c:choose>
-
-
+                                <c:if test="${param.error ne null}">
+                                    <p style="color: red;">Your account couldn't be found. Kindly register an account.</p>
+                                </c:if>
                                 <form action="user-login" class="mb-4"  method="GET">
                                     <div class="mb-4">
                                         <label for="email" class="form-label">Email or Username</label>

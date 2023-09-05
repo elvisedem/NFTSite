@@ -5,8 +5,8 @@ import com.bartmint.transactions.TransactionDAO;
 import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
+import static com.bartmint.util.Constant.TransactionsConstants.StatusConstant.SUCCESS;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.MINT;
-import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,7 +56,7 @@ public class UploadNftServlet extends HttpServlet
                 Transaction t = new Transaction();
                 t.setAmount(-0.1492);
                 t.setDate(DateTimeUtil.getTodayTimeZone());
-                t.setStatus(PENDING);
+                t.setStatus(SUCCESS);
                 t.setUserId(user.getUserId());
                 t.setType(MINT);
                 TransactionDAO.registerNewTransactionSlip(t);

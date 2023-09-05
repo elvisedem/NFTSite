@@ -1,6 +1,7 @@
 package com.bartmint.arts;
 
 import com.bartmint.dbconfig.DBConfig;
+import static com.bartmint.util.Constant.CollectionConstants.*;
 import static com.bartmint.util.Constant.NFTConstants.*;
 import java.util.List;
 import javax.persistence.CacheStoreMode;
@@ -16,7 +17,7 @@ public class NftDAO
 {
     public static void registerNewNFTs(NftArt nft) throws Exception
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -27,7 +28,7 @@ public class NftDAO
 
     public static int registerNewCollection(Collection cc) throws Exception
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -40,7 +41,7 @@ public class NftDAO
 
     public static void registerNewCollectionArt(CollectionArt ca) throws Exception
     {
-        try(DBConfig DBconfig = new DBConfig())
+        try( DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -51,7 +52,7 @@ public class NftDAO
 
     public static List<NftArt> getArts() throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -65,7 +66,7 @@ public class NftDAO
 
     public static int getTotalNftArts()
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -86,7 +87,7 @@ public class NftDAO
 
     public static int getTotalUserNftArts(int userId) throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -112,7 +113,7 @@ public class NftDAO
 
     public static List<NftArt> viewPreviousArts(int lastIndex)
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -132,7 +133,7 @@ public class NftDAO
 
     public static List<NftArt> viewMoreNftArts(int lastIndex) throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -148,15 +149,71 @@ public class NftDAO
 
     public static NftArt getNftArtById(int artId) throws Exception
     {
-        try(DBConfig dbconfig = new DBConfig())
+        try( DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
-            String sql = "SELECT * FROM " + NFT_TABLE + "WHERE " + NFT_ART_ID + " =?";
+            String sql = "SELECT * FROM " + NFT_TABLE + " WHERE " + NFT_ART_ID + " =?";
             Query q = em.createNativeQuery(sql, NftArt.class);
             q.setParameter(1, artId);
             NftArt nftArt = (NftArt)q.getSingleResult();
             return nftArt;
+        }
+    }
+
+    public static List<NftArt> getNftArtByUserId(int userId) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            String sql = "SELECT * FROM " + NFT_TABLE + " WHERE " + USER_ID + " =?";
+            Query q = em.createNativeQuery(sql, NftArt.class);
+            q.setParameter(1, userId);
+            List<NftArt> nftArt = q.getResultList();
+            return nftArt;
+        }
+    }
+
+    public static List<Collection> getCollectionsByUserId(int userId) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            String sql = "SELECT * FROM " + COLLECTION_TABLE + " WHERE " + USER_ID + " =?";
+            Query q = em.createNativeQuery(sql, Collection.class);
+            q.setParameter(1, userId);
+            List<Collection> collections = q.getResultList();
+            return collections;
+        }
+    }
+
+    public static Collection getCollectionById(int id) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            String sql = "SELECT * FROM " + COLLECTION_TABLE + " WHERE " + C_ID + " =?";
+            Query q = em.createNativeQuery(sql, Collection.class);
+            q.setParameter(1, id);
+            Collection collection = (Collection)q.getSingleResult();
+            return collection;
+        }
+    }
+
+    public static List<CollectionArt> getCollectionArtsById(int id) throws Exception
+    {
+        try( DBConfig dbconfig = new DBConfig())
+        {
+            EntityManager em = dbconfig.getEntityManager();
+            em.getTransaction().begin();
+            String sql = "SELECT * FROM " + COLLECTION_ART_TABLE + " WHERE " + C_ID + " =?";
+            Query q = em.createNativeQuery(sql, CollectionArt.class);
+            q.setParameter(1, id);
+            List<CollectionArt> collectionArts = q.getResultList();
+            return collectionArts;
         }
     }
 }

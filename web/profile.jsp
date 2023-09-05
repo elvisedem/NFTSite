@@ -204,9 +204,9 @@
                                     title: 'User updated',
                                     text: 'Reloading.'
                                 });
-//                                setTimeout(function(){
-//                                    window.location.href = 'profile';
-//                                }, 5000);
+                                setTimeout(function(){
+                                    window.location.href = 'home';
+                                }, 5000);
                             }
 
                         },
