@@ -41,8 +41,10 @@
                     </div>
                 </div>
             </div>
-<!--
+            
+
             <div class="a1R a3 a1S">
+
                 <c:forEach var="nftArt" items="${nftArts}">
                     <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
                         <div class="a1U a1V a1W a1G aM a2T[18px]">
@@ -96,6 +98,7 @@
                         </div>
                     </div>
                 </c:forEach>
+
                 <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
                     <div class="a1U a1V a1W a1G aM a2T[18px]">
                         <div class="af a1Y a2p av">
@@ -1000,7 +1003,7 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
 
             <div class="row">
                 <form method="GET" action="previous-art-page" class="float-left">
