@@ -17,7 +17,7 @@ public class NftDAO
 {
     public static void registerNewNFTs(NftArt nft) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -28,7 +28,7 @@ public class NftDAO
 
     public static int registerNewCollection(Collection cc) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -41,7 +41,7 @@ public class NftDAO
 
     public static void registerNewCollectionArt(CollectionArt ca) throws Exception
     {
-        try( DBConfig DBconfig = new DBConfig())
+        try(DBConfig DBconfig = new DBConfig())
         {
             EntityManager DBconfigem = DBconfig.getEntityManager();
             DBconfigem.getTransaction().begin();
@@ -52,7 +52,7 @@ public class NftDAO
 
     public static List<NftArt> getArts() throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -60,13 +60,14 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, NftArt.class);
             q.setHint("javax.persistence.cache.storeMode", CacheStoreMode.REFRESH);
             List<NftArt> nftArts = q.getResultList();
+            em.getTransaction().commit();
             return nftArts;
         }
     }
 
     public static int getTotalNftArts()
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -74,7 +75,7 @@ public class NftDAO
             Query q = em.createNativeQuery(sql);
             // Execute the query and get the result
             Object result = q.getSingleResult();
-
+            em.getTransaction().commit();
             // Cast the result to Integer and return the total count
             return ((Number)result).intValue();
         }
@@ -87,7 +88,7 @@ public class NftDAO
 
     public static int getTotalUserNftArts(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -113,7 +114,7 @@ public class NftDAO
 
     public static List<NftArt> viewPreviousArts(int lastIndex)
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -123,6 +124,7 @@ public class NftDAO
             q.setParameter(1, 50);
             q.setParameter(2, lastIndex - 50);
             List<NftArt> prevArts = q.getResultList();
+            em.getTransaction().commit();
             return prevArts;
         }
         catch(Exception e)
@@ -133,7 +135,7 @@ public class NftDAO
 
     public static List<NftArt> viewMoreNftArts(int lastIndex) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -143,13 +145,14 @@ public class NftDAO
             q.setParameter(1, 50);
             q.setParameter(2, lastIndex);
             List<NftArt> moreArts = q.getResultList();
+            em.getTransaction().commit();
             return moreArts;
         }
     }
 
     public static NftArt getNftArtById(int artId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -157,13 +160,14 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, NftArt.class);
             q.setParameter(1, artId);
             NftArt nftArt = (NftArt)q.getSingleResult();
+            em.getTransaction().commit();
             return nftArt;
         }
     }
 
     public static List<NftArt> getNftArtByUserId(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -171,13 +175,14 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, NftArt.class);
             q.setParameter(1, userId);
             List<NftArt> nftArt = q.getResultList();
+            em.getTransaction().commit();
             return nftArt;
         }
     }
 
     public static List<Collection> getCollectionsByUserId(int userId) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -185,13 +190,14 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, Collection.class);
             q.setParameter(1, userId);
             List<Collection> collections = q.getResultList();
+            em.getTransaction().commit();
             return collections;
         }
     }
 
     public static Collection getCollectionById(int id) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -199,13 +205,14 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, Collection.class);
             q.setParameter(1, id);
             Collection collection = (Collection)q.getSingleResult();
+            em.getTransaction().commit();
             return collection;
         }
     }
 
     public static List<CollectionArt> getCollectionArtsById(int id) throws Exception
     {
-        try( DBConfig dbconfig = new DBConfig())
+        try(DBConfig dbconfig = new DBConfig())
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
@@ -213,6 +220,7 @@ public class NftDAO
             Query q = em.createNativeQuery(sql, CollectionArt.class);
             q.setParameter(1, id);
             List<CollectionArt> collectionArts = q.getResultList();
+            em.getTransaction().commit();
             return collectionArts;
         }
     }

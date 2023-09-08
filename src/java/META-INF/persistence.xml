@@ -10,15 +10,15 @@
         <class>com.bartmint.transactions.Withdrawal</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jjcomec1_bartmint"/>
+            <!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jjcomec1_bartmint"/>
             <property name="javax.persistence.jdbc.user" value="jjcomec1_bartadmin"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="Pr0j3ct@BArtMint"/>
+            <property name="javax.persistence.jdbc.password" value="Pr0j3ct@BArtMint"/>-->
 
-            <!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jjcome"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jcome"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.password" value="adelaedem080"/>-->
+            <property name="javax.persistence.jdbc.password" value="adelaedem080"/>
         </properties>
     </persistence-unit>
 </persistence>
