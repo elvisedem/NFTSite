@@ -59,6 +59,7 @@ public class TransactionDAO
             q.setHint("javax.persistence.cache.storeMode", CacheStoreMode.REFRESH);
             q.setParameter(1, userId);
             List<Transaction> transactions = q.getResultList();
+            em.getTransaction().commit();
             return transactions;
         }
     }

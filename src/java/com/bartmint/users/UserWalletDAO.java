@@ -24,6 +24,7 @@ public class UserWalletDAO
             Query q = em.createNativeQuery(sql, UserWallet.class);
             q.setParameter(1, userId);
             UserWallet uw = (UserWallet)q.getSingleResult();
+            em.getTransaction().commit();
             return uw;
         }
     }
