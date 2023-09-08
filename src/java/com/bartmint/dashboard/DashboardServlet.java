@@ -7,7 +7,6 @@ import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +29,6 @@ public class DashboardServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -45,11 +43,8 @@ public class DashboardServlet extends HttpServlet
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

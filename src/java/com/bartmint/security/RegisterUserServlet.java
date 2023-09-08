@@ -5,7 +5,6 @@ import com.bartmint.users.UserDAO;
 import com.bartmint.users.UserWallet;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,6 @@ public class RegisterUserServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         try
         {
             String senderEmail = "contact@bartmint.com";
@@ -103,16 +101,11 @@ public class RegisterUserServlet extends HttpServlet
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, adminSubject, adminMessage);
                 jsono.put("message", "success");
             }
-
-            out.print(jsono);
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,7 +1,6 @@
 package com.bartmint.security;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,6 @@ public class LogoutServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             if(request.getSession().getAttribute("user") != null)
@@ -40,7 +38,7 @@ public class LogoutServlet extends HttpServlet
         }
         catch(IOException logoutException)
         {
-            logoutException.printStackTrace(out);
+            logoutException.printStackTrace(System.err);
             throw new RuntimeException(logoutException);
         }
     }

@@ -3,7 +3,6 @@ package com.bartmint.dashboard;
 import com.bartmint.arts.NftArt;
 import com.bartmint.arts.NftDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +29,6 @@ public class PreviousArtServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             int itemsPerPage = 50;
@@ -57,11 +55,8 @@ public class PreviousArtServlet extends HttpServlet
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

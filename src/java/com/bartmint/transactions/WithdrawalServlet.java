@@ -8,7 +8,6 @@ import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +35,6 @@ public class WithdrawalServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         try
         {
 
@@ -48,11 +46,10 @@ public class WithdrawalServlet extends HttpServlet
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
             String adminMessage = "This User: " + user.getEmail() + " has placed a withdrawal amount of " + request.getParameter("amount") + " Check and confirm the payment";
-            if(uw.getBalance() <= 0.000000000001)
+            if(uw.getBalance() <= 7000)
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
-                out.println(jsono);
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum withdrawal amount to make this request, try again when you balance has reached 0.000001! Thanks");
             }
             else
@@ -76,16 +73,12 @@ public class WithdrawalServlet extends HttpServlet
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
-                out.print(jsono);
             }
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

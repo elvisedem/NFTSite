@@ -2,7 +2,6 @@ package com.bartmint.users;
 
 import static com.bartmint.users.UserDAO.getUserByEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,6 @@ public class UserUpdate extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -45,16 +43,11 @@ public class UserUpdate extends HttpServlet
             UserDAO.updateNewUser(updateUser.getUserId(), fullname, address, phonenumber);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
-            out.print(jsono);
         }
         catch(Exception e)
         {
             e.printStackTrace(System.err);
             throw new RuntimeException(e);
-        }
-        finally
-        {
-            out.close();
         }
     }
 

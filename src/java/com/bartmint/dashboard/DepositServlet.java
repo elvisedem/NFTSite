@@ -9,7 +9,6 @@ import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,6 @@ public class DepositServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -89,15 +87,11 @@ public class DepositServlet extends HttpServlet
             SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
             JSONObject jsono = new JSONObject();
             jsono.put("message", "success");
-            out.print(jsono);
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

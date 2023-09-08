@@ -11,7 +11,6 @@ import static com.bartmint.util.Constant.TransactionsConstants.TransType.SOLD;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +38,6 @@ public class BuyNftArtServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -75,7 +73,6 @@ public class BuyNftArtServlet extends HttpServlet
                 TransactionDAO.registerNewTransactionSlip(t1);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
-                out.print(jsono);
 
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
@@ -84,18 +81,14 @@ public class BuyNftArtServlet extends HttpServlet
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Oops, You don't have enough funds to purchase this art,  Make a deposit and try again!");
-                out.print(jsono);
 
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum amount to make this request, try again when you balance has reached 0.000001! Thanks");
             }
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

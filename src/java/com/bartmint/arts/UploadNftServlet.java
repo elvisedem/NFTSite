@@ -9,7 +9,6 @@ import static com.bartmint.util.Constant.TransactionsConstants.StatusConstant.SU
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.MINT;
 import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +36,6 @@ public class UploadNftServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -62,23 +60,18 @@ public class UploadNftServlet extends HttpServlet
                 TransactionDAO.registerNewTransactionSlip(t);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
-                out.println(jsono);
             }
             else
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
-                out.println(jsono);
             }
 
         }
         catch(Exception e)
         {
-            e.printStackTrace(out);
-        }
-        finally
-        {
-            out.close();
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
