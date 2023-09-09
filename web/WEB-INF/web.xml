@@ -10,9 +10,6 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    <listener>
-        <listener-class>com.bartmint.dbconfig.ContextListener</listener-class>
-    </listener>
     <servlet>
         <servlet-name>Login Page (JSP)</servlet-name>
         <jsp-file>/login.jsp</jsp-file>

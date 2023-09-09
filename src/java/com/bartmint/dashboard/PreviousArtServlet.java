@@ -53,7 +53,7 @@ public class PreviousArtServlet extends HttpServlet
                 request.getRequestDispatcher("explore.jsp").forward(request, response);
             }
         }
-        catch(Exception e)
+        catch(IOException | NumberFormatException | ServletException e)
         {
             e.printStackTrace(System.err);
             throw new RuntimeException(e);

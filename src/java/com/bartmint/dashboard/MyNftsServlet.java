@@ -44,6 +44,7 @@ public class MyNftsServlet extends HttpServlet
         }
         catch(Exception e)
         {
+            e.printStackTrace(System.err);
             throw new RuntimeException(e);
         }
     }
