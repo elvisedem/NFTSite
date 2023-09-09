@@ -29,20 +29,12 @@ public class DisplayNftArtsServlet extends HttpServlet
         try
         {
             List<NftArt> nftArts = NftDAO.getArts();
-            int page = 1;
-            int itemsPerPage = 50;
-            int totalItems = NftDAO.getTotalNftArts(); // Get the total number of items (courses) from your data source
 
-            int totalPages = (int)Math.ceil((double)totalItems / itemsPerPage);
-
-            request.setAttribute("totalPages", totalPages);
-            request.setAttribute("page", page);
             request.setAttribute("nftArts", nftArts);
             request.getRequestDispatcher("explore-page").forward(request, response);
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
             throw new RuntimeException(e);
         }
     }
