@@ -28,10 +28,10 @@ public class DisplayNftArtsServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         try
         {
+//            HttpSession session = request.getSession(false);
             List<NftArt> nftArts = NftDAO.getArts();
-
             request.setAttribute("nftArts", nftArts);
-            request.getRequestDispatcher("explore-page").forward(request, response);
+            request.getRequestDispatcher("../login-explore.jsp").forward(request, response);
         }
         catch(Exception e)
         {

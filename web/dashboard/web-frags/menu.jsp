@@ -37,7 +37,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="../explore" class="menu-link">
+            <a href="../login-explore.jsp" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money"></i>
                 <div>Explore</div>
             </a>

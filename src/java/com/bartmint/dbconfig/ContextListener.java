@@ -35,11 +35,12 @@ public class ContextListener implements ServletContextListener
 
     private void loadEntityManagerFactory()
     {
-        DBConfig.remoteEntityManagerFactory = Persistence.createEntityManagerFactory("FarmerPU");
+        DBConfig.remoteEntityManagerFactory = Persistence.createEntityManagerFactory("BartMintPU");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce)
     {
+
     }
 }

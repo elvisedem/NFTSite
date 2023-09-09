@@ -70,9 +70,9 @@ public class NftDAO
         {
             EntityManager em = dbconfig.getEntityManager();
             em.getTransaction().begin();
-            String sql = "SELECT * FROM " + NFT_TABLE + " LIMIT 50";
+            String sql = "SELECT * FROM " + NFT_TABLE;
             Query q = em.createNativeQuery(sql, NftArt.class);
-            q.setHint("javax.persistence.cache.storeMode", CacheStoreMode.REFRESH);
+//            q.setHint("javax.persistence.cache.storeMode", CacheStoreMode.REFRESH);
 
             // Use explicit casting to specify the expected type
             List<NftArt> nftArts = (List<NftArt>)q.getResultList();

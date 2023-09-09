@@ -10,9 +10,9 @@ import javax.persistence.PersistenceException;
 
 /**
  *
- * @author Jevison7x
+ * @author Hullo
  */
-public final class DBConfig implements AutoCloseable
+public class DBConfig implements AutoCloseable
 {
     public static EntityManagerFactory remoteEntityManagerFactory;
 
