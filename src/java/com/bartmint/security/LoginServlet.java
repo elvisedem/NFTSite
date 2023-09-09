@@ -37,14 +37,15 @@ public class LoginServlet extends HttpServlet
             if(user != null)
             {
                 HttpSession session = request.getSession(false);
-                if(session != null)
-                    session.invalidate();
-                session = request.getSession(true);
                 session.setAttribute("user", user);
-                if(request.getParameter("remember") != null)
-                    session.setMaxInactiveInterval(60 * 60 * 24 * 10);
-                else
-                    session.setMaxInactiveInterval(60 * 60);
+//                if(session != null)
+//                    session.invalidate();
+//                session = request.getSession(true);
+//                session.setAttribute("user", user);
+//                if(request.getParameter("remember") != null)
+//                    session.setMaxInactiveInterval(60 * 60 * 24 * 10);
+//                else
+//                    session.setMaxInactiveInterval(60 * 60);
                 response.sendRedirect("dashboard/home");
             }
             else
