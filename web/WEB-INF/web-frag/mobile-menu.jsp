@@ -13,7 +13,6 @@
 
         <c:choose>
             <c:when test="${(user.email ne null) and (user.userId ne null)}">
-                <li class="menu-item"><a href="login-explore.jsp">MarketPlace</a></li>
                 <li class="menu-item"><a href="/dashboard/home">My Account</a></li>
                 <li class="menu-item"><a href="logout">Logout</a></li>
                 </c:when>

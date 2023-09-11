@@ -27,6 +27,11 @@ public class UserWalletDAO
             em.getTransaction().commit();
             return uw;
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static void updateUserBalance(UserWallet uw, double balance) throws Exception
@@ -38,6 +43,11 @@ public class UserWalletDAO
             UserWallet userWallet = em.find(UserWallet.class, uw.getId());
             userWallet.setBalance(balance);
             em.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 }

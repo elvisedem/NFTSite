@@ -25,6 +25,11 @@ public class UserDAO
             em.getTransaction().commit();
             return user.getUserId();
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static void registerNewUserWallet(UserWallet uw) throws Exception
@@ -35,6 +40,11 @@ public class UserDAO
             em.getTransaction().begin();
             em.persist(uw);
             em.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

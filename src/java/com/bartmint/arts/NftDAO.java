@@ -24,6 +24,11 @@ public class NftDAO
             DBconfigem.persist(nft);
             DBconfigem.getTransaction().commit();
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static int registerNewCollection(Collection cc) throws Exception
@@ -37,6 +42,11 @@ public class NftDAO
             DBconfigem.getTransaction().commit();
             return cc.getcId();
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static void registerNewCollectionArt(CollectionArt ca) throws Exception
@@ -47,6 +57,11 @@ public class NftDAO
             DBconfigem.getTransaction().begin();
             DBconfigem.persist(ca);
             DBconfigem.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
@@ -79,6 +94,11 @@ public class NftDAO
 
             em.getTransaction().commit();
             return nftArts;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
@@ -207,6 +227,11 @@ public class NftDAO
             em.getTransaction().commit();
             return moreArts;
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static NftArt getNftArtById(int artId) throws Exception
@@ -221,6 +246,11 @@ public class NftDAO
             NftArt nftArt = (NftArt)q.getSingleResult();
             em.getTransaction().commit();
             return nftArt;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
@@ -254,6 +284,11 @@ public class NftDAO
             em.getTransaction().commit();
             return nftArt;
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
 //    public static List<Collection> getCollectionsByUserId(int userId) throws Exception
@@ -286,6 +321,11 @@ public class NftDAO
             em.getTransaction().commit();
             return collections;
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static Collection getCollectionById(int id) throws Exception
@@ -300,6 +340,11 @@ public class NftDAO
             Collection collection = (Collection)q.getSingleResult();
             em.getTransaction().commit();
             return collection;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
@@ -332,6 +377,11 @@ public class NftDAO
 
             em.getTransaction().commit();
             return collectionArts;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 

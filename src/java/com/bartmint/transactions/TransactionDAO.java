@@ -24,6 +24,11 @@ public class TransactionDAO
             em.persist(dep);
             em.getTransaction().commit();
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static void registerNewTransactionSlip(Transaction dep) throws Exception
@@ -35,6 +40,11 @@ public class TransactionDAO
             em.persist(dep);
             em.getTransaction().commit();
         }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
+        }
     }
 
     public static void registerNewWithdrawalSlip(Withdrawal withdrawal) throws Exception
@@ -45,6 +55,11 @@ public class TransactionDAO
             em.getTransaction().begin();
             em.persist(withdrawal);
             em.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 
@@ -61,6 +76,11 @@ public class TransactionDAO
             List<Transaction> transactions = q.getResultList();
             em.getTransaction().commit();
             return transactions;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace(System.err);
+            throw new RuntimeException(e);
         }
     }
 }
