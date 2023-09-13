@@ -295,11 +295,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Get Explore Art Servlet</servlet-name>
-        <url-pattern>/dashboard/explore-art</url-pattern>
+        <url-pattern>/explore-art</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>User Nft Page (JSP)</servlet-name>
-        <url-pattern>/dashboard/user-nft</url-pattern>
+        <url-pattern>/user-nft</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

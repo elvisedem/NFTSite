@@ -49,43 +49,30 @@
                         <c:forEach var="nftArt" items="${nftArts}">
                             <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
                                 <div class="a1U a1V a1W a1G aM a2T[18px]">
-                                    <div>
-                                        <h3 class="col-6">
-                                            <a href="nftArt?id=${nftArt.artId}" class="a2D a2a a1Q aX aZ hover:a1u">
-                                                ${nftArt.artName}</a>
-                                        </h3>
-                                        <div class="a2b a3 a5 ah">
-<!--                                            <div class="a4">
-                                                <div class="a3 a5">
-                                                    <div class="a4">
-                                                        <h4 class="a2Y aX aZ">
-                                                            <a href="javascript:void(0)">@${nftArt.userId}</a>
-                                                            <span class="al a2Y a1o a1t">
-                                                                creator
-                                                            </span>
-                                                        </h4>
-                                                    </div>
-                                                </div>
-                                            </div>-->
-                                            <div class="col-6">
-                                                <h5 class="a33 a2Y aX aZ">
+                                    <a href="explore-art?id=${nftArt.artId}" >
+                                        <div>
+                                            <h3 class="a2D a2a a1Q aX aZ hover:a1u">
+                                                    ${nftArt.artName}
+                                            </h3>
+                                            <div class="a2b a3 a5 ah">
+                                                <h5 class=" a2Y aX aZ">
                                                     ${nftArt.price} ETH
                                                     <span class="al a2Y a1o a1t">
                                                         Current Bid
                                                     </span>
                                                 </h5>
                                             </div>
+                                            <div class="a3 a5 ah a34 a1G a35">
+                                                <form class="buy-art">
+                                                    <input name="id" hidden="" value="${nftArt.artId}"/>
+                                                    <input id="userId"  hidden="" value="${user.userId}"/>
+                                                    <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                                        Place Bid
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="a3 a5 ah a34 a1G a35">
-                                            <form class="buy-art">
-                                                <input name="id" hidden="" value="${nftArt.artId}"/>
-                                                <input id="userId"  hidden="" value="${user.userId}"/>
-                                                <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                    Place Bid
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </c:forEach>
