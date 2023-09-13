@@ -44,24 +44,18 @@
 
 
             <div class="a1R a3 a1S">
-
-
-
                 <c:choose>
                     <c:when test="${(user.email ne null) and (user.userId ne null) }">
                         <c:forEach var="nftArt" items="${nftArts}">
                             <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
                                 <div class="a1U a1V a1W a1G aM a2T[18px]">
-                                    <div class="af a1Y a2p av">
-                                        <img src="/FileUploaderApp/temp/${nftArt.imageName}" alt="auctions" class="a4" style="height:250px;">
-                                    </div>
                                     <div>
-                                        <h3>
-                                            <a href="javascript:void(0)" class="a2D a2a a1Q aX aZ hover:a1u">
+                                        <h3 class="col-6">
+                                            <a href="nftArt?id=${nftArt.artId}" class="a2D a2a a1Q aX aZ hover:a1u">
                                                 ${nftArt.artName}</a>
                                         </h3>
                                         <div class="a2b a3 a5 ah">
-                                            <div class="a4">
+<!--                                            <div class="a4">
                                                 <div class="a3 a5">
                                                     <div class="a4">
                                                         <h4 class="a2Y aX aZ">
@@ -72,8 +66,8 @@
                                                         </h4>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="a4">
+                                            </div>-->
+                                            <div class="col-6">
                                                 <h5 class="a33 a2Y aX aZ">
                                                     ${nftArt.price} ETH
                                                     <span class="al a2Y a1o a1t">

@@ -1,7 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free">
@@ -66,23 +66,23 @@
                                                     <div class="row">
                                                         <div class="mb-3 col-md-6">
                                                             <label for="userName" class="form-label">Username</label>
-                                                            <input class="form-control" placeholder="${user.userName}" type="text" id="username" name="username" value="" readonly/>
+                                                            <input class="form-control" placeholder="" type="text" id="username" name="username" value="" readonly/>
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="fullName" class="form-label">Full Name</label>
-                                                            <input class="form-control" placeholder="${user.fullName}" type="text" name="name" id="fullname" />
+                                                            <input class="form-control" placeholder="" type="text" name="name" id="fullname" />
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="address" class="form-label">Address</label>
-                                                            <input class="form-control" placeholder="${user.address}" type="text" name="address" id="address" value='' />
+                                                            <input class="form-control" placeholder="" type="text" name="address" id="address" value='' />
                                                         </div>
 
                                                         <div class="mb-3 col-md-6">
                                                             <label for="email" class="form-label">E-mail</label>
                                                             <input class="form-control" type="text" id="email" name="email" value=''
-                                                                   placeholder="${user.email}" readonly />
+                                                                   placeholder="" readonly />
                                                         </div>
 
                                                         <div class="mb-3 col-12">
@@ -94,7 +94,7 @@
                                                                     id="phonenumber"
                                                                     name="phonenumber"
                                                                     class="form-control"
-                                                                    placeholder="${user.phoneNumber}"
+                                                                    placeholder=""
                                                                     />
                                                             </div>
                                                         </div>

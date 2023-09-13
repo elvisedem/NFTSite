@@ -26,7 +26,6 @@ public class DisplayNftArtsServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("text/html;charset=UTF-8");
         try
         {
             List<NftArt> nftArts = NftDAO.getArts();

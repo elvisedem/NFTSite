@@ -25,23 +25,23 @@
                     <div class="card-body">
 
                         <ul class="">
-                            <h3>${collection.collectionName} collection </h3>
+                            <h3>${nftArt.artName} collection </h3>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row p-2">
-            <c:forEach var="cArt" items="${cArts}">
+            <c:forEach var="nArts" items="${nArts}">
                 <div class="col-12 col-lg-4 my-2">
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <span class="badge bg-primary float-end">
-                                ${collection.collectionName}
+                                ${nftArt.artName}
                             </span>
-                            <img class="card-img-top" src="/FileUploaderApp/temp/${cArt.imageName}" alt="Card image" style="width:100%; height:250px;">
+                            <img class="card-img-top" src="/FileUploaderApp/temp/${nftArt.imageName}" alt="Card image" style="width:100%; height:250px;">
                             <div class="p-2 border-top-1">
-                                Price:<p class="text-primary"> ${collection.price}</p>
+                                Price:<p class="text-primary"> ${nftArt.price}</p>
                             </div>
                             <div class="p-2 border-top-1">
 

@@ -95,11 +95,6 @@ public class NftDAO
             em.getTransaction().commit();
             return nftArts;
         }
-        catch(Exception e)
-        {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
-        }
     }
 
     public static int getTotalNftArts()
