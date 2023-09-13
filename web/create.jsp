@@ -67,7 +67,7 @@
                                                             <input type="text" id="nftName" class="form-control" placeholder="Name your NFT" name="nftName" required>
                                                         </div>
                                                         <div class="form-group col-xl-12 my-2">
-                                                            <label class="mr-sm-2 form-label">Price (USD)</label>
+                                                            <label class="mr-sm-2 form-label">Price (ETH)</label>
                                                             <input type="number" id="price" step="any" class="form-control" placeholder="Set pricing for your NFT" name="price">
                                                         </div>
                                                         <style type="text/css" scoped="">
