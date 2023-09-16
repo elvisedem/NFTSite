@@ -11,6 +11,7 @@ import static com.bartmint.util.Constant.TransactionsConstants.TransType.SOLD;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,12 +38,12 @@ public class BuyNftArtServlet extends HttpServlet
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
-
             String senderEmail = "contact@bartmint.com";
             String subject = "Withdrawal Request";
             String userMessage = "You have Successfully bought an NFT, please wait as we process your payment! Thanks";
@@ -76,19 +77,23 @@ public class BuyNftArtServlet extends HttpServlet
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
+                out.print(jsono);
             }
             else if(uw.getBalance() <= nft.getPrice())
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Oops, You don't have enough funds to purchase this art,  Make a deposit and try again!");
-
+                out.print(jsono);
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum amount to make this request, try again when you balance has reached 0.000001! Thanks");
             }
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+            e.printStackTrace(out);
+        }
+        finally
+        {
+            out.close();
         }
     }
 

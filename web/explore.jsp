@@ -65,12 +65,18 @@
                                             </div>
                                         </a>
                                         <div class="a3 a5 ah a34 a1G a35">
-                                            <form class="buy-art">
+                                            <form class="buy-art" id="buy-art">
                                                 <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
                                                 <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
-                                                <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                    Buy NFT
-                                                </button>
+                                                <c:choose>
+                                                    <c:when test="${user.userId == nftArt.userId}">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                                            Buy NFT
+                                                        </button>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </form>
                                         </div>
                                     </div>
@@ -1023,7 +1029,7 @@
 
         <script>
             $(document).ready(function(){
-                $('.buy-art').submit(function(e){
+                $('#buy-art').submit(function(e){
                     e.preventDefault();
                     var userId = $('#userId').val();
                     if(userId === null){
