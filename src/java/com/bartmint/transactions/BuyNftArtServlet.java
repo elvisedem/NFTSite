@@ -6,7 +6,7 @@ import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.StatusConstant.SUCCESS;
-import static com.bartmint.util.Constant.TransactionsConstants.TransType.BROUGHT;
+import static com.bartmint.util.Constant.TransactionsConstants.TransType.BOUGHT;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.SOLD;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
@@ -61,7 +61,7 @@ public class BuyNftArtServlet extends HttpServlet
                 t.setAmount(nft.getPrice());
                 t.setDate(DateTimeUtil.getTodayTimeZone());
                 t.setStatus(SUCCESS);
-                t.setType(BROUGHT);
+                t.setType(BOUGHT);
                 t.setUserId(user.getUserId());
                 TransactionDAO.registerNewTransactionSlip(t);
                 Transaction t1 = new Transaction();
@@ -71,11 +71,11 @@ public class BuyNftArtServlet extends HttpServlet
                 t1.setType(SOLD);
                 t1.setUserId(nft.getUserId());
                 TransactionDAO.registerNewTransactionSlip(t1);
-                JSONObject jsono = new JSONObject();
-                jsono.put("message", "success");
 
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
+                JSONObject jsono = new JSONObject();
+                jsono.put("message", "success");
             }
             else if(uw.getBalance() <= nft.getPrice())
             {

@@ -66,10 +66,10 @@
                                         </a>
                                         <div class="a3 a5 ah a34 a1G a35">
                                             <form class="buy-art">
-                                                <input name="id" hidden="" value="${nftArt.artId}"/>
-                                                <input id="userId"  hidden="" value="${user.userId}"/>
+                                                <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
+                                                <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
                                                 <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                    Place Bid
+                                                    Buy NFT
                                                 </button>
                                             </form>
                                         </div>
