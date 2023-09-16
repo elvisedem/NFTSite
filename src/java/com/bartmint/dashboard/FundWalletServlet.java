@@ -1,9 +1,12 @@
 package com.bartmint.dashboard;
 
+import com.bartmint.transactions.Transaction;
+import com.bartmint.transactions.TransactionDAO;
 import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +39,8 @@ public class FundWalletServlet extends HttpServlet
             User user = (User)session.getAttribute("user");
             if(request.getParameter("amount") != null)
             {
+                List<Transaction> transactions = TransactionDAO.getAllTransactionOfUser(user.getUserId());
+                request.setAttribute("transactions", transactions);
                 request.setAttribute("amount", request.getParameter("amount"));
                 request.getRequestDispatcher("invoice").forward(request, response);
             }

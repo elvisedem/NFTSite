@@ -4,7 +4,7 @@ import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.WITHDRAWAL;
-import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
+import static com.bartmint.util.Constant.UserDepositConstants.SUCCESS;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class WithdrawalServlet extends HttpServlet
                 double amount = Double.parseDouble(request.getParameter("amount"));
                 Withdrawal w = new Withdrawal();
                 w.setAmount(Double.parseDouble(request.getParameter("amount")));
-                w.setStatus(PENDING);
+                w.setStatus(SUCCESS);
                 w.setWalletAddress(request.getParameter("address"));
                 w.setDate(DateTimeUtil.getTodayTimeZone());
                 w.setUserId(user.getUserId());
@@ -65,7 +65,7 @@ public class WithdrawalServlet extends HttpServlet
                 Transaction t = new Transaction();
                 t.setAmount(-amount);
                 t.setDate(DateTimeUtil.getTodayTimeZone());
-                t.setStatus(PENDING);
+                t.setStatus(SUCCESS);
                 t.setUserId(user.getUserId());
                 t.setType(WITHDRAWAL);
                 TransactionDAO.registerNewTransactionSlip(t);
