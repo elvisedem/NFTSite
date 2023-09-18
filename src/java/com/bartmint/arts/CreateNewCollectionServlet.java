@@ -8,6 +8,7 @@ import static com.bartmint.util.Constant.TransactionsConstants.TransType.MINT;
 import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,7 @@ public class CreateNewCollectionServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
             HttpSession session = request.getSession(false);
@@ -89,6 +91,7 @@ public class CreateNewCollectionServlet extends HttpServlet
                 t.setType(MINT);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
+                out.print(jsono);
             }
             else
             {
@@ -98,8 +101,12 @@ public class CreateNewCollectionServlet extends HttpServlet
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
+            e.printStackTrace(out);
             throw new RuntimeException(e);
+        }
+        finally
+        {
+            out.close();
         }
     }
 

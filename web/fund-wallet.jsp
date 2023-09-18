@@ -12,8 +12,6 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>BArtMint -Wallet</title>
         <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
-    </style>
-
 </head>
 
 <body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="">
