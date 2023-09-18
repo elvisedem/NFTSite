@@ -35,7 +35,7 @@
                                                 <div class="card-body text-white">
                                                     <strong>
                                                         <small>BALANCE</small>
-                                                        <h2 class="py-2 text-white">${uw.balance} ETH</h2>
+                                                        <h2 id="originalNumber" class="py-2 text-white">${uw.balance} ETH</h2>
                                                     </strong>
                                                     <span class="float-end">
                                                         <a href="fund">
@@ -65,9 +65,9 @@
                                                 <div class="card-body text-white h-100">
 
                                                     <small>Current Mint fee</small>
-                                                        <h3 class="py-2 text-white text-bold">
-                                                            0.1482ETH
-                                                        </h3>
+                                                    <h3 class="py-2 text-white text-bold">
+                                                        0.1482ETH
+                                                    </h3>
                                                 </div>
                                             </div>
 
@@ -136,6 +136,19 @@
                 $(document).ready(function(){
                     $('#DashboardTransactionResults').DataTable();
                 });
+            </script>
+            <script>
+                // Get the HTML element containing the number in scientific notation
+                var originalElement = document.getElementById("originalNumber");
+
+                // Get the text content of the element
+                var originalText = originalElement.textContent;
+
+                // Convert the scientific notation to a decimal number
+                var formattedNumber = parseFloat(originalText).toFixed(7); // Displaying up to 7 decimal places
+
+                // Set the text content of the element to the formatted number
+                originalElement.textContent = formattedNumber;
             </script>
         </body>
     </html>

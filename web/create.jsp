@@ -57,7 +57,7 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">Create your NFT</h4>
-                                                <span class="float-end">Balance: ${uw.balance} ETH</span>
+                                                <span id="originalNumber" class="float-end">Balance: ${uw.balance} ETH</span>
                                             </div>
                                             <div class="card-body">
                                                 <form id="nft-upload">
@@ -137,6 +137,27 @@
 
 
         <jsp:include page="../dashboard/web-frags/footer-scripts.jsp" />
+
+        <script>
+            // Get the HTML element containing the number in scientific notation
+            var originalElement = document.getElementById("originalNumber");
+
+            // Get the text content of the element
+            var originalText = originalElement.textContent;
+
+            // Extract the numeric part from the string
+            var numericPart = originalText.match(/[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)/);
+
+            if(numericPart){
+                // Convert the extracted numeric part to a decimal number
+                var formattedNumber = parseFloat(numericPart[0]);
+
+                // Set the text content of the element to the formatted number
+                originalElement.textContent = formattedNumber.toFixed(7); // Displaying up to 5 decimal places
+            }else{
+                console.error("Invalid scientific notation format: " + originalText);
+            }
+        </script>
 
         <!-- Initialize Swiper -->
         <script>
