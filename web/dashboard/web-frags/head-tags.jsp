@@ -36,9 +36,6 @@
 <!-- Helpers -->
 <script src="../assets/vendor/js/helpers.js"></script>
 
-
-<script src="${dashboardAssets}sweetalert@2.1.2/dist/sweetalert.min.js"></script>
-
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.27/sweetalert2.min.js" integrity="sha512-mJQ9oQHzLM2zXe1cwiHmnMddNrmjv1YlaKZe1rM4J7q8JTnNn9UgeJVBV9jyV/lVGdXymVx6odhgwNZjQD8AqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.27/sweetalert2.all.js" integrity="sha512-AqI7WBZEjM+wOnNSxgOafzB2xKgQpxsNmTVzPINEu9CDiFgrisyJOrqCHarauciq+82uHWgGjfPBzidkuykxBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.27/sweetalert2.all.min.js" integrity="sha512-UfSxwRR8LlT3e4VLW1fx76+guLBWBALrK5mo7aJ92ZGiqGiR2Cu2AWgQ1FMLthwh2MbBVR0PqUCNiG6/QzsQNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

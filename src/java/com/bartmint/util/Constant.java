@@ -69,7 +69,7 @@ public class Constant
         {
             public static final String WITHDRAWAL = "Withdrawal";
             public static final String DEPOSIT = "Deposit";
-            public static final String BOUGHT = "Brought";
+            public static final String BOUGHT = "Bought";
             public static final String SOLD = "Sold";
             public static final String MINT = "Mint";
         }

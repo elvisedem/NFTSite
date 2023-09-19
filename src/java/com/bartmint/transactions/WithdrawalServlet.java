@@ -8,6 +8,7 @@ import static com.bartmint.util.Constant.UserDepositConstants.SUCCESS;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,7 @@ public class WithdrawalServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         try
         {
 
@@ -73,12 +75,16 @@ public class WithdrawalServlet extends HttpServlet
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
+                out.print(jsono);
             }
         }
         catch(Exception e)
         {
-            e.printStackTrace(System.err);
-            throw new RuntimeException(e);
+            e.printStackTrace(out);
+        }
+        finally
+        {
+            out.close();
         }
     }
 

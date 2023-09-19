@@ -6,7 +6,6 @@ import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.StatusConstant.SUCCESS;
-import static com.bartmint.util.Constant.TransactionsConstants.TransType.BOUGHT;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.SOLD;
 import com.bartmint.util.DateTimeUtil;
 import com.bartmint.util.SendEmail;
@@ -42,10 +41,11 @@ public class BuyNftArtServlet extends HttpServlet
         PrintWriter out = response.getWriter();
         try
         {
+            JSONObject jsono = new JSONObject();
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             String senderEmail = "contact@bartmint.com";
-            String subject = "Withdrawal Request";
+            String subject = "NFT Purchase";
             String userMessage = "You have Successfully bought an NFT, please wait as we process your payment! Thanks";
             String adminMessage = "This User: " + user.getEmail() + " has successfully purchased an NFT, check and confirm the payment";
 
@@ -62,7 +62,7 @@ public class BuyNftArtServlet extends HttpServlet
                 t.setAmount(nft.getPrice());
                 t.setDate(DateTimeUtil.getTodayTimeZone());
                 t.setStatus(SUCCESS);
-                t.setType(BOUGHT);
+                t.setType("Bought");
                 t.setUserId(user.getUserId());
                 TransactionDAO.registerNewTransactionSlip(t);
                 Transaction t1 = new Transaction();
@@ -75,16 +75,14 @@ public class BuyNftArtServlet extends HttpServlet
 
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
-                JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
                 out.print(jsono);
             }
-            else if(uw.getBalance() <= nft.getPrice())
+            else if(uw.getBalance() < nft.getPrice())
             {
-                JSONObject jsono = new JSONObject();
                 jsono.put("message", "Oops, You don't have enough funds to purchase this art,  Make a deposit and try again!");
-                out.print(jsono);
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum amount to make this request, try again when you balance has reached 0.000001! Thanks");
+                out.print(jsono);
             }
         }
         catch(Exception e)

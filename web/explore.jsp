@@ -41,45 +41,36 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="a1R a3 a1S">
                 <c:choose>
                     <c:when test="${(user.email ne null) and (user.userId ne null) }">
                         <c:forEach var="nftArt" items="${nftArts}">
                             <div class="a4 ak md:a1T/2 lg:a1T/3 2xl:a1T/4">
                                 <div class="a1U a1V a1W a1G aM a2T[18px]">
-
-                                    <div>
-                                        <a href="explore-art?id=${nftArt.artId}" >
-                                            <h3 class="a2D a2a a1Q aX aZ hover:a1u">
-                                                ${nftArt.artName}
-                                            </h3>
-                                            <div class="a2b a3 a5 ah">
-                                                <h5 class=" a2Y aX aZ">
-                                                    ${nftArt.price} ETH
-                                                    <span class="al a2Y a1o a1t">
-                                                        Current Bid
-                                                    </span>
-                                                </h5>
-                                            </div>
-                                        </a>
-                                        <div class="a3 a5 ah a34 a1G a35">
-                                            <form class="buy-art" id="buy-art">
-                                                <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
-                                                <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
-                                                <c:choose>
-                                                    <c:when test="${user.userId == nftArt.userId}">
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <button type="submit" class="a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                            Buy NFT
-                                                        </button>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </form>
-                                        </div>
+                                    <a href="explore-art?id=${nftArt.artId}" >
+                                        <h3 class="a2D a2a a1Q aX aZ hover:a1u">
+                                            ${nftArt.artName}
+                                        </h3>
+                                    </a>
+                                    <div class="a2b a3 a5 ah">
+                                        <h5 class=" a2Y aX aZ">
+                                            ${nftArt.price} ETH
+                                            <span class="al a2Y a1o a1t">
+                                                Current Bid
+                                            </span>
+                                        </h5>
                                     </div>
+                                    <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
+                                    <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
+                                    <c:choose>
+                                        <c:when test="${user.userId == nftArt.userId}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button type="button" class="buy-art a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                                Buy NFT
+                                            </button>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </c:forEach>
@@ -1029,17 +1020,17 @@
 
         <script>
             $(document).ready(function(){
-                $('#buy-art').submit(function(e){
+                $('.buy-art').click(function(e){
                     e.preventDefault();
                     var userId = $('#userId').val();
                     if(userId === null){
                         swal.fire("Error!", "You Have To have an account and login to get this art!", "error");
                     }else{
-                        var formData = $(this).serialize();
+                        var nftId = $('#id').val().trim();
                         $.ajax({
                             url: 'dashboard/buy-nft',
                             method: 'POST',
-                            data: formData,
+                            data: {id: nftId},
                             dataType: 'JSON',
                             beforeSend: function(xhr){
                             },
