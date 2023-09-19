@@ -68,6 +68,7 @@ public class UploadNftServlet extends HttpServlet
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
+                out.print(jsono);
             }
         }
         catch(Exception e)

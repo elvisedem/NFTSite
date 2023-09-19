@@ -46,7 +46,7 @@ public class BuyNftArtServlet extends HttpServlet
             User user = (User)session.getAttribute("user");
             String senderEmail = "contact@bartmint.com";
             String subject = "NFT Purchase";
-            String userMessage = "You have Successfully bought an NFT, please wait as we process your payment! Thanks";
+            String userMessage = "You have Successfully bought an NFT, Please wait as we process your payment! Thanks";
             String adminMessage = "This User: " + user.getEmail() + " has successfully purchased an NFT, check and confirm the payment";
 
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
@@ -72,7 +72,7 @@ public class BuyNftArtServlet extends HttpServlet
                 t1.setType(SOLD);
                 t1.setUserId(nft.getUserId());
                 TransactionDAO.registerNewTransactionSlip(t1);
-
+                NftDAO.updateNftStatusById(nft.getArtId());
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, userMessage);
                 SendEmail.sendHtmlMail("Steveryan4056@gmail.com", senderEmail, subject, adminMessage);
                 jsono.put("message", "success");

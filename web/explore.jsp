@@ -62,15 +62,11 @@
                                     </div>
                                     <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
                                     <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
-                                    <c:choose>
-                                        <c:when test="${user.userId == nftArt.userId}">
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button type="button" class="buy-art a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
-                                                Buy NFT
-                                            </button>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <c:if test="${user.userId ne nftArt.userId and nftArt.status ne 'sold'}">
+                                        <button type="button" class="buy-art a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                            Buy NFT
+                                        </button>
+                                    </c:if>
                                 </div>
                             </div>
                         </c:forEach>
@@ -1020,6 +1016,7 @@
 
         <script>
             $(document).ready(function(){
+                swal.fire("Warning","If the buy button is not available on an art, it means that the art has been sold or you are the owner","warning");
                 $('.buy-art').click(function(e){
                     e.preventDefault();
                     var userId = $('#userId').val();

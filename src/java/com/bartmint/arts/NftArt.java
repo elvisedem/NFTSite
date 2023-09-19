@@ -25,6 +25,7 @@ public class NftArt implements Serializable
     private double price;
     private String artName;
     private String imageName;
+    private String status;
 
     public NftArt()
     {
@@ -78,5 +79,15 @@ public class NftArt implements Serializable
     public void setImageName(String imageName)
     {
         this.imageName = imageName;
+    }
+
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
     }
 }
