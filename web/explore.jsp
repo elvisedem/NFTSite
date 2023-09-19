@@ -1034,7 +1034,8 @@
                             success: function(data, textStatus, jqXHR){
                                 if(data.message === 'success'){
                                     swal.fire("Success!", "You Have Purchase this Art Successfully!", "success");
-
+                                    window.location.href ="explore";
+ 
                                 }else
                                     swal.fire("Error!", data.message, "error");
                             },

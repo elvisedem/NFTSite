@@ -2,6 +2,7 @@ package com.bartmint.arts;
 
 import static com.bartmint.util.Constant.NFTConstants.NFT_TABLE;
 import java.io.Serializable;
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = NFT_TABLE)
+@Cacheable(false)
 public class NftArt implements Serializable
 {
     private static final long serialVersionUID = 1L;

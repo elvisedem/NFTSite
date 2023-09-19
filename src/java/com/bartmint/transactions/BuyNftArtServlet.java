@@ -84,6 +84,11 @@ public class BuyNftArtServlet extends HttpServlet
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum amount to make this request, try again when you balance has reached 0.000001! Thanks");
                 out.print(jsono);
             }
+            else if("sold".equals(nft.getStatus()))
+            {
+                jsono.put("message", "Oops, Has been Purchased!");
+                out.print(jsono);
+            }
         }
         catch(Exception e)
         {
