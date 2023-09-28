@@ -87,7 +87,7 @@
                                                         </style>
                                                         <div class="col-12">
                                                             <div id="picture-box" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 100%"/>
+                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 50%"/>
                                                             </div>
                                                             <button id="picture-btn" type="button" class="btn btn-info" style="width: 100%; margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload NFT
@@ -245,7 +245,7 @@
                                 swal.fire("Success!", "Your NFT was created successfully!", "success");
                                 setTimeout(function(){
                                     window.location.href = 'home';
-                                }, 1000); 
+                                }, 1000);
                             }else
                                 swal.fire("Error!", data.message, "error");
                         },

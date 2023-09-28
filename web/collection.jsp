@@ -72,9 +72,9 @@
                                                         </div>
                                                         <div class="form-group col-xl-12 my-2">
                                                             <div id="picture-box1" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
+                                                                <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
                                                             </div>
-                                                            <button id="picture-btn1" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
+                                                            <button id="picture-btn1" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
                                                                 <i class="fa fa-upload"></i> Upload ArtWork
                                                             </button>
                                                             <div id="progress-outer1" class="progress progress-striped active" style="display:none;">
@@ -88,9 +88,9 @@
                                                     </div>
                                                     <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box2" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
                                                         </div>
-                                                        <button id="picture-btn2" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
+                                                        <button id="picture-btn2" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer2" class="progress progress-striped active" style="display:none;">
@@ -103,9 +103,9 @@
                                                     </div>
                                                     <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box3" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
                                                         </div>
-                                                        <button id="picture-btn3" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
+                                                        <button id="picture-btn3" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer3" class="progress progress-striped active" style="display:none;">
@@ -118,9 +118,9 @@
                                                     </div>
                                                     <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box4" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
                                                         </div>
-                                                        <button id="picture-btn4" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
+                                                        <button id="picture-btn4" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer4" class="progress progress-striped active" style="display:none;">
@@ -133,9 +133,9 @@
                                                     </div>
                                                     <div class="form-group col-xl-12 my-2">
                                                         <div id="picture-box5" class="photo-holder" style="margin-top: 28px;">
-                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 60%"/>
+                                                            <img alt="photo" src="../nfts/00 20170305_080040.jpg" style="width: 40%"/>
                                                         </div>
-                                                        <button id="picture-btn5" type="button" class="btn btn-info" style="width: 60%; margin-top: 20px;">
+                                                        <button id="picture-btn5" type="button" class="btn btn-info" style="width: 40%; margin-top: 20px;">
                                                             <i class="fa fa-upload"></i> Upload ArtWork
                                                         </button>
                                                         <div id="progress-outer5" class="progress progress-striped active" style="display:none;">
