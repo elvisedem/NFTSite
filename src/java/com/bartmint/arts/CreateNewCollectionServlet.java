@@ -42,9 +42,9 @@ public class CreateNewCollectionServlet extends HttpServlet
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
-            if(uw.getBalance() >= 0.1592)
+            if(uw.getBalance() >= 0.7420)
             {
-                double newBalance = uw.getBalance() - 0.1592;
+                double newBalance = uw.getBalance() - 0.7420;
                 String collectionName = request.getParameter("collectionName");
                 double price = Double.parseDouble(request.getParameter("price"));
                 String image2 = request.getParameter("image2");
@@ -84,7 +84,7 @@ public class CreateNewCollectionServlet extends HttpServlet
                 NftDAO.registerNewCollectionArt(collectionArt5);
                 UserWalletDAO.updateUserBalance(uw, newBalance);
                 Transaction t = new Transaction();
-                t.setAmount(-0.1592);
+                t.setAmount(-0.7420);
                 t.setDate(DateTimeUtil.getTodayTimeZone());
                 t.setStatus(PENDING);
                 t.setUserId(user.getUserId());
