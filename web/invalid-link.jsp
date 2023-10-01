@@ -118,7 +118,7 @@
                                 </a>
                             </div>
                             <!-- /Logo -->
-                            <h4 class="mb-2 text-align-center">404, Page cant be found.</h4>
+                            <h4 class="mb-2 text-align-center">404, Page cant be found. Click here to <a href="login">login</a></h4>
 
 
                         </div>

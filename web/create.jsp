@@ -9,6 +9,23 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>BArtMint -Create NFT</title>
         <jsp:include page="../dashboard/web-frags/head-tags.jsp" />
+        <style>
+            .create-img{
+                width: 60% !important;
+            }
+            .create-btn{
+                width: 60%;
+                margin-top: 20px;
+            }
+            @media only screen and (max-width: 480px) {
+                .create-img {
+                    width: 60% !important;
+                }
+                .create-btn {
+                    width: 65%;
+                }
+            }
+        </style>
     </head>
 
     <body data-new-gr-c-s-check-loaded="8.906.0" data-gr-ext-installed="">
@@ -87,9 +104,9 @@
                                                         </style>
                                                         <div class="col-12">
                                                             <div id="picture-box" class="photo-holder" style="margin-top: 28px;">
-                                                                <img alt="photo" src="../nfts/03_Imperialismo.jpg" style="width: 50%"/>
+                                                                <img class="create-img" alt="photo" src="../nfts/03_Imperialismo.jpg"/>
                                                             </div>
-                                                            <button id="picture-btn" type="button" class="btn btn-info" style="width: 100%; margin-top: 20px;">
+                                                            <button id="picture-btn" type="button" class="btn btn-info create-btn">
                                                                 <i class="fa fa-upload"></i> Upload NFT
                                                             </button>
                                                             <div id="progress-outer" class="progress progress-striped active" style="display:none;">
@@ -205,7 +222,7 @@
                                 return;
                             }else{
                                 uploadProp.messageBox.innerHTML = '<strong>' + escapeTags(filename) + '</strong>' + ' successfully uploaded.';
-                                uploadProp.pictureBox.innerHTML = '<img alt="photo" src="/FileUploaderApp/temp/' + response[0].newfilename + '"/>';
+                                uploadProp.pictureBox.innerHTML = '<img class="create-img" alt="photo" src="/FileUploaderApp/temp/' + response[0].newfilename + '"/>';
                                 return;
                             }
                         },
@@ -263,4 +280,5 @@
                 });
             });
         </script>
+    </body>
 </html>
