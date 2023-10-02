@@ -67,6 +67,11 @@
                                             Buy NFT
                                         </button>
                                     </c:if>
+                                    <c:if test="${ nftArt.status eq 'sold'}">
+                                        <button type="button" style="background-color: red !important" class="sold a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                            SOLD
+                                        </button>
+                                    </c:if>
                                 </div>
                             </div>
                         </c:forEach>
@@ -1016,7 +1021,7 @@
 
         <script>
             $(document).ready(function(){
-                swal.fire("Warning","If the buy button is not available on an art, it means that the art has been sold or you are the owner","warning");
+                swal.fire("Warning","If the buy button is not available on an art, it means that you are the owner","warning");
                 $('.buy-art').click(function(e){
                     e.preventDefault();
                     var userId = $('#userId').val();
@@ -1035,7 +1040,7 @@
                                 if(data.message === 'success'){
                                     swal.fire("Success!", "You Have Purchase this Art Successfully!", "success");
                                     window.location.href ="explore";
- 
+
                                 }else
                                     swal.fire("Error!", data.message, "error");
                             },
@@ -1046,6 +1051,9 @@
                             }
                         });
                     }
+                });
+                $('#sold').click(function(){
+                    swal.fire("Warning", "This Nft has already been sold to a user!", "warning");
                 });
             });
         </script>

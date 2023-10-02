@@ -1,11 +1,11 @@
 package com.bartmint.arts;
 
 import com.bartmint.transactions.Transaction;
+import com.bartmint.transactions.TransactionDAO;
 import com.bartmint.users.User;
 import com.bartmint.users.UserWallet;
 import com.bartmint.users.UserWalletDAO;
 import static com.bartmint.util.Constant.TransactionsConstants.TransType.MINT;
-import static com.bartmint.util.Constant.UserDepositConstants.PENDING;
 import com.bartmint.util.DateTimeUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -86,9 +86,10 @@ public class CreateNewCollectionServlet extends HttpServlet
                 Transaction t = new Transaction();
                 t.setAmount(-0.7420);
                 t.setDate(DateTimeUtil.getTodayTimeZone());
-                t.setStatus(PENDING);
+                t.setStatus("Success");
                 t.setUserId(user.getUserId());
                 t.setType(MINT);
+                TransactionDAO.registerNewTransactionSlip(t);
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "success");
                 out.print(jsono);

@@ -59,7 +59,7 @@ public class BuyNftArtServlet extends HttpServlet
                 double newRecipWallet = recipWallet.getBalance() + nft.getPrice();
                 UserWalletDAO.updateUserBalance(recipWallet, newRecipWallet);
                 Transaction t = new Transaction();
-                t.setAmount(nft.getPrice());
+                t.setAmount(-nft.getPrice());
                 t.setDate(DateTimeUtil.getTodayTimeZone());
                 t.setStatus(SUCCESS);
                 t.setType("Bought");

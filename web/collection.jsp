@@ -241,7 +241,7 @@
                                 swal.fire("Success!", "Your Collection was created successfully!", "success");
                                 setTimeout(function(){
                                     window.location.href = 'home';
-                                }, 10000);
+                                }, 1000);
                             }else
                                 swal.fire("Error!", data.message, "error");
                         },

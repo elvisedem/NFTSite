@@ -270,11 +270,8 @@
                             $btn.find('i').addClass('fa-save').removeClass('fa-refresh').removeClass('fa-spin');
                         },
                         error: function(jqXHR, textStatus, errorThrown){
-//                            swal("Error!", "There was an error!", "error");
-                            alert('Oops, You do not have enough funds to purchase this art,  Make a deposit and try again!');
-                            setTimeout(function(){
-                                window.location.href = 'fund';
-                            }, 1000);
+                            swal.fire("Error!", "There was an error!", "error");
+
                         }
                     });
                 });

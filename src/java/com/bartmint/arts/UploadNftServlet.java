@@ -51,6 +51,7 @@ public class UploadNftServlet extends HttpServlet
                 nft.setImageName(request.getParameter("imageName"));
                 nft.setPrice(Double.parseDouble(request.getParameter("price")));
                 nft.setUserId(user.getUserId());
+                nft.setStatus("not sold");
                 NftDAO.registerNewNFTs(nft);
                 UserWalletDAO.updateUserBalance(uw, newBalance);
                 Transaction t = new Transaction();
