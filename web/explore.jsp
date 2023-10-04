@@ -60,10 +60,10 @@
                                             </span>
                                         </h5>
                                     </div>
-                                    <input id="id" name="id" hidden="" value="${nftArt.artId}"/>
+                                    <input class="id" hidden="" value=""/>
                                     <input id="userId" name="userId"  hidden="" value="${user.userId}"/>
                                     <c:if test="${user.userId ne nftArt.userId and nftArt.status ne 'sold'}">
-                                        <button type="button" class="buy-art a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
+                                        <button data-bind="${nftArt.artId}" type="button" class="buy-art a3 a5 a1Z a1f a1C aP ak a1n aX aZ a1w hover:a36 sm:a2u">
                                             Buy NFT
                                         </button>
                                     </c:if>
@@ -1021,14 +1021,14 @@
 
         <script>
             $(document).ready(function(){
-                swal.fire("Warning","If the buy button is not available on an art, it means that you are the owner","warning");
+                swal.fire("Warning", "If the buy button is not available on an art, it means that you are the owner", "warning");
                 $('.buy-art').click(function(e){
                     e.preventDefault();
+                    var nftId = $(this).attr('data-bind');
                     var userId = $('#userId').val();
                     if(userId === null){
                         swal.fire("Error!", "You Have To have an account and login to get this art!", "error");
                     }else{
-                        var nftId = $('#id').val().trim();
                         $.ajax({
                             url: 'dashboard/buy-nft',
                             method: 'POST',
@@ -1039,7 +1039,7 @@
                             success: function(data, textStatus, jqXHR){
                                 if(data.message === 'success'){
                                     swal.fire("Success!", "You Have Purchase this Art Successfully!", "success");
-                                    window.location.href ="explore";
+                                    window.location.href = "explore";
 
                                 }else
                                     swal.fire("Error!", data.message, "error");

@@ -44,19 +44,20 @@ public class WithdrawalServlet extends HttpServlet
             String subject = "Withdrawal Request";
             String userMessage = "You have Successfully placed a Withdrawal request please wait as we process your payment! Thanks";
 
+            double amount = Double.parseDouble(request.getParameter("amount"));
             HttpSession session = request.getSession(false);
             User user = (User)session.getAttribute("user");
             UserWallet uw = UserWalletDAO.getUserWalletById(user.getUserId());
             String adminMessage = "This User: " + user.getEmail() + " has placed a withdrawal amount of " + request.getParameter("amount") + " Check and confirm the payment";
-            if(uw.getBalance() <= 7)
+            if(uw.getBalance() <= 7 && amount > uw.getBalance())
             {
                 JSONObject jsono = new JSONObject();
                 jsono.put("message", "Insufficient Funds, Make a Deposit or Sale an NFT");
                 SendEmail.sendHtmlMail(user.getEmail(), senderEmail, subject, "Sorry you don't have the mininmum withdrawal amount to make this request, try again when you balance has reached 7 ETH! Thanks");
+                out.print(jsono);
             }
             else
             {
-                double amount = Double.parseDouble(request.getParameter("amount"));
                 Withdrawal w = new Withdrawal();
                 w.setAmount(Double.parseDouble(request.getParameter("amount")));
                 w.setStatus(SUCCESS);
